@@ -219,6 +219,80 @@
       border-radius: 8px;
       border-left: 4px solid #00c6ff;
     }
+
+    /* 🔹 Ajustes para CELULAR */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 15px 20px;
+        text-align: center;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 10px;
+        font-size: 18px;
+      }
+
+      .main-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        margin-top: 60px;
+      }
+
+      .hero {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      .hero h2 {
+        font-size: 70px;
+        border-right: none;
+        animation: none;
+      }
+
+      .hero p {
+        font-size: 26px;
+        margin-left: 0;
+      }
+
+      .card {
+        width: 100%;
+        margin-top: 30px;
+        padding: 25px;
+      }
+
+      .card h3 {
+        font-size: 26px;
+      }
+
+      .card p, .card ul li {
+        font-size: 18px;
+      }
+
+      .about-section {
+        padding: 30px;
+        margin: 40px 15px;
+      }
+
+      .about-section h2 {
+        font-size: 28px;
+      }
+
+      .contact-card {
+        width: 100%;
+      }
+
+      .contact-card h3 {
+        font-size: 22px;
+      }
+
+      .contact-card p {
+        font-size: 18px;
+      }
+    }
   </style>
 </head>
 <body>
