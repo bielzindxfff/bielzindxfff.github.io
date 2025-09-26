@@ -336,6 +336,7 @@
             padding: 20px;
             text-align: center;
             transition: transform 0.3s, background 0.3s;
+            cursor: pointer;
         }
 
         .hobby-item:hover {
@@ -393,19 +394,20 @@
             width: 80%;
         }
 
-        .ia-section {
+        /* Seção de Abas */
+        .tabs-section {
             grid-column: 1 / -1;
             margin-top: 20px;
         }
 
-        .ia-tabs {
+        .tabs-container {
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
-        .ia-tab {
+        .tab {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 12px 24px;
@@ -415,31 +417,31 @@
             font-size: 1.1rem;
         }
 
-        .ia-tab:hover {
+        .tab:hover {
             background: rgba(0, 198, 255, 0.1);
             transform: translateY(-2px);
         }
 
-        .ia-tab.active {
+        .tab.active {
             background: rgba(0, 198, 255, 0.2);
             border-color: #00c6ff;
             box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
         }
 
-        .ia-content {
+        .tab-content {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             padding: 30px;
-            min-height: 200px;
+            min-height: 400px;
         }
 
-        .ia-panel {
+        .tab-panel {
             display: none;
+            animation: fadeIn 0.5s ease-in;
         }
 
-        .ia-panel.active {
+        .tab-panel.active {
             display: block;
-            animation: fadeIn 0.5s ease-in;
         }
 
         @keyframes fadeIn {
@@ -447,36 +449,211 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .ia-panel h3 {
+        .tab-panel h3 {
             color: #00c6ff;
             margin-bottom: 15px;
             font-size: 1.8rem;
         }
 
-        .ia-panel p {
+        .tab-panel p {
             line-height: 1.6;
             margin-bottom: 15px;
             font-size: 1.1rem;
         }
 
-        .ia-skills {
+        .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
 
-        .ia-skill {
+        .skill-item {
             background: rgba(0, 198, 255, 0.1);
             padding: 15px;
             border-radius: 10px;
             text-align: center;
         }
 
-        .ia-skill i {
+        .skill-item i {
             font-size: 2rem;
             color: #00c6ff;
             margin-bottom: 10px;
+        }
+
+        /* Jogo da Memória */
+        .memory-game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .game-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .game-btn {
+            background: rgba(0, 198, 255, 0.2);
+            border: 1px solid rgba(0, 198, 255, 0.5);
+            color: #00c6ff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .game-btn:hover {
+            background: rgba(0, 198, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.2);
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #88c9ff;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00c6ff;
+        }
+
+        .memory-game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .memory-card {
+            height: 100px;
+            width: 100px;
+            background: linear-gradient(135deg, #001f3f, #003366);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 198, 255, 0.3);
+        }
+
+        .memory-card.flipped {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, #003366, #004d99);
+        }
+
+        .memory-card.matched {
+            background: linear-gradient(135deg, #006600, #009900);
+            border-color: #6bff6b;
+            cursor: default;
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #001f3f, #003366);
+            transform: rotateY(180deg);
+            padding: 5px;
+        }
+
+        .card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, #003366, #004d99);
+        }
+
+        .card-back i {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.8rem;
+        }
+
+        .message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            z-index: 100;
+            border: 2px solid #00c6ff;
+            box-shadow: 0 0 30px rgba(0, 198, 255, 0.5);
+            display: none;
+            max-width: 90%;
+        }
+
+        .message h2 {
+            color: #00c6ff;
+            margin-bottom: 15px;
+        }
+
+        .message p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+            display: none;
         }
 
         .footer {
@@ -514,6 +691,106 @@
             transform: translateY(-5px);
         }
 
+        /* Modal para detalhes dos hobbies */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #0a0a0a 0%, #001f3f 100%);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 198, 255, 0.3);
+            border: 1px solid rgba(0, 198, 255, 0.3);
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: #00c6ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #00c6ff;
+        }
+
+        .modal-body {
+            line-height: 1.6;
+        }
+
+        .modal-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .modal-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-list li:last-child {
+            border-bottom: none;
+        }
+
+        .modal-list li i {
+            color: #00c6ff;
+        }
+
+        .modal-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: rgba(0, 198, 255, 0.2);
+            border-radius: 30px;
+            color: #00c6ff;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 198, 255, 0.3);
+        }
+
+        .modal-link:hover {
+            background: rgba(0, 198, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
         /* Responsividade */
         @media (max-width: 900px) {
             .main-content {
@@ -535,8 +812,17 @@
                 height: 170px;
             }
 
-            .ia-skills {
+            .skills-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .memory-game-board {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .memory-card {
+                height: 80px;
+                width: 80px;
             }
         }
 
@@ -564,17 +850,42 @@
                 height: 140px;
             }
 
-            .ia-tabs {
+            .tabs-container {
                 flex-direction: column;
             }
 
-            .ia-tab {
+            .tab {
                 text-align: center;
             }
 
             .info-tags {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .memory-game-board {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .memory-card {
+                height: 70px;
+                width: 70px;
+            }
+
+            .game-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .memory-game-board {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .memory-card {
+                height: 60px;
+                width: 60px;
             }
         }
     </style>
@@ -589,6 +900,31 @@
     <div class="decoration line"></div>
     <div class="decoration line2"></div>
     
+    <!-- Modal para detalhes dos hobbies -->
+    <div id="hobbyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Conteúdo será preenchido via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para o jogo -->
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="message" id="message">
+        <h2>Parabéns!</h2>
+        <p>Você completou o jogo em <span id="final-time">0</span> segundos!</p>
+        <p>Total de movimentos: <span id="final-moves">0</span></p>
+        <button class="game-btn" id="play-again-btn">
+            <i class="fas fa-play"></i> Jogar Novamente
+        </button>
+    </div>
+
     <div class="container">
         <header>
             <div class="profile-container">
@@ -629,7 +965,7 @@
             </div>
         </header>
 
-        <!-- Restante do conteúdo -->
+        <!-- Conteúdo principal -->
         <div class="main-content">
             <div class="card">
                 <h2 class="card-title"><i class="fas fa-user-circle"></i> Sobre mim</h2>
@@ -667,117 +1003,139 @@
             <div class="card">
                 <h2 class="card-title"><i class="fas fa-heart"></i> Gosto de</h2>
                 <div class="hobbies-grid">
-                    <div class="hobby-item">
+                    <div class="hobby-item" data-hobby="jogar">
                         <div class="hobby-icon"><i class="fas fa-gamepad"></i></div>
                         <div class="hobby-name">Jogar</div>
                     </div>
-                    <div class="hobby-item">
+                    <div class="hobby-item" data-hobby="assistir">
                         <div class="hobby-icon"><i class="fas fa-tv"></i></div>
                         <div class="hobby-name">Assistir</div>
                     </div>
-                    <div class="hobby-item">
+                    <div class="hobby-item" data-hobby="aprender">
                         <div class="hobby-icon"><i class="fas fa-graduation-cap"></i></div>
                         <div class="hobby-name">Aprender</div>
                     </div>
-                    <div class="hobby-item">
+                    <div class="hobby-item" data-hobby="futebol">
                         <div class="hobby-icon"><i class="fas fa-futbol"></i></div>
                         <div class="hobby-name">Futebol</div>
                     </div>
-                    <div class="hobby-item">
+                    <div class="hobby-item" data-hobby="handball">
                         <div class="hobby-icon"><i class="fas fa-basketball-ball"></i></div>
                         <div class="hobby-name">Handball</div>
                     </div>
-                    <div class="hobby-item">
+                    <div class="hobby-item" data-hobby="queimada">
                         <div class="hobby-icon"><i class="fas fa-fire"></i></div>
                         <div class="hobby-name">Queimada</div>
                     </div>
-                    <div class="hobby-item">
+                    <div class="hobby-item" data-hobby="volei">
                         <div class="hobby-icon"><i class="fas fa-volleyball-ball"></i></div>
                         <div class="hobby-name">Vôlei</div>
                     </div>
-                    <div class="hobby-item">
+                    <div class="hobby-item" data-hobby="carros">
                         <div class="hobby-icon"><i class="fas fa-car"></i></div>
                         <div class="hobby-name">Carros</div>
                     </div>
-                    <div class="hobby-item">
+                    <div class="hobby-item" data-hobby="motos">
                         <div class="hobby-icon"><i class="fas fa-motorcycle"></i></div>
                         <div class="hobby-name">Motos</div>
                     </div>
                 </div>
             </div>
 
-            <div class="card ia-section">
-                <h2 class="card-title"><i class="fas fa-robot"></i> Tab IA (Em Breve)</h2>
+            <!-- Seção de Abas -->
+            <div class="card tabs-section">
+                <h2 class="card-title"><i class="fas fa-th-large"></i> Explorar</h2>
                 
-                <div class="ia-tabs">
-                    <div class="ia-tab active" data-tab="interesse">Interesse em IA</div>
-                    <div class="ia-tab" data-tab="projetos">Projetos</div>
-                    <div class="ia-tab" data-tab="ferramentas">Ferramentas</div>
-                    <div class="ia-tab" data-tab="futuro">Futuro</div>
+                <div class="tabs-container">
+                    <div class="tab active" data-tab="ia">Inteligência Artificial</div>
+                    <div class="tab" data-tab="games">Jogos</div>
+                    <div class="tab" data-tab="projects">Projetos</div>
                 </div>
 
-                <div class="ia-content">
-                    <div class="ia-panel active" id="interesse">
+                <div class="tab-content">
+                    <!-- Aba de IA -->
+                    <div class="tab-panel active" id="ia">
                         <h3>Meu Interesse em Inteligência Artificial</h3>
                         <p>A Inteligência Artificial é uma das áreas que mais me fascina na tecnologia. Estou constantemente explorando novas possibilidades e aprendendo sobre machine learning, redes neurais e processamento de linguagem natural.</p>
                         <p>Acredito que a IA tem o potencial de revolucionar a maneira como interagimos com a tecnologia e resolver problemas complexos em diversas áreas.</p>
                         
-                        <div class="ia-skills">
-                            <div class="ia-skill">
+                        <div class="skills-grid">
+                            <div class="skill-item">
                                 <i class="fas fa-brain"></i>
                                 <div>Machine Learning</div>
                             </div>
-                            <div class="ia-skill">
+                            <div class="skill-item">
                                 <i class="fas fa-comment-alt"></i>
                                 <div>NLP</div>
                             </div>
-                            <div class="ia-skill">
+                            <div class="skill-item">
                                 <i class="fas fa-chart-line"></i>
                                 <div>Análise de Dados</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="ia-panel" id="projetos">
-                        <h3>Projetos de IA</h3>
-                        <p>Estou desenvolvendo vários projetos interessantes envolvendo inteligência artificial:</p>
-                        <ul style="padding-left: 20px; margin: 15px 0;">
-                            <li style="margin-bottom: 10px;">Chatbot personalizado para aprendizado</li>
-                            <li style="margin-bottom: 10px;">Sistema de recomendação baseado em IA</li>
-                            <li style="margin-bottom: 10px;">Análise de sentimentos em textos</li>
-                            <li>Reconhecimento de padrões em dados</li>
-                        </ul>
-                    </div>
-
-                    <div class="ia-panel" id="ferramentas">
-                        <h3>Ferramentas que Utilizo</h3>
-                        <p>Para meus projetos de IA, trabalho com diversas ferramentas e tecnologias:</p>
+                    <!-- Aba de Jogos -->
+                    <div class="tab-panel" id="games">
+                        <h3><i class="fas fa-gamepad"></i> Jogos</h3>
+                        <p>Como entusiasta de jogos, desenvolvi este Jogo da Memória para demonstrar minhas habilidades em desenvolvimento web. Teste sua memória e divirta-se!</p>
                         
-                        <div class="ia-skills">
-                            <div class="ia-skill">
-                                <i class="fab fa-python"></i>
-                                <div>Python</div>
+                        <div class="memory-game-container">
+                            <div class="game-controls">
+                                <button class="game-btn" id="start-game-btn">
+                                    <i class="fas fa-play"></i> Iniciar Jogo
+                                </button>
+                                <button class="game-btn" id="restart-game-btn">
+                                    <i class="fas fa-redo"></i> Reiniciar
+                                </button>
                             </div>
-                            <div class="ia-skill">
-                                <i class="fas fa-code"></i>
-                                <div>TensorFlow</div>
+                            
+                            <div class="game-stats">
+                                <div class="stat-item">
+                                    <div class="stat-label">Movimentos</div>
+                                    <div class="stat-value" id="moves-count">0</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Tempo</div>
+                                    <div class="stat-value" id="timer">0s</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Pares Encontrados</div>
+                                    <div class="stat-value" id="pairs-count">0/8</div>
+                                </div>
                             </div>
-                            <div class="ia-skill">
-                                <i class="fas fa-project-diagram"></i>
-                                <div>PyTorch</div>
-                            </div>
-                            <div class="ia-skill">
-                                <i class="fas fa-database"></i>
-                                <div>Pandas</div>
+                            
+                            <div class="memory-game-board" id="memory-game-board">
+                                <!-- As cartas serão geradas dinamicamente pelo JavaScript -->
                             </div>
                         </div>
                     </div>
 
-                    <div class="ia-panel" id="futuro">
-                        <h3>Visão para o Futuro</h3>
-                        <p>Meu objetivo é me tornar um especialista em IA, contribuindo para o desenvolvimento de soluções inovadoras que possam melhorar a vida das pessoas.</p>
-                        <p>Quero explorar áreas como IA generativa, computação quântica e ética em inteligência artificial.</p>
-                        <p style="color: #00c6ff; font-style: italic;">"A IA não é sobre substituir humanos, mas sobre amplificar nossas capacidades."</p>
+                    <!-- Aba de Projetos -->
+                    <div class="tab-panel" id="projects">
+                        <h3>Meus Projetos</h3>
+                        <p>Estou desenvolvendo vários projetos interessantes envolvendo tecnologia:</p>
+                        
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fas fa-code"></i>
+                                <div>Desenvolvimento Web</div>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-robot"></i>
+                                <div>Chatbots</div>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <div>Aplicativos</div>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-gamepad"></i>
+                                <div>Jogos</div>
+                            </div>
+                        </div>
+                        
+                        <p style="margin-top: 20px;">Estou sempre buscando aprender novas tecnologias e aplicar meus conhecimentos em projetos práticos que possam fazer a diferença.</p>
                     </div>
                 </div>
             </div>
@@ -865,9 +1223,9 @@
                 }, 1000 + (index * 200));
             });
 
-            // Sistema de tabs para a seção IA
-            const tabs = document.querySelectorAll('.ia-tab');
-            const panels = document.querySelectorAll('.ia-panel');
+            // Sistema de tabs
+            const tabs = document.querySelectorAll('.tab');
+            const panels = document.querySelectorAll('.tab-panel');
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', () => {
@@ -883,50 +1241,342 @@
                     document.getElementById(tabId).classList.add('active');
                 });
             });
+
+            // Modal para detalhes dos hobbies
+            const modal = document.getElementById('hobbyModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            const closeModal = document.querySelector('.close-modal');
+            const hobbyItems = document.querySelectorAll('.hobby-item');
+
+            // Dados dos hobbies
+            const hobbyData = {
+                jogar: {
+                    title: "Jogos que eu jogo",
+                    content: `
+                        <p>Estes são os jogos que mais gosto de jogar:</p>
+                        <ul class="modal-list">
+                            <li><i class="fas fa-gamepad"></i> Roblox</li>
+                            <li><i class="fas fa-gamepad"></i> FiveM</li>
+                            <li><i class="fas fa-gamepad"></i> GTA 5</li>
+                            <li><i class="fas fa-gamepad"></i> Valorant</li>
+                            <li><i class="fas fa-gamepad"></i> Clash Royale</li>
+                        </ul>
+                    `
+                },
+                assistir: {
+                    title: "Gosto de Assistir",
+                    content: `
+                        <p>Estes são os conteúdos que mais gosto de assistir:</p>
+                        <ul class="modal-list">
+                            <li><i class="fab fa-youtube"></i> YouTube</li>
+                            <li><i class="fas fa-tv"></i> Séries</li>
+                        </ul>
+                    `
+                },
+                aprender: {
+                    title: "Gosto de Aprender",
+                    content: `
+                        <p>Gosto de aprender coisas novas e estou sempre buscando conhecimento.</p>
+                        <p>Atualmente, estou focado em:</p>
+                        <ul class="modal-list">
+                            <li><i class="fas fa-language"></i> Aprender a falar espanhol fluentemente</li>
+                        </ul>
+                    `
+                },
+                futebol: {
+                    title: "Futebol - Jogadores Favoritos",
+                    content: `
+                        <p>Meus jogadores de futebol favoritos são:</p>
+                        <ul class="modal-list">
+                            <li><i class="fas fa-trophy"></i> 1° Messi</li>
+                            <li><i class="fas fa-trophy"></i> 2° Neymar</li>
+                            <li><i class="fas fa-trophy"></i> 3° Yamal</li>
+                        </ul>
+                        <a href="https://www.google.com/search?q=O+que+é+o+Futebol" target="_blank" class="modal-link">Pesquisar sobre Futebol</a>
+                    `
+                },
+                handball: {
+                    title: "Handball",
+                    content: `
+                        <p>Handball é um esporte emocionante que gosto de praticar e assistir.</p>
+                        <a href="https://www.google.com/search?q=O+que+é+o+Handball" target="_blank" class="modal-link">Pesquisar sobre Handball</a>
+                    `
+                },
+                queimada: {
+                    title: "Queimada",
+                    content: `
+                        <p>A queimada é um jogo divertido que sempre joguei com amigos.</p>
+                        <a href="https://www.google.com/search?q=O+que+é+a+Queimada" target="_blank" class="modal-link">Pesquisar sobre Queimada</a>
+                    `
+                },
+                volei: {
+                    title: "Vôlei",
+                    content: `
+                        <p>O vôlei é um esporte que exige muita técnica e trabalho em equipe.</p>
+                        <a href="https://www.google.com/search?q=O+que+é+o+Vôlei" target="_blank" class="modal-link">Pesquisar sobre Vôlei</a>
+                    `
+                },
+                carros: {
+                    title: "Carros - Meus Sonhos",
+                    content: `
+                        <p>Estes são os carros dos meus sonhos:</p>
+                        <ul class="modal-list">
+                            <li><i class="fas fa-car"></i> 1° BMW M4 Competition</li>
+                            <li><i class="fas fa-car"></i> 2° BMW X6</li>
+                            <li><i class="fas fa-car"></i> 3° Mercedes Benz</li>
+                        </ul>
+                    `
+                },
+                motos: {
+                    title: "Motos - Meus Sonhos",
+                    content: `
+                        <p>Estas são as motos dos meus sonhos:</p>
+                        <ul class="modal-list">
+                            <li><i class="fas fa-motorcycle"></i> 1° BMW S 1000 RR</li>
+                            <li><i class="fas fa-motorcycle"></i> 2° BMW R1200</li>
+                        </ul>
+                    `
+                }
+            };
+
+            // Abrir modal ao clicar em um hobby
+            hobbyItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const hobbyName = this.getAttribute('data-hobby');
+                    const hobbyInfo = hobbyData[hobbyName];
+                    
+                    if (hobbyInfo) {
+                        modalTitle.innerHTML = `<i class="fas fa-${getHobbyIcon(hobbyName)}"></i> ${hobbyInfo.title}`;
+                        modalBody.innerHTML = hobbyInfo.content;
+                        modal.style.display = 'flex';
+                    }
+                });
+            });
+
+            // Fechar modal
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            // Fechar modal ao clicar fora dele
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Função para obter ícone correspondente ao hobby
+            function getHobbyIcon(hobby) {
+                const iconMap = {
+                    jogar: 'gamepad',
+                    assistir: 'tv',
+                    aprender: 'graduation-cap',
+                    futebol: 'futbol',
+                    handball: 'basketball-ball',
+                    queimada: 'fire',
+                    volei: 'volleyball-ball',
+                    carros: 'car',
+                    motos: 'motorcycle'
+                };
+                
+                return iconMap[hobby] || 'heart';
+            }
+
+            // JOGO DA MEMÓRIA
+            const memoryGameBoard = document.getElementById('memory-game-board');
+            const startGameBtn = document.getElementById('start-game-btn');
+            const restartGameBtn = document.getElementById('restart-game-btn');
+            const movesCountElement = document.getElementById('moves-count');
+            const timerElement = document.getElementById('timer');
+            const pairsCountElement = document.getElementById('pairs-count');
+            const messageElement = document.getElementById('message');
+            const overlayElement = document.getElementById('overlay');
+            const finalTimeElement = document.getElementById('final-time');
+            const finalMovesElement = document.getElementById('final-moves');
+            const playAgainBtn = document.getElementById('play-again-btn');
+
+            // Estado do jogo
+            let gameState = {
+                cards: [],
+                flippedCards: [],
+                matchedPairs: 0,
+                moves: 0,
+                timer: 0,
+                timerInterval: null,
+                gameStarted: false,
+                canFlip: true
+            };
+
+            // Imagens para o jogo
+            const cardImages = [
+                'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=150&h=150&fit=crop',
+                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop',
+                'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop',
+                'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop',
+                'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=150&h=150&fit=crop',
+                'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop',
+                'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop',
+                'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop'
+            ];
+
+            // Duplicar e embaralhar as imagens
+            const gameImages = [...cardImages, ...cardImages];
+
+            // Função para embaralhar um array
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            // Função para inicializar o jogo
+            function initGame() {
+                // Resetar estado do jogo
+                gameState.cards = [];
+                gameState.flippedCards = [];
+                gameState.matchedPairs = 0;
+                gameState.moves = 0;
+                gameState.timer = 0;
+                gameState.gameStarted = false;
+                gameState.canFlip = true;
+                
+                // Limpar o tabuleiro
+                memoryGameBoard.innerHTML = '';
+                
+                // Atualizar a interface
+                updateUI();
+                
+                // Embaralhar as imagens
+                const shuffledImages = shuffleArray([...gameImages]);
+                
+                // Criar as cartas
+                shuffledImages.forEach((imageUrl, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'memory-card';
+                    card.dataset.index = index;
+                    card.dataset.image = imageUrl;
+                    
+                    const cardFront = document.createElement('div');
+                    cardFront.className = 'card-front';
+                    const img = document.createElement('img');
+                    img.src = imageUrl;
+                    img.alt = `Imagem ${index + 1}`;
+                    img.loading = 'lazy';
+                    cardFront.appendChild(img);
+                    
+                    const cardBack = document.createElement('div');
+                    cardBack.className = 'card-back';
+                    cardBack.innerHTML = '<i class="fas fa-question"></i>';
+                    
+                    card.appendChild(cardFront);
+                    card.appendChild(cardBack);
+                    
+                    card.addEventListener('click', () => flipCard(card));
+                    
+                    memoryGameBoard.appendChild(card);
+                    gameState.cards.push(card);
+                });
+            }
+
+            // Função para virar uma carta
+            function flipCard(card) {
+                if (!gameState.canFlip || card.classList.contains('flipped') || card.classList.contains('matched')) {
+                    return;
+                }
+                
+                if (!gameState.gameStarted) {
+                    startTimer();
+                    gameState.gameStarted = true;
+                }
+                
+                card.classList.add('flipped');
+                gameState.flippedCards.push(card);
+                
+                if (gameState.flippedCards.length === 2) {
+                    gameState.canFlip = false;
+                    gameState.moves++;
+                    updateUI();
+                    checkForMatch();
+                }
+            }
+
+            // Função para verificar se as cartas viradas formam um par
+            function checkForMatch() {
+                const [card1, card2] = gameState.flippedCards;
+                
+                if (card1.dataset.image === card2.dataset.image) {
+                    setTimeout(() => {
+                        card1.classList.add('matched');
+                        card2.classList.add('matched');
+                        gameState.matchedPairs++;
+                        gameState.flippedCards = [];
+                        gameState.canFlip = true;
+                        updateUI();
+                        
+                        if (gameState.matchedPairs === 8) {
+                            endGame();
+                        }
+                    }, 500);
+                } else {
+                    setTimeout(() => {
+                        card1.classList.remove('flipped');
+                        card2.classList.remove('flipped');
+                        gameState.flippedCards = [];
+                        gameState.canFlip = true;
+                    }, 1000);
+                }
+            }
+
+            // Função para iniciar o timer
+            function startTimer() {
+                clearInterval(gameState.timerInterval);
+                gameState.timer = 0;
+                gameState.timerInterval = setInterval(() => {
+                    gameState.timer++;
+                    updateUI();
+                }, 1000);
+            }
+
+            // Função para atualizar a interface
+            function updateUI() {
+                movesCountElement.textContent = gameState.moves;
+                timerElement.textContent = `${gameState.timer}s`;
+                pairsCountElement.textContent = `${gameState.matchedPairs}/8`;
+            }
+
+            // Função para finalizar o jogo
+            function endGame() {
+                clearInterval(gameState.timerInterval);
+                
+                finalTimeElement.textContent = gameState.timer;
+                finalMovesElement.textContent = gameState.moves;
+                
+                setTimeout(() => {
+                    messageElement.style.display = 'block';
+                    overlayElement.style.display = 'block';
+                }, 1000);
+            }
+
+            // Event listeners para os botões
+            startGameBtn.addEventListener('click', initGame);
+            restartGameBtn.addEventListener('click', initGame);
+            playAgainBtn.addEventListener('click', function() {
+                messageElement.style.display = 'none';
+                overlayElement.style.display = 'none';
+                initGame();
+            });
+
+            // Inicializar o jogo quando a aba de Jogos for carregada
+            document.querySelector('.tab[data-tab="games"]').addEventListener('click', function() {
+                // Inicializar o jogo apenas se ainda não foi inicializado
+                if (gameState.cards.length === 0) {
+                    initGame();
+                }
+            });
         });
     </script>
 </body>
 </html>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const hobbiesInfo = {
-        jogar: "Eu jogo: Roblox, FiveM, GTA 5 e Valorant 🎮",
-        assistir: "Gosto de assistir: YouTube e séries 📺",
-        aprender: "Estou aprendendo espanhol e gosto de aprender coisas novas 📚",
-        futebol: "Meus jogadores preferidos: 1° Messi ⚽ 2° Neymar 🌟 3° Yamal 🔥",
-        handball: "Pesquise: 'O que é Handball' 🤾",
-        queimada: "Pesquise: 'O que é Queimada' 🔥",
-        volei: "Pesquise: 'O que é Vôlei' 🏐",
-        carros: "Meus carros preferidos: 1° BMW M4 Competition 🚘 2° Mercedes-AMG GLE 63 S 3° BMW X6 4° Porsche 911 GT3 RS",
-        motos: "Minhas motos preferidas: 1° BMW R1200 🏍️ 2° BMW S1000RR ⚡"
-    };
-
-    // Seleciona todos os hobbies
-    document.querySelectorAll(".hobby-item").forEach(item => {
-        item.addEventListener("click", () => {
-            const hobbyName = item.querySelector(".hobby-name").textContent.toLowerCase();
-            const card = item.closest(".card");
-
-            // Remove descrição antiga se já tiver
-            let existingInfo = card.querySelector(".hobby-info");
-            if (existingInfo) existingInfo.remove();
-
-            // Cria nova descrição
-            const infoDiv = document.createElement("div");
-            infoDiv.classList.add("hobby-info");
-            infoDiv.style.marginTop = "15px";
-            infoDiv.style.padding = "15px";
-            infoDiv.style.background = "rgba(0,198,255,0.1)";
-            infoDiv.style.borderRadius = "10px";
-            infoDiv.style.fontSize = "1.1rem";
-            infoDiv.style.animation = "fadeIn 0.4s ease-in-out";
-
-            // Pega info do objeto
-            infoDiv.textContent = hobbiesInfo[hobbyName] || "Ainda não adicionei informações sobre isso 😉";
-
-            // Adiciona ao card
-            card.appendChild(infoDiv);
-        });
-    });
-});
-</script>
