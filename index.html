@@ -887,3 +887,46 @@
     </script>
 </body>
 </html>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const hobbiesInfo = {
+        jogar: "Eu jogo: Roblox, FiveM, GTA 5 e Valorant 🎮",
+        assistir: "Gosto de assistir: YouTube e séries 📺",
+        aprender: "Estou aprendendo espanhol e gosto de aprender coisas novas 📚",
+        futebol: "Meus jogadores preferidos: 1° Messi ⚽ 2° Neymar 🌟 3° Yamal 🔥",
+        handball: "Pesquise: 'O que é Handball' 🤾",
+        queimada: "Pesquise: 'O que é Queimada' 🔥",
+        volei: "Pesquise: 'O que é Vôlei' 🏐",
+        carros: "Meus carros preferidos: 1° BMW M4 Competition 🚘 2° Mercedes-AMG GLE 63 S 3° BMW X6 4° Porsche 911 GT3 RS",
+        motos: "Minhas motos preferidas: 1° BMW R1200 🏍️ 2° BMW S1000RR ⚡"
+    };
+
+    // Seleciona todos os hobbies
+    document.querySelectorAll(".hobby-item").forEach(item => {
+        item.addEventListener("click", () => {
+            const hobbyName = item.querySelector(".hobby-name").textContent.toLowerCase();
+            const card = item.closest(".card");
+
+            // Remove descrição antiga se já tiver
+            let existingInfo = card.querySelector(".hobby-info");
+            if (existingInfo) existingInfo.remove();
+
+            // Cria nova descrição
+            const infoDiv = document.createElement("div");
+            infoDiv.classList.add("hobby-info");
+            infoDiv.style.marginTop = "15px";
+            infoDiv.style.padding = "15px";
+            infoDiv.style.background = "rgba(0,198,255,0.1)";
+            infoDiv.style.borderRadius = "10px";
+            infoDiv.style.fontSize = "1.1rem";
+            infoDiv.style.animation = "fadeIn 0.4s ease-in-out";
+
+            // Pega info do objeto
+            infoDiv.textContent = hobbiesInfo[hobbyName] || "Ainda não adicionei informações sobre isso 😉";
+
+            // Adiciona ao card
+            card.appendChild(infoDiv);
+        });
+    });
+});
+</script>
