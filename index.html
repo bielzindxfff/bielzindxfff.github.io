@@ -24,6 +24,35 @@
             overflow-x: hidden;
         }
         
+        /* Botão de tela cheia */
+        .fullscreen-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .fullscreen-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+        
+        .fullscreen-btn i {
+            font-size: 1.2rem;
+            color: #333;
+        }
+        
         /* Partículas animadas no fundo */
         .particles {
             position: absolute;
@@ -726,6 +755,11 @@
     </style>
 </head>
 <body>
+    <!-- Botão de tela cheia -->
+    <button class="fullscreen-btn" id="fullscreen-btn">
+        <i class="fas fa-expand"></i>
+    </button>
+    
     <!-- Partículas animadas no fundo -->
     <div class="particles" id="particles"></div>
     
@@ -914,7 +948,7 @@
                     <p>Faça a leitura do texto Série Energia: "Fenômenos climáticos podem ser minimizados pela transição energética", retirado do Jornal USP, publicado no dia 07/02/2025.</p>
                     
                     <div class="highlight-box">
-                        <p>A relação entre a transição energética e os eventos climáticos extremos é um dos principais focos do Global Risks Report 2025, relatório do Fórum Econômico Mundial que alerta sobre a intensificação de fenômenos climáticos como enchentes, furacões e ondas de calor. Esses eventos, cada vez mais frequentes e severos, são amplificados pela continua dependência de combustíveis fósseis, como carvão, petróleo e gás natural, cujas emissões de gases de efeito estufa contribuem diretamente para as mudanças climáticas. Em resposta a esses desafios, a transição para energias renováveis é apresentada como uma solução essencial para reduzir os impactos climáticos e promover a sustentabilidade global.</p>
+                        <p>A relação entre a transição energética e os eventos climáticos extremos é um dos principais focos do Global Risks Report 2025, relatório do Fórum Econômico Mundial que alerta sobre a intensificação de fenômenos climáticos como enchentes, furacões e ondas de heat. Esses eventos, cada vez mais frequentes e severos, são amplificados pela continua dependência de combustíveis fósseis, como carvão, petróleo e gás natural, cujas emissões de gases de efeito estufa contribuem diretamente para as mudanças climáticas. Em resposta a esses desafios, a transição para energias renováveis é apresentada como uma solução essencial para reduzir os impactos climáticos e promover a sustentabilidade global.</p>
                         <p>A transição energética é destacada como uma oportunidade crucial para limitar os efeitos das mudanças climáticas. Fontes de energia renovável, como solar, eólica e hidrogênio verde, têm o potencial de reduzir drasticamente as emissões de carbono, fortalecer a resiliência energética e criar oportunidades econômicas significativas, como a geração de empregos. Contudo, o relatório ressalta os desafios associados a esse processo, incluindo a necessidade de grandes investimentos em infraestrutura, a integração de fontes renováveis intermitentes e a crescente demanda por materiais críticos para tecnologias de armazenamento de energia.</p>
                     </div>
                     
@@ -1219,6 +1253,52 @@
             lesson3Page.style.display = 'none';
             mainPage.style.display = 'block';
         });
+        
+        // Função para tela cheia
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+        
+        fullscreenBtn.addEventListener('click', function() {
+            if (!document.fullscreenElement) {
+                // Entrar em tela cheia
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen();
+                } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari e Opera
+                    document.documentElement.webkitRequestFullscreen();
+                } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+                    document.documentElement.msRequestFullscreen();
+                }
+                fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+            } else {
+                // Sair da tela cheia
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { // Firefox
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { // Chrome, Safari e Opera
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { // IE/Edge
+                    document.msExitFullscreen();
+                }
+                fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+            }
+        });
+        
+        // Atualizar ícone quando sair da tela cheia usando a tecla F11
+        document.addEventListener('fullscreenchange', updateFullscreenIcon);
+        document.addEventListener('webkitfullscreenchange', updateFullscreenIcon);
+        document.addEventListener('mozfullscreenchange', updateFullscreenIcon);
+        document.addEventListener('MSFullscreenChange', updateFullscreenIcon);
+        
+        function updateFullscreenIcon() {
+            if (!document.fullscreenElement && 
+                !document.webkitFullscreenElement && 
+                !document.mozFullScreenElement && 
+                !document.msFullscreenElement) {
+                fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+            }
+        }
         
         // Inicializar partículas quando a página carregar
         window.addEventListener('load', createParticles);
