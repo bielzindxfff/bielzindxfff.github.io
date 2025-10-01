@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aulas de Energia</title>
+    <title>Biel - Página Pessoal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -12,1302 +12,1571 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background: linear-gradient(135deg, #0a0a0a 0%, #001f3f 50%, #000 100%);
+            color: #fff;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            position: relative;
             overflow-x: hidden;
+            position: relative;
         }
-        
-        /* Botão de tela cheia */
-        .fullscreen-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 100;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .fullscreen-btn:hover {
-            background: white;
-            transform: scale(1.1);
-        }
-        
-        .fullscreen-btn i {
-            font-size: 1.2rem;
-            color: #333;
-        }
-        
-        /* Partículas animadas no fundo */
-        .particles {
+
+        /* Partículas de fundo */
+        #particles-js {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
             z-index: 1;
         }
-        
-        .particle {
-            position: absolute;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0) translateX(0);
-            }
-            50% {
-                transform: translateY(-20px) translateX(10px);
-            }
-            100% {
-                transform: translateY(0) translateX(0);
-            }
-        }
-        
-        .container {
-            max-width: 900px;
-            width: 100%;
+
+        header {
             text-align: center;
-            z-index: 2;
+            padding: 40px 0 60px;
             position: relative;
         }
-        
-        .header {
-            margin-bottom: 50px;
-            animation: fadeIn 1s ease-out;
+
+        /* Elementos decorativos */
+        .decoration {
+            position: absolute;
+            z-index: -1;
         }
-        
-        h1 {
-            color: white;
-            font-size: 3.5rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-            margin-bottom: 15px;
-            letter-spacing: 1px;
+
+        .circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 198, 255, 0.1) 0%, rgba(0, 198, 255, 0) 70%);
+            top: 10%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite;
         }
-        
-        .subtitle {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1.4rem;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
+
+        .circle2 {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 114, 255, 0.1) 0%, rgba(0, 114, 255, 0) 70%);
+            bottom: 10%;
+            right: 10%;
+            animation: float 6s ease-in-out infinite reverse;
         }
-        
-        .buttons-container {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            animation: slideUp 1s ease-out 0.3s both;
+
+        .line {
+            height: 2px;
+            width: 100px;
+            background: linear-gradient(90deg, transparent, #00c6ff, transparent);
+            top: 50%;
+            left: 5%;
+            transform: rotate(45deg);
         }
-        
-        .btn {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
-            border: none;
-            border-radius: 16px;
-            padding: 28px 35px;
-            font-size: 1.7rem;
-            font-weight: 600;
-            color: #333;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+        .line2 {
+            height: 2px;
+            width: 150px;
+            background: linear-gradient(90deg, transparent, #0072ff, transparent);
+            bottom: 30%;
+            right: 5%;
+            transform: rotate(-30deg);
+        }
+
+        .profile-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            gap: 20px;
+            justify-content: center;
+            font-size: 80px;
+            box-shadow: 0 10px 30px rgba(0, 198, 255, 0.5);
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-glow {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            top: -10px;
+            left: -10px;
+            z-index: 1;
+            filter: blur(15px);
+            opacity: 0.7;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .greeting-container {
+            margin-bottom: 25px;
+        }
+
+        .greeting {
+            font-size: 4.5rem;
+            background: linear-gradient(to right, #00c6ff, #0072ff, #00c6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .greeting::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 70px;
+            background: #00c6ff;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: blink 1s infinite;
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            color: #88c9ff;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
-            z-index: 1;
         }
-        
-        .btn::before {
+
+        .tagline::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            z-index: -1;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
+            background: linear-gradient(90deg, transparent, rgba(0, 198, 255, 0.1), transparent);
+            animation: shine 5s infinite;
         }
-        
-        .btn:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+
+        .info-tags {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
         }
-        
-        .btn:hover::before {
-            transform: scaleX(1);
+
+        .tag {
+            background: rgba(0, 198, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1rem;
+            border: 1px solid rgba(0, 198, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
         }
-        
-        .btn:active {
+
+        .tag:hover {
+            background: rgba(0, 198, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.2);
+        }
+
+        .tag i {
+            color: #00c6ff;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #88c9ff;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator i {
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+
+        /* Animações */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 0.4; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-10px) translateX(-50%); }
+            60% { transform: translateY(-5px) translateX(-50%); }
+        }
+
+        .profile-img {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Restante do CSS */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 198, 255, 0.2);
+        }
+
+        .card-title {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #00c6ff;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card-title i {
+            font-size: 2rem;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: color 0.3s;
+        }
+
+        .info-list li:hover {
+            color: #00c6ff;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list li i {
+            color: #00c6ff;
+            font-size: 1.3rem;
+            width: 25px;
+        }
+
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .hobby-item {
+            background: rgba(0, 198, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s;
+            cursor: pointer;
+        }
+
+        .hobby-item:hover {
+            transform: scale(1.05);
+            background: rgba(0, 198, 255, 0.2);
+        }
+
+        .hobby-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #00c6ff;
+        }
+
+        .hobby-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .language-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+
+        .flag {
+            font-size: 3rem;
+        }
+
+        .language-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: #00c6ff;
+        }
+
+        .language-info p {
+            color: #b3e0ff;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            border-radius: 4px;
+            width: 80%;
+        }
+
+        /* Seção de Abas */
+        .tabs-section {
+            grid-column: 1 / -1;
+            margin-top: 20px;
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .tab:hover {
+            background: rgba(0, 198, 255, 0.1);
             transform: translateY(-2px);
         }
-        
-        .btn-icon {
-            font-size: 2.5rem;
-            width: 70px;
-            height: 70px;
+
+        .tab.active {
+            background: rgba(0, 198, 255, 0.2);
+            border-color: #00c6ff;
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
+        }
+
+        .tab-content {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            min-height: 400px;
+        }
+
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-panel h3 {
+            color: #00c6ff;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .tab-panel p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background: rgba(0, 198, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .skill-item i {
+            font-size: 2rem;
+            color: #00c6ff;
+            margin-bottom: 10px;
+        }
+
+        /* Jogo da Memória */
+        .memory-game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .game-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .game-btn {
+            background: rgba(0, 198, 255, 0.2);
+            border: 1px solid rgba(0, 198, 255, 0.5);
+            color: #00c6ff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .game-btn:hover {
+            background: rgba(0, 198, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.2);
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #88c9ff;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00c6ff;
+        }
+
+        .memory-game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .memory-card {
+            height: 100px;
+            width: 100px;
+            background: linear-gradient(135deg, #001f3f, #003366);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            transition: all 0.4s ease;
-        }
-        
-        .btn:hover .btn-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-        
-        .btn-text {
-            text-align: left;
-            flex: 1;
-        }
-        
-        .btn-title {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-        }
-        
-        .btn-description {
-            font-size: 1.1rem;
-            color: #666;
-            font-weight: 500;
-        }
-        
-        .btn-arrow {
-            font-size: 1.8rem;
-            opacity: 0.7;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
             transition: all 0.3s ease;
+            transform-style: preserve-3d;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 198, 255, 0.3);
         }
-        
-        .btn:hover .btn-arrow {
-            transform: translateX(5px);
-            opacity: 1;
+
+        .memory-card.flipped {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, #003366, #004d99);
         }
-        
-        .btn-1 .btn-icon {
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-            color: white;
+
+        .memory-card.matched {
+            background: linear-gradient(135deg, #006600, #009900);
+            border-color: #6bff6b;
+            cursor: default;
         }
-        
-        .btn-2 .btn-icon {
-            background: linear-gradient(135deg, #2196F3, #03A9F4);
-            color: white;
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            overflow: hidden;
         }
-        
-        .btn-3 .btn-icon {
-            background: linear-gradient(135deg, #FF9800, #FFC107);
-            color: white;
+
+        .card-front {
+            background: linear-gradient(135deg, #001f3f, #003366);
+            transform: rotateY(180deg);
+            padding: 5px;
         }
-        
-        .footer {
-            margin-top: 50px;
+
+        .card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, #003366, #004d99);
+        }
+
+        .card-back i {
             color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
+            font-size: 1.8rem;
         }
-        
-        /* Páginas das Aulas - MODIFICADO PARA TELA CHEIA */
-        .lesson-page {
+
+        .message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            z-index: 100;
+            border: 2px solid #00c6ff;
+            box-shadow: 0 0 30px rgba(0, 198, 255, 0.5);
+            display: none;
+            max-width: 90%;
+        }
+
+        .message h2 {
+            color: #00c6ff;
+            margin-bottom: 15px;
+        }
+
+        .message p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 99;
+            display: none;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #88c9ff;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00c6ff;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: #00c6ff;
+            color: #000;
+            transform: translateY(-5px);
+        }
+
+        /* Modal para detalhes dos hobbies */
+        .modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: white;
+            background-color: rgba(0, 0, 0, 0.8);
             z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #0a0a0a 0%, #001f3f 100%);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
             overflow-y: auto;
-            animation: fadeIn 0.5s ease-out;
-        }
-        
-        .lesson-header {
-            color: white;
-            padding: 35px;
-            text-align: center;
-        }
-        
-        .lesson-1 .lesson-header {
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
-        }
-        
-        .lesson-2 .lesson-header {
-            background: linear-gradient(135deg, #2196F3, #03A9F4);
-        }
-        
-        .lesson-3 .lesson-header {
-            background: linear-gradient(135deg, #FF9800, #FFC107);
-        }
-        
-        .lesson-header h1 {
-            color: white;
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
-        
-        .lesson-subtitle {
-            font-size: 1.5rem;
-            opacity: 0.9;
-        }
-        
-        .lesson-content {
-            padding: 45px;
-            max-width: 1200px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-        }
-        
-        .lesson-section {
-            margin-bottom: 45px;
-        }
-        
-        .lesson-section h2 {
-            margin-bottom: 25px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #f0f0f0;
-            font-size: 2.2rem;
-        }
-        
-        .lesson-1 .lesson-section h2 {
-            color: #4CAF50;
-        }
-        
-        .lesson-2 .lesson-section h2 {
-            color: #2196F3;
-        }
-        
-        .lesson-3 .lesson-section h2 {
-            color: #FF9800;
-        }
-        
-        .lesson-section p {
-            line-height: 1.8;
-            margin-bottom: 20px;
-            color: #444;
-            font-size: 1.25rem;
-        }
-        
-        .highlight-box {
-            background: #f9f9f9;
-            padding: 25px;
-            margin: 25px 0;
-            border-radius: 10px;
-            font-size: 1.25rem;
-        }
-        
-        .lesson-1 .highlight-box {
-            border-left: 5px solid #4CAF50;
-        }
-        
-        .lesson-2 .highlight-box {
-            border-left: 5px solid #2196F3;
-        }
-        
-        .lesson-3 .highlight-box {
-            border-left: 5px solid #FF9800;
-        }
-        
-        .activity-box {
-            border-radius: 12px;
             padding: 30px;
-            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 198, 255, 0.3);
+            border: 1px solid rgba(0, 198, 255, 0.3);
+            position: relative;
         }
-        
-        .lesson-1 .activity-box {
-            background: #e8f5e9;
-            border: 2px solid #c8e6c9;
-        }
-        
-        .lesson-2 .activity-box {
-            background: #e3f2fd;
-            border: 2px solid #bbdefb;
-        }
-        
-        .lesson-3 .activity-box {
-            background: #fff3e0;
-            border: 2px solid #ffe0b2;
-        }
-        
-        .activity-box h3 {
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-        
-        .lesson-1 .activity-box h3 {
-            color: #2e7d32;
-        }
-        
-        .lesson-2 .activity-box h3 {
-            color: #1565c0;
-        }
-        
-        .lesson-3 .activity-box h3 {
-            color: #e65100;
-        }
-        
-        .activity-box h4 {
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-        
-        .lesson-1 .activity-box h4 {
-            color: #1b5e20;
-        }
-        
-        .lesson-2 .activity-box h4 {
-            color: #0d47a1;
-        }
-        
-        .lesson-3 .activity-box h4 {
-            color: #bf360c;
-        }
-        
-        .question {
-            margin: 25px 0;
-            padding: 20px;
-            background: #f5f5f5;
-            border-radius: 10px;
-        }
-        
-        .question p {
-            margin-bottom: 15px;
-            font-weight: 600;
-            font-size: 1.3rem;
-        }
-        
-        .answer {
-            margin-left: 25px;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #009688;
-            font-size: 1.2rem;
-        }
-        
-        .lesson-1 .answer {
-            background: #e0f2f1;
-        }
-        
-        .lesson-2 .answer {
-            background: #e0f7fa;
-        }
-        
-        .lesson-3 .answer {
-            background: #e0f2f1;
-        }
-        
-        .energy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
-        }
-        
-        .energy-category {
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        
-        .renewable {
-            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-            border: 2px solid #4CAF50;
-        }
-        
-        .non-renewable {
-            background: linear-gradient(135deg, #ffebee, #ffcdd2);
-            border: 2px solid #f44336;
-        }
-        
-        .energy-category h3 {
-            margin-bottom: 20px;
-            font-size: 1.6rem;
-        }
-        
-        .renewable h3 {
-            color: #2e7d32;
-        }
-        
-        .non-renewable h3 {
-            color: #c62828;
-        }
-        
-        .energy-list {
-            list-style: none;
-            text-align: left;
-        }
-        
-        .energy-list li {
-            padding: 12px 15px;
-            margin: 8px 0;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 8px;
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-        
-        .matrix-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 30px 0;
-        }
-        
-        .matrix {
-            background: #f5f5f5;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-        }
-        
-        .matrix h3 {
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            color: #333;
-        }
-        
-        .matrix-item {
+
+        .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        .matrix-item:last-child {
+
+        .modal-title {
+            font-size: 2rem;
+            color: #00c6ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #00c6ff;
+        }
+
+        .modal-body {
+            line-height: 1.6;
+        }
+
+        .modal-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .modal-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-list li:last-child {
             border-bottom: none;
         }
-        
-        .transformation-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 1.2rem;
+
+        .modal-list li i {
+            color: #00c6ff;
         }
-        
-        .transformation-table th {
-            background: #FF9800;
-            color: white;
-            padding: 15px;
-            text-align: left;
-        }
-        
-        .transformation-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .transformation-table tr:nth-child(even) {
-            background: #fff3e0;
-        }
-        
-        .transformation-table tr:hover {
-            background: #ffe0b2;
-        }
-        
-        .transformation-flow {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 25px 0;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-        
-        .energy-step {
-            padding: 12px 20px;
-            background: #fff3e0;
-            border-radius: 8px;
-            border: 2px solid #FF9800;
-        }
-        
-        .energy-arrow {
-            color: #FF9800;
-            font-size: 1.5rem;
-        }
-        
-        .mind-map {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .energy-type {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            transition: transform 0.3s;
-            font-size: 1.15rem;
-        }
-        
-        .energy-type:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .energy-type h4 {
-            color: #4CAF50;
-            margin-bottom: 12px;
-            font-size: 1.4rem;
-        }
-        
-        .back-btn {
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 1.3rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 25px auto;
+
+        .modal-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: rgba(0, 198, 255, 0.2);
+            border-radius: 30px;
+            color: #00c6ff;
+            text-decoration: none;
             transition: all 0.3s;
+            border: 1px solid rgba(0, 198, 255, 0.3);
         }
-        
-        .lesson-1 .back-btn {
-            background: #4CAF50;
+
+        .modal-link:hover {
+            background: rgba(0, 198, 255, 0.3);
+            transform: translateY(-2px);
         }
-        
-        .lesson-2 .back-btn {
-            background: #2196F3;
-        }
-        
-        .lesson-3 .back-btn {
-            background: #FF9800;
-        }
-        
-        .back-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .lesson-1 .back-btn:hover {
-            background: #388E3C;
-        }
-        
-        .lesson-2 .back-btn:hover {
-            background: #1976D2;
-        }
-        
-        .lesson-3 .back-btn:hover {
-            background: #F57C00;
-        }
-        
-        /* Animações */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
+
         /* Responsividade */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.8rem;
-            }
-            
-            .btn {
-                padding: 25px 20px;
-                font-size: 1.5rem;
-            }
-            
-            .btn-icon {
-                font-size: 2rem;
-                width: 60px;
-                height: 60px;
-            }
-            
-            .btn-title {
-                font-size: 1.5rem;
-            }
-            
-            .btn-description {
-                font-size: 1rem;
-            }
-            
-            .lesson-content {
-                padding: 30px;
-                font-size: 1.1rem;
-            }
-            
-            .lesson-header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .lesson-section h2 {
-                font-size: 1.8rem;
-            }
-            
-            .lesson-section p {
-                font-size: 1.15rem;
-            }
-            
-            .energy-grid, .matrix-container, .mind-map {
+        @media (max-width: 900px) {
+            .main-content {
                 grid-template-columns: 1fr;
             }
             
-            .transformation-table {
-                font-size: 1rem;
+            .greeting {
+                font-size: 3.5rem;
             }
             
-            .transformation-table th, .transformation-table td {
-                padding: 8px 10px;
+            .profile-img {
+                width: 150px;
+                height: 150px;
+                font-size: 60px;
+            }
+
+            .profile-glow {
+                width: 170px;
+                height: 170px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .memory-game-board {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .memory-card {
+                height: 80px;
+                width: 80px;
             }
         }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2.3rem;
+
+        @media (max-width: 600px) {
+            .greeting {
+                font-size: 2.8rem;
             }
             
-            .subtitle {
-                font-size: 1.2rem;
+            .card {
+                padding: 25px;
             }
             
-            .btn {
-                padding: 20px 15px;
+            .hobbies-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-img {
+                width: 120px;
+                height: 120px;
+                font-size: 50px;
+            }
+
+            .profile-glow {
+                width: 140px;
+                height: 140px;
+            }
+
+            .tabs-container {
                 flex-direction: column;
-                text-align: center;
-                gap: 15px;
-                font-size: 1.3rem;
             }
-            
-            .btn-text {
+
+            .tab {
                 text-align: center;
             }
-            
-            .btn-arrow {
-                display: none;
+
+            .info-tags {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .memory-game-board {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .lesson-header h1 {
-                font-size: 2rem;
+            .memory-card {
+                height: 70px;
+                width: 70px;
+            }
+
+            .game-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .memory-game-board {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .lesson-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .lesson-content {
-                padding: 20px;
-                font-size: 1rem;
-            }
-            
-            .lesson-section h2 {
-                font-size: 1.6rem;
-            }
-            
-            .lesson-section p {
-                font-size: 1.1rem;
-            }
-            
-            .highlight-box, .activity-box, .question, .answer {
-                padding: 15px;
-            }
-            
-            .transformation-table {
-                font-size: 0.9rem;
+            .memory-card {
+                height: 60px;
+                width: 60px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Botão de tela cheia -->
-    <button class="fullscreen-btn" id="fullscreen-btn">
-        <i class="fas fa-expand"></i>
-    </button>
+    <!-- Partículas de fundo -->
+    <div id="particles-js"></div>
     
-    <!-- Partículas animadas no fundo -->
-    <div class="particles" id="particles"></div>
+    <!-- Elementos decorativos -->
+    <div class="decoration circle"></div>
+    <div class="decoration circle2"></div>
+    <div class="decoration line"></div>
+    <div class="decoration line2"></div>
     
-    <!-- Página Principal -->
-    <div class="container" id="main-page">
-        <div class="header">
-            <h1>Aulas de Energia</h1>
-            <p class="subtitle">Explore os conceitos fundamentais sobre energia em nosso cotidiano, suas fontes e transformações</p>
+    <!-- Modal para detalhes dos hobbies -->
+    <div id="hobbyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Conteúdo será preenchido via JavaScript -->
+            </div>
         </div>
-        
-        <div class="buttons-container">
-            <button class="btn btn-1" id="lesson1-btn">
-                <div class="btn-icon">
-                    <i class="fas fa-bolt"></i>
+    </div>
+
+    <!-- Modal para o jogo -->
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="message" id="message">
+        <h2>Parabéns!</h2>
+        <p>Você completou o jogo em <span id="final-time">0</span> segundos!</p>
+        <p>Total de movimentos: <span id="final-moves">0</span></p>
+        <button class="game-btn" id="play-again-btn">
+            <i class="fas fa-play"></i> Jogar Novamente
+        </button>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="profile-container">
+                <div class="profile-glow"></div>
+                <div class="profile-img">
+                    <i class="fas fa-user"></i>
                 </div>
-                <div class="btn-text">
-                    <div class="btn-title">Aula 1 - Energia Do Cotidiano</div>
-                    <div class="btn-description">Descubra como a energia está presente no nosso dia a dia</div>
-                </div>
-                <div class="btn-arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </button>
+            </div>
             
-            <button class="btn btn-2" id="lesson2-btn">
-                <div class="btn-icon">
-                    <i class="fas fa-solar-panel"></i>
-                </div>
-                <div class="btn-text">
-                    <div class="btn-title">Aula 2 - Fontes de Energia</div>
-                    <div class="btn-description">Conheça as diferentes fontes de energia disponíveis</div>
-                </div>
-                <div class="btn-arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
-            </button>
+            <div class="greeting-container">
+                <h1 id="typed-greeting" class="greeting">Hello, My Name is Gabriel</h1>
+            </div>
             
-            <button class="btn btn-3" id="lesson3-btn">
-                <div class="btn-icon">
-                    <i class="fas fa-exchange-alt"></i>
+            <p class="tagline">Desenvolvedor, estudante e entusiasta de tecnologia</p>
+            
+            <div class="info-tags">
+                <div class="tag">
+                    <i class="fas fa-code"></i>
+                    <span>Desenvolvedor</span>
                 </div>
-                <div class="btn-text">
-                    <div class="btn-title">Aula 3 - Transformação De Energia</div>
-                    <div class="btn-description">Entenda como a energia se transforma de uma forma para outra</div>
+                <div class="tag">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Estudante</span>
                 </div>
-                <div class="btn-arrow">
-                    <i class="fas fa-chevron-right"></i>
+                <div class="tag">
+                    <i class="fas fa-rocket"></i>
+                    <span>Entusiasta de Tech</span>
                 </div>
-            </button>
+                <div class="tag">
+                    <i class="fas fa-heart"></i>
+                    <span>Azul Escuro</span>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <span></span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </header>
+
+        <!-- Conteúdo principal -->
+        <div class="main-content">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-user-circle"></i> Sobre mim</h2>
+                <ul class="info-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Sou <strong>brasileiro</strong></span>
+                    </li>
+                    <li>
+                        <i class="fas fa-language"></i>
+                        <span>Minha linguagem principal é <strong>PT-BR</strong></span>
+                    </li>
+                    <li>
+                        <i class="fas fa-signature"></i>
+                        <span>Meu nome verdadeiro é <strong>Gabriel</strong></span>
+                    </li>
+                    <li>
+                        <i class="fas fa-palette"></i>
+                        <span>Minha cor preferida é <strong>Azul Escuro</strong></span>
+                    </li>
+                </ul>
+                
+                <div class="language-section">
+                    <div class="flag">🇪🇸</div>
+                    <div class="language-info">
+                        <h3>Curso de Espanhol</h3>
+                        <p>Atualmente estudando</p>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-heart"></i> Gosto de</h2>
+                <div class="hobbies-grid">
+                    <div class="hobby-item" data-hobby="jogar">
+                        <div class="hobby-icon"><i class="fas fa-gamepad"></i></div>
+                        <div class="hobby-name">Jogar</div>
+                    </div>
+                    <div class="hobby-item" data-hobby="assistir">
+                        <div class="hobby-icon"><i class="fas fa-tv"></i></div>
+                        <div class="hobby-name">Assistir</div>
+                    </div>
+                    <div class="hobby-item" data-hobby="aprender">
+                        <div class="hobby-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="hobby-name">Aprender</div>
+                    </div>
+                    <div class="hobby-item" data-hobby="futebol">
+                        <div class="hobby-icon"><i class="fas fa-futbol"></i></div>
+                        <div class="hobby-name">Futebol</div>
+                    </div>
+                    <div class="hobby-item" data-hobby="handball">
+                        <div class="hobby-icon"><i class="fas fa-basketball-ball"></i></div>
+                        <div class="hobby-name">Handball</div>
+                    </div>
+                    <div class="hobby-item" data-hobby="queimada">
+                        <div class="hobby-icon"><i class="fas fa-fire"></i></div>
+                        <div class="hobby-name">Queimada</div>
+                    </div>
+                    <div class="hobby-item" data-hobby="volei">
+                        <div class="hobby-icon"><i class="fas fa-volleyball-ball"></i></div>
+                        <div class="hobby-name">Vôlei</div>
+                    </div>
+                    <div class="hobby-item" data-hobby="carros">
+                        <div class="hobby-icon"><i class="fas fa-car"></i></div>
+                        <div class="hobby-name">Carros</div>
+                    </div>
+                    <div class="hobby-item" data-hobby="motos">
+                        <div class="hobby-icon"><i class="fas fa-motorcycle"></i></div>
+                        <div class="hobby-name">Motos</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção de Abas -->
+            <div class="card tabs-section">
+                <h2 class="card-title"><i class="fas fa-th-large"></i> Explorar</h2>
+                
+                <div class="tabs-container">
+                    <div class="tab active" data-tab="ia">Inteligência Artificial</div>
+                    <div class="tab" data-tab="games">Jogos</div>
+                    <div class="tab" data-tab="projects">Projetos</div>
+                </div>
+
+                <div class="tab-content">
+                    <!-- Aba de IA -->
+                    <div class="tab-panel active" id="ia">
+                        <h3>Meu Interesse em Inteligência Artificial</h3>
+                        <p>A Inteligência Artificial é uma das áreas que mais me fascina na tecnologia. Estou constantemente explorando novas possibilidades e aprendendo sobre machine learning, redes neurais e processamento de linguagem natural.</p>
+                        <p>Acredito que a IA tem o potencial de revolucionar a maneira como interagimos com a tecnologia e resolver problemas complexos em diversas áreas.</p>
+                        
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fas fa-brain"></i>
+                                <div>Machine Learning</div>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-comment-alt"></i>
+                                <div>NLP</div>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-chart-line"></i>
+                                <div>Análise de Dados</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aba de Jogos -->
+                    <div class="tab-panel" id="games">
+                        <h3><i class="fas fa-gamepad"></i> Jogos</h3>
+                        <p>Como entusiasta de jogos, desenvolvi este Jogo da Memória para demonstrar minhas habilidades em desenvolvimento web. Teste sua memória e divirta-se!</p>
+                        
+                        <div class="memory-game-container">
+                            <div class="game-controls">
+                                <button class="game-btn" id="start-game-btn">
+                                    <i class="fas fa-play"></i> Iniciar Jogo
+                                </button>
+                                <button class="game-btn" id="restart-game-btn">
+                                    <i class="fas fa-redo"></i> Reiniciar
+                                </button>
+                            </div>
+                            
+                            <div class="game-stats">
+                                <div class="stat-item">
+                                    <div class="stat-label">Movimentos</div>
+                                    <div class="stat-value" id="moves-count">0</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Tempo</div>
+                                    <div class="stat-value" id="timer">0s</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-label">Pares Encontrados</div>
+                                    <div class="stat-value" id="pairs-count">0/8</div>
+                                </div>
+                            </div>
+                            
+                            <div class="memory-game-board" id="memory-game-board">
+                                <!-- As cartas serão geradas dinamicamente pelo JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aba de Projetos -->
+                    <div class="tab-panel" id="projects">
+                        <h3>Meus Projetos</h3>
+                        <p>Estou desenvolvendo vários projetos interessantes envolvendo tecnologia:</p>
+                        
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fas fa-code"></i>
+                                <div>Desenvolvimento Web</div>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-robot"></i>
+                                <div>Chatbots</div>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <div>Aplicativos</div>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-gamepad"></i>
+                                <div>Jogos</div>
+                            </div>
+                        </div>
+                        
+                        <p style="margin-top: 20px;">Estou sempre buscando aprender novas tecnologias e aplicar meus conhecimentos em projetos práticos que possam fazer a diferença.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        
+
         <div class="footer">
-            <p>Clique em uma aula para começar sua jornada de aprendizado</p>
-        </div>
-    </div>
-    
-    <!-- Página da Aula 1 -->
-    <div class="lesson-page lesson-1" id="lesson1-page">
-        <div class="lesson-header">
-            <h1>Aula 1 - Energia no Cotidiano</h1>
-            <p class="lesson-subtitle">Como a energia está presente em nosso dia a dia</p>
-        </div>
-        
-        <div class="lesson-content">
-            <div class="lesson-section">
-                <h2>Introdução</h2>
-                <p>A energia está presente em situações simples e complexas do nosso cotidiano. Por exemplo, a televisão usa energia elétrica para produzir imagem e som, o chuveiro elétrico, para aquecer a água, e o liquidificador, para produzir movimento e triturar alimentos.</p>
-                
-                <div class="highlight-box">
-                    <p>A energia é essencial para nossa sobrevivência e, ao longo da história, a humanidade aprimorou seu uso, no entanto algumas fontes de energia, como os combustíveis fósseis, causam impactos ambientais, como poluição e aquecimento global. É importante, por isso, usar a energia de forma responsável, evitando desperdícios e adotando fontes renováveis, que são sustentáveis e têm baixo impacto no meio ambiente.</p>
-                </div>
+            <p>Entre em contato comigo</p>
+            <div class="social-links">
+                <a href="https://discord.com/users/1173741705271443498" target="_blank"><i class="fab fa-discord"></i></a>
+                <a href="https://github.com/bielzindxfff" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
             </div>
-            
-            <div class="lesson-section">
-                <h2>Na Prática</h2>
-                <div class="activity-box">
-                    <h3>Atividade 1</h3>
-                    <p>Para conhecer mais sobre como a energia está presente em nosso cotidiano e na história da humanidade, você deverá ler alguns trechos do texto "O que é energia?" publicado no site da Empresa de Pesquisa Energética (EPE). E com base no texto, responda às questões.</p>
-                    
-                    <div class="highlight-box">
-                        <h4>Como o ser humano utiliza energia?</h4>
-                        <p>O fogo foi a primeira forma de energia dominada pela humanidade. Com o fogo, o ser humano aprendeu a espantar animais selvagens, cozinhar alimentos e fazer ferramentas e utensílios para o uso em sua jornada pela terra. Os primeiros utensílios feitos com o uso do fogo foram panelas e jarros de barro cozido, que facilitaram a vida do ser humano. Posteriormente, começou a utilizar o fogo para fundir metais e fazer lanças, flechas, espadas e outros instrumentos mais elaborados.</p>
-                        <p>[...] Hoje convivemos com várias formas de energia, que utilizamos na nossa vida diária. Na sua casa tem a geladeira, a televisão, as lâmpadas, o seu brinquedo e a pilha – todos precisam de energia para funcionar. Uma pipa no ar está utilizando a energia do vento, uma panela no fogão cozinhando alimentos está utilizando a energia do fogo, uma criança correndo está usando a energia dos alimentos que ela ingeriu e a televisão usa energia elétrica para que possamos assistir a nossos filmes e desenhos favoritos. Portanto, atenção ao seu dia a dia: você mesmo poderá descobrir outras formas de utilização da energia. Quando tomamos banho quente, também usamos energia para aquecer a água, seja a eletricidade para o chuveiro elétrico, o gás natural do aquecedor ou a energia do sol captada por painéis no telhado.</p>
-                        <p><em>EMPRESA DE PESQUISA ENERGÉTICA (EPE), O que é energia? [s.d.] Disponível em https://www.epe.gov.br/pt/daccienergia/o-que-e-energia. Acesso em: 27 mar. 2026.</em></p>
-                    </div>
-                    
-                    <div class="question">
-                        <p><strong>Como o domínio de uma fonte de energia como o fogo ajudou os primeiros seres humanos em sua jornada pela Terra?</strong></p>
-                        <div class="answer">
-                            <p>O domínio do fogo foi fundamental para os primeiros seres humanos, pois possibilitou ações essenciais como espantar animais selvagens, cozinhar alimentos e criar ferramentas e utensílios. O uso do fogo permitiu o desenvolvimento de objetos mais elaborados, como panelas e jarros de barro, que facilitaram a vida cotidiana e ajudaram na evolução das atividades humanas.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="question">
-                        <p><strong>1. De acordo com o texto, de que forma os diferentes tipos de energia estão presentes em nosso cotidiano, mesmo nas atividades mais simples?</strong></p>
-                        <div class="answer">
-                            <p>O cotidiano moderno está repleto de exemplos de como utilizamos diferentes formas de energia. Por exemplo, a geladeira, a televisão e as lâmpadas em casa usam energia elétrica, a pipa no ar aproveita a energia do vento, e uma criança correndo usa a energia dos alimentos que ingere. Até mesmo atividades simples, como cozinhar, envolvem o uso de energia, como o fogo no fogão.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="question">
-                        <p><strong>2. Ao refletir sobre suas atividades hoje, quais tipos de energia estiveram presentes nas situações que você viveu?</strong></p>
-                        <div class="answer">
-                            <p>Resposta pessoal. Mas os estudantes podem elencar algumas situações como as descritas a seguir. No cotidiano, estão presentes diversos tipos de energia, como a elétrica e luminosa, usadas em aparelhos e iluminação; a térmica, no calor do sol ou aquecedores; a mecânica, em atividades físicas e máquinas; a química, em combustíveis e alimentos; e a sonora, produzida por sons e música.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="lesson-section">
-                <h2>Aprofundando</h2>
-                <div class="question">
-                    <p><strong>1. A energia química presente nos combustíveis fósseis, como o petróleo, carvão e gás natural, é amplamente utilizada para produzir eletricidade, aquecer ambientes e impulsionar veículos. No entanto o uso desses combustíveis tem causado preocupações ambientais devido à emissão de gases poluentes e ao esgotamento dos recursos naturais. Com base nessa afirmativa, assinale a alternativa que expressa corretamente a utilização desse tipo de energia e seus possíveis impactos ambientais:</strong></p>
-                    <p>a) a energia química dos combustíveis fósseis é convertida em energia mecânica para veículos e em eletricidade para residências, mas seu uso não tem impactos ambientais significativos.</p>
-                    <p>b) a energia química dos combustíveis fósseis, como o petróleo e o gás natural, ao ser liberada na queima, provoca poluição do ar e contribui para o aquecimento global.</p>
-                    <p>c) combustíveis fósseis, como carvão e petróleo, produzem energia química que é utilizada para a produção de alimentos e produtos químicos, sem causar impactos negativos.</p>
-                    <p>d) a energia química dos combustíveis fósseis, como gás natural e carvão, é transformada em energia térmica para aquecer ambientes sem impactos negativos à natureza.</p>
-                    
-                    <div class="answer">
-                        <p><strong>Resposta correta: B</strong></p>
-                        <p>Processos nos quais ocorre a queima de combustíveis fósseis liberam gases poluentes, que contribuem com o aquecimento global.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="lesson-section">
-                <h2>Resumo - Tipos de Energia</h2>
-                <p>Energia é a capacidade de realizar trabalho, ou seja, é o que possibilita que alguns processos aconteçam, como aquecer ambientes, fazer aparelhos funcionarem ou movimentar objetos. Existem diversas formas de energia, conforme ilustrado no mapa mental a seguir.</p>
-                
-                <div class="mind-map">
-                    <div class="energy-type">
-                        <h4>ENERGIA ELÉTRICA</h4>
-                        <p>Energia resultante do movimento de partículas carregadas, como elétrons.</p>
-                    </div>
-                    <div class="energy-type">
-                        <h4>ENERGIA SONORA</h4>
-                        <p>Energia propagada por ondas sonoras.</p>
-                    </div>
-                    <div class="energy-type">
-                        <h4>ENERGIA POTENCIAL</h4>
-                        <p>Energia armazenada devido à posição ou configuração de um objeto.</p>
-                    </div>
-                    <div class="energy-type">
-                        <h4>ENERGIA CINÉTICA</h4>
-                        <p>Energia do movimento de um objeto.</p>
-                    </div>
-                    <div class="energy-type">
-                        <h4>ENERGIA TÉRMICA</h4>
-                        <p>Energia associada ao movimento de partículas em um material, e percebida como calor.</p>
-                    </div>
-                    <div class="energy-type">
-                        <h4>ENERGIA LUMINOSA</h4>
-                        <p>Energia transportada pela luz.</p>
-                    </div>
-                    <div class="energy-type">
-                        <h4>ENERGIA QUÍMICA</h4>
-                        <p>Energia armazenada em substâncias e liberada em reações químicas.</p>
-                    </div>
-                    <div class="energy-type">
-                        <h4>ENERGIA NUCLEAR</h4>
-                        <p>Energia liberada a partir do núcleo dos átomos, em fissão ou fusão nuclear.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <button class="back-btn" id="back-btn-1">
-                <i class="fas fa-arrow-left"></i>
-                Voltar para o Menu Principal
-            </button>
-        </div>
-    </div>
-    
-    <!-- Página da Aula 2 -->
-    <div class="lesson-page lesson-2" id="lesson2-page">
-        <div class="lesson-header">
-            <h1>Aula 2 - Fontes de Energia</h1>
-            <p class="lesson-subtitle">Conheça as diferentes fontes de energia renováveis e não renováveis</p>
-        </div>
-        
-        <div class="lesson-content">
-            <!-- NA PRÁTICA - PRIMEIRO -->
-            <div class="lesson-section">
-                <h2>Na Prática</h2>
-                <div class="activity-box">
-                    <h3>Atividade 1</h3>
-                    <p>Faça a leitura do texto Série Energia: "Fenômenos climáticos podem ser minimizados pela transição energética", retirado do Jornal USP, publicado no dia 07/02/2025.</p>
-                    
-                    <div class="highlight-box">
-                        <p>A relação entre a transição energética e os eventos climáticos extremos é um dos principais focos do Global Risks Report 2025, relatório do Fórum Econômico Mundial que alerta sobre a intensificação de fenômenos climáticos como enchentes, furacões e ondas de heat. Esses eventos, cada vez mais frequentes e severos, são amplificados pela continua dependência de combustíveis fósseis, como carvão, petróleo e gás natural, cujas emissões de gases de efeito estufa contribuem diretamente para as mudanças climáticas. Em resposta a esses desafios, a transição para energias renováveis é apresentada como uma solução essencial para reduzir os impactos climáticos e promover a sustentabilidade global.</p>
-                        <p>A transição energética é destacada como uma oportunidade crucial para limitar os efeitos das mudanças climáticas. Fontes de energia renovável, como solar, eólica e hidrogênio verde, têm o potencial de reduzir drasticamente as emissões de carbono, fortalecer a resiliência energética e criar oportunidades econômicas significativas, como a geração de empregos. Contudo, o relatório ressalta os desafios associados a esse processo, incluindo a necessidade de grandes investimentos em infraestrutura, a integração de fontes renováveis intermitentes e a crescente demanda por materiais críticos para tecnologias de armazenamento de energia.</p>
-                    </div>
-                    
-                    <h4>Em grupo, leia o texto e responda às questões a seguir:</h4>
-                    
-                    <div class="question">
-                        <p><strong>Quais são os impactos negativos da dependência de combustíveis fósseis?</strong></p>
-                        <div class="answer">
-                            <p>Os impactos negativos da dependência de combustíveis fósseis incluem a intensificação de fenômenos climáticos extremos, como enchentes, furacões e ondas de calor, em virtude das emissões de gases poluentes que intensificam o efeito estufa e ocasionam as mudanças climáticas.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="question">
-                        <p><strong>Pensando no futuro, como vocês imaginam o mundo daqui a 20 anos se continuarmos dependentes de combustíveis fósseis? E como seria se a transição energética fosse bem-sucedida?</strong></p>
-                        <div class="answer">
-                            <p>Se continuarmos dependentes de combustíveis fósseis nos próximos 20 anos, as mudanças climáticas provavelmente se intensificarão, com fenômenos climáticos mais extremos, como altas temperaturas, secas e tempestades.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="question">
-                        <p><strong>Quais são os desafios para a implementação da transição energética e como podemos superá-los?</strong></p>
-                        <div class="answer">
-                            <p>A transição energética enfrenta muitos desafios, como altos investimentos, adaptação das fontes renováveis, maior demanda por materiais para armazenar energia e desigualdades financeira e de recursos naturais entre os países.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MATRIZES ENERGÉTICAS - SEGUNDO -->
-            <div class="lesson-section">
-                <h2>Matrizes Energéticas</h2>
-                
-                <div class="matrix-container">
-                    <div class="matrix">
-                        <h3>Matriz Energética Mundial 2022</h3>
-                        <div class="matrix-item"><span>Carvão mineral</span><span>27,6%</span></div>
-                        <div class="matrix-item"><span>Outras</span><span>3,1%</span></div>
-                        <div class="matrix-item"><span>Biomassa</span><span>8,8%</span></div>
-                        <div class="matrix-item"><span>Hidráulica</span><span>2,5%</span></div>
-                        <div class="matrix-item"><span>Nuclear</span><span>4,7%</span></div>
-                        <div class="matrix-item"><span>Petróleo e derivados</span><span>30,2%</span></div>
-                        <div class="matrix-item"><span>Gás natural</span><span>23,1%</span></div>
-                    </div>
-                    
-                    <div class="matrix">
-                        <h3>Matriz Energética Brasileira 2023</h3>
-                        <div class="matrix-item"><span>Outras não renováveis</span><span>0,6%</span></div>
-                        <div class="matrix-item"><span>Petróleo e derivados</span><span>35,1%</span></div>
-                        <div class="matrix-item"><span>Derivados da cana-de-açúcar</span><span>16,8%</span></div>
-                        <div class="matrix-item"><span>Carvão mineral</span><span>4,4%</span></div>
-                        <div class="matrix-item"><span>Eólica e solar</span><span>4,4%</span></div>
-                        <div class="matrix-item"><span>Outras renováveis</span><span>7,2%</span></div>
-                        <div class="matrix-item"><span>Lenha e carvão vegetal</span><span>8,6%</span></div>
-                        <div class="matrix-item"><span>Gás natural</span><span>9,6%</span></div>
-                        <div class="matrix-item"><span>Hidráulica</span><span>12,1%</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- APROFUNDANDO - TERCEIRO -->
-            <div class="lesson-section">
-                <h2>Aprofundando</h2>
-                <div class="question">
-                    <p><strong>1. O que pode ocorrer com a escassez de fontes de energia não renováveis, como petróleo e carvão, nos próximos anos?</strong></p>
-                    <p>a) O preço das fontes de energia renováveis cairá drasticamente.</p>
-                    <p>b) O uso de fontes não renováveis continuará em crescimento, sem impactos significativos.</p>
-                    <p>c) O mundo poderá usar mais fontes de energia renováveis para suprir a demanda crescente.</p>
-                    <p>d) Não haverá mudanças, pois acredita-se que as fontes não renováveis são inesgotáveis.</p>
-                    
-                    <div class="answer">
-                        <p><strong>Resposta correta: C</strong></p>
-                        <p>Perante a escassez de recursos naturais finitos, os países precisarão desenvolver tecnologias para utilizar cada vez mais energias renováveis.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RESUMO - AGORA NO FINAL -->
-            <div class="lesson-section">
-                <h2>Resumo</h2>
-                <p>Uma fonte de energia é um recurso capaz de fornecer energia para realizar atividades, como acender uma lâmpada, movimentar um carro ou fazer funcionar uma máquina. Essas fontes podem ser classificadas em <strong>renováveis e não renováveis</strong>.</p>
-                
-                <div class="energy-grid">
-                    <div class="energy-category renewable">
-                        <h3>Fontes de Energias Renováveis</h3>
-                        <ul class="energy-list">
-                            <li>Solar</li>
-                            <li>Geotérmica</li>
-                            <li>Onda (ondomotriz ou oceânica)</li>
-                            <li>Bio-massa</li>
-                            <li>Hidráulica</li>
-                            <li>Maré (maremotriz)</li>
-                            <li>Vento (eólica)</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="energy-category non-renewable">
-                        <h3>Fontes de Energias Não Renováveis</h3>
-                        <ul class="energy-list">
-                            <li>Petróleo</li>
-                            <li>Nuclear</li>
-                            <li>Carvão</li>
-                            <li>Gás natural</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="highlight-box">
-                    <p>As fontes não renováveis, como os combustíveis fósseis (petróleo, carvão e gás natural), causam diversos impactos ambientais, como emissão de gases poluentes, alterações climáticas, poluição da água e do solo, destruição de ecossistemas e exaustão de recursos naturais.</p>
-                    <p>A matriz energética de um país é a combinação das fontes de energia que ele usa. Ela muda conforme os recursos naturais, decisões políticas, questões ambientais e tecnologia. No Brasil, a energia vem principalmente de fontes renováveis, como hidrelétricas, mas o país ainda depende de petróleo e gás natural – especialmente em época de seca, quando a geração de energia elétrica pelas hidrelétricas é insuficiente.</p>
-                </div>
-            </div>
-            
-            <button class="back-btn" id="back-btn-2">
-                <i class="fas fa-arrow-left"></i>
-                Voltar para o Menu Principal
-            </button>
-        </div>
-    </div>
-    
-    <!-- Página da Aula 3 -->
-    <div class="lesson-page lesson-3" id="lesson3-page">
-        <div class="lesson-header">
-            <h1>Aula 3 - Transformação de Energia</h1>
-            <p class="lesson-subtitle">Entenda como a energia se transforma de uma forma para outra</p>
-        </div>
-        
-        <div class="lesson-content">
-            <!-- NA PRÁTICA - PRIMEIRO -->
-            <div class="lesson-section">
-                <h2>Na Prática</h2>
-                <div class="activity-box">
-                    <h3>Atividade 1</h3>
-                    <p>Para aprofundar seus conhecimentos sobre energia e suas transformações, acesse o simulador mencionado na aula (Phet Colorado) e analise as situações apresentadas na tabela. Em seguida, preencha as colunas com as energias presentes no sistema e suas respectivas transformações.</p>
-                    
-                    <table class="transformation-table">
-                        <thead>
-                            <tr>
-                                <th>Processos analisados</th>
-                                <th>Energias presentes</th>
-                                <th>Transformação</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Garota pedalando uma bicicleta.</td>
-                                <td>Energia química. Energia mecânica.</td>
-                                <td>A energia química presente no alimento é transformada em energia mecânica que move os pedais e pneus da bicicleta.</td>
-                            </tr>
-                            <tr>
-                                <td>Água caindo da torneira e acionando o gerador.</td>
-                                <td>Energia potencial gravitacional. Energia cinética.</td>
-                                <td>A energia potencial presente na água que está à torneira, se transforma em energia cinética fazendo o gerador se mover.</td>
-                            </tr>
-                            <tr>
-                                <td>Sol iluminando o painel solar.</td>
-                                <td>Energia luminosa. Energia elétrica.</td>
-                                <td>A energia luminosa proveniente do Sol é transformada em energia elétrica pelos painéis solares.</td>
-                            </tr>
-                            <tr>
-                                <td>Bule aquecido pelo fogo.</td>
-                                <td>Energia térmica. Energia cinética.</td>
-                                <td>A energia térmica do fogo é transformada em energia cinética, fazendo o vapor d'água mover o gerador.</td>
-                            </tr>
-                            <tr>
-                                <td>Gerador ligado a uma lâmpada.</td>
-                                <td>Energia cinética. Energia elétrica. Energia luminosa.</td>
-                                <td>A energia cinética que chega ao gerador é transformada em energia elétrica, que é transformada em energia luminosa pela lâmpada.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- APROFUNDANDO - SEGUNDO -->
-            <div class="lesson-section">
-                <h2>Aprofundando</h2>
-                <div class="question">
-                    <p><strong>1. Em um país que depende principalmente de usinas termelétricas para produzir energia, qual seria uma vantagem significativa ao investir mais em fontes renováveis como a energia solar e eólica?</strong></p>
-                    <p>a) Redução da dependência de fontes que causam poluição e emissões de gases de efeito estufa.</p>
-                    <p>b) Aumento da produção de energia em grande escala.</p>
-                    <p>c) Baixo custo de instalação das usinas de carvão.</p>
-                    <p>d) Aumento da quantidade de empregos no setor de petróleo.</p>
-                    
-                    <div class="answer">
-                        <p><strong>Resposta correta: A</strong></p>
-                        <p>Investir em fontes renováveis como a energia solar e eólica reduz a dependência de usinas termelétricas que causam poluição e emissões de gases de efeito estufa, contribuindo para um ambiente mais limpo e sustentável.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RESUMO - TERCEIRO -->
-            <div class="lesson-section">
-                <h2>Resumo</h2>
-                <p>O princípio da conservação da energia afirma que a energia não se perde nem se cria, ela apenas se transforma. Ou seja, a quantidade total de energia permanece a mesma, apenas mudando de forma.</p>
-                
-                <p>A transformação de energia acontece quando uma energia se converte de um tipo para outro. Por exemplo, ao ligar uma lâmpada, a energia elétrica se transforma em energia luminosa e um pouco de calor. Na ilustração a seguir, podemos notar diferentes transformações de energia em situações cotidianas.</p>
-                
-                <div class="transformation-flow">
-                    <div class="energy-step">Energia química</div>
-                    <div class="energy-arrow">→</div>
-                    <div class="energy-step">Energia luminosa</div>
-                    <div class="energy-arrow">→</div>
-                    <div class="energy-step">Energia química</div>
-                    <div class="energy-arrow">→</div>
-                    <div class="energy-step">Energia mecânica</div>
-                </div>
-                
-                <div class="transformation-flow">
-                    <div class="energy-step">Energia química</div>
-                    <div class="energy-arrow">→</div>
-                    <div class="energy-step">Energia mecânica</div>
-                    <div class="energy-arrow">→</div>
-                    <div class="energy-step">Energia elétrica</div>
-                    <div class="energy-arrow">→</div>
-                    <div class="energy-step">Energia luminosa</div>
-                </div>
-                
-                <div class="transformation-flow">
-                    <div class="energy-step">Energia elétrica</div>
-                    <div class="energy-arrow">→</div>
-                    <div class="energy-step">Energia luminosa</div>
-                    <div class="energy-arrow">→</div>
-                    <div class="energy-step">Energia química</div>
-                </div>
-                
-                <div class="highlight-box">
-                    <p>É importante lembrar que nem toda energia é aproveitada nas transformações, pois parte dela pode se perder na forma de calor ou em formas difíceis de usar. Por exemplo, em uma moto, a energia química é convertida em movimento, mas o calor produzido não pode ser aproveitado e se dispersa no ambiente.</p>
-                </div>
-            </div>
-            
-            <button class="back-btn" id="back-btn-3">
-                <i class="fas fa-arrow-left"></i>
-                Voltar para o Menu Principal
-            </button>
+            <p style="margin-top: 20px;">&copy; 2025 Biel. Todos os direitos reservados.</p>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Criar partículas animadas
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 20;
+        // Partículas de fundo
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#00c6ff" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#0072ff",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "repulse" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            }
+        });
+
+        // Efeito de digitação no título
+        document.addEventListener('DOMContentLoaded', function() {
+            const greeting = document.getElementById('typed-greeting');
+            const originalText = greeting.textContent;
+            greeting.textContent = '';
             
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Tamanho aleatório
-                const size = Math.random() * 10 + 5;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Posição aleatória
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                
-                // Atraso de animação aleatório
-                particle.style.animationDelay = `${Math.random() * 15}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-        
-        // Navegação entre páginas
-        const mainPage = document.getElementById('main-page');
-        const lesson1Page = document.getElementById('lesson1-page');
-        const lesson2Page = document.getElementById('lesson2-page');
-        const lesson3Page = document.getElementById('lesson3-page');
-        const lesson1Btn = document.getElementById('lesson1-btn');
-        const lesson2Btn = document.getElementById('lesson2-btn');
-        const lesson3Btn = document.getElementById('lesson3-btn');
-        const backBtn1 = document.getElementById('back-btn-1');
-        const backBtn2 = document.getElementById('back-btn-2');
-        const backBtn3 = document.getElementById('back-btn-3');
-        
-        lesson1Btn.addEventListener('click', function() {
-            mainPage.style.display = 'none';
-            lesson1Page.style.display = 'block';
-            document.body.style.background = 'white';
-        });
-        
-        lesson2Btn.addEventListener('click', function() {
-            mainPage.style.display = 'none';
-            lesson2Page.style.display = 'block';
-            document.body.style.background = 'white';
-        });
-        
-        lesson3Btn.addEventListener('click', function() {
-            mainPage.style.display = 'none';
-            lesson3Page.style.display = 'block';
-            document.body.style.background = 'white';
-        });
-        
-        backBtn1.addEventListener('click', function() {
-            lesson1Page.style.display = 'none';
-            mainPage.style.display = 'block';
-            document.body.style.background = 'linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d)';
-        });
-        
-        backBtn2.addEventListener('click', function() {
-            lesson2Page.style.display = 'none';
-            mainPage.style.display = 'block';
-            document.body.style.background = 'linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d)';
-        });
-        
-        backBtn3.addEventListener('click', function() {
-            lesson3Page.style.display = 'none';
-            mainPage.style.display = 'block';
-            document.body.style.background = 'linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d)';
-        });
-        
-        // Função para tela cheia
-        const fullscreenBtn = document.getElementById('fullscreen-btn');
-        
-        fullscreenBtn.addEventListener('click', function() {
-            if (!document.fullscreenElement) {
-                // Entrar em tela cheia
-                if (document.documentElement.requestFullscreen) {
-                    document.documentElement.requestFullscreen();
-                } else if (document.documentElement.mozRequestFullScreen) { // Firefox
-                    document.documentElement.mozRequestFullScreen();
-                } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari e Opera
-                    document.documentElement.webkitRequestFullscreen();
-                } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
-                    document.documentElement.msRequestFullscreen();
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    greeting.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                } else {
+                    // Adiciona o cursor piscante após a digitação
+                    greeting.style.paddingRight = "20px";
                 }
-                fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
-            } else {
-                // Sair da tela cheia
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.mozCancelFullScreen) { // Firefox
-                    document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) { // Chrome, Safari e Opera
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { // IE/Edge
-                    document.msExitFullscreen();
+            }
+            
+            setTimeout(typeWriter, 1000);
+            
+            // Efeito de aparição suave para os cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s, transform 0.5s';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 1000 + (index * 200));
+            });
+
+            // Sistema de tabs
+            const tabs = document.querySelectorAll('.tab');
+            const panels = document.querySelectorAll('.tab-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove classe active de todas as tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // Adiciona classe active à tab clicada
+                    tab.classList.add('active');
+
+                    // Remove classe active de todos os panels
+                    panels.forEach(panel => panel.classList.remove('active'));
+                    // Adiciona classe active ao panel correspondente
+                    const tabId = tab.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // Modal para detalhes dos hobbies
+            const modal = document.getElementById('hobbyModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            const closeModal = document.querySelector('.close-modal');
+            const hobbyItems = document.querySelectorAll('.hobby-item');
+
+            // Dados dos hobbies
+            const hobbyData = {
+                jogar: {
+                    title: "Jogos que eu jogo",
+                    content: `
+                        <p>Estes são os jogos que mais gosto de jogar:</p>
+                        <ul class="modal-list">
+                            <li><i class="fas fa-gamepad"></i> Roblox</li>
+                            <li><i class="fas fa-gamepad"></i> FiveM</li>
+                            <li><i class="fas fa-gamepad"></i> GTA 5</li>
+                            <li><i class="fas fa-gamepad"></i> Valorant</li>
+                            <li><i class="fas fa-gamepad"></i> Clash Royale</li>
+                        </ul>
+                    `
+                },
+                assistir: {
+                    title: "Gosto de Assistir",
+                    content: `
+                        <p>Estes são os conteúdos que mais gosto de assistir:</p>
+                        <ul class="modal-list">
+                            <li><i class="fab fa-youtube"></i> YouTube</li>
+                            <li><i class="fas fa-tv"></i> Séries</li>
+                        </ul>
+                    `
+                },
+                aprender: {
+                    title: "Gosto de Aprender",
+                    content: `
+                        <p>Gosto de aprender coisas novas e estou sempre buscando conhecimento.</p>
+                        <p>Atualmente, estou focado em:</p>
+                        <ul class="modal-list">
+                            <li><i class="fas fa-language"></i> Aprender a falar espanhol fluentemente</li>
+                        </ul>
+                    `
+                },
+                futebol: {
+                    title: "Futebol - Jogadores Favoritos",
+                    content: `
+                        <p>Meus jogadores de futebol favoritos são:</p>
+                        <ul class="modal-list">
+                            <li><i class="fas fa-trophy"></i> 1° Messi</li>
+                            <li><i class="fas fa-trophy"></i> 2° Neymar</li>
+                            <li><i class="fas fa-trophy"></i> 3° Yamal</li>
+                        </ul>
+                        <a href="https://www.google.com/search?q=O+que+é+o+Futebol" target="_blank" class="modal-link">Pesquisar sobre Futebol</a>
+                    `
+                },
+                handball: {
+                    title: "Handball",
+                    content: `
+                        <p>Handball é um esporte emocionante que gosto de praticar e assistir.</p>
+                        <a href="https://www.google.com/search?q=O+que+é+o+Handball" target="_blank" class="modal-link">Pesquisar sobre Handball</a>
+                    `
+                },
+                queimada: {
+                    title: "Queimada",
+                    content: `
+                        <p>A queimada é um jogo divertido que sempre joguei com amigos.</p>
+                        <a href="https://www.google.com/search?q=O+que+é+a+Queimada" target="_blank" class="modal-link">Pesquisar sobre Queimada</a>
+                    `
+                },
+                volei: {
+                    title: "Vôlei",
+                    content: `
+                        <p>O vôlei é um esporte que exige muita técnica e trabalho em equipe.</p>
+                        <a href="https://www.google.com/search?q=O+que+é+o+Vôlei" target="_blank" class="modal-link">Pesquisar sobre Vôlei</a>
+                    `
+                },
+                carros: {
+                    title: "Carros - Meus Sonhos",
+                    content: `
+                        <p>Estes são os carros dos meus sonhos:</p>
+                        <ul class="modal-list">
+                            <li><i class="fas fa-car"></i> 1° BMW M4 Competition</li>
+                            <li><i class="fas fa-car"></i> 2° BMW X6</li>
+                            <li><i class="fas fa-car"></i> 3° Mercedes Benz</li>
+                        </ul>
+                    `
+                },
+                motos: {
+                    title: "Motos - Meus Sonhos",
+                    content: `
+                        <p>Estas são as motos dos meus sonhos:</p>
+                        <ul class="modal-list">
+                            <li><i class="fas fa-motorcycle"></i> 1° BMW S 1000 RR</li>
+                            <li><i class="fas fa-motorcycle"></i> 2° BMW R1200</li>
+                        </ul>
+                    `
                 }
-                fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+            };
+
+            // Abrir modal ao clicar em um hobby
+            hobbyItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const hobbyName = this.getAttribute('data-hobby');
+                    const hobbyInfo = hobbyData[hobbyName];
+                    
+                    if (hobbyInfo) {
+                        modalTitle.innerHTML = `<i class="fas fa-${getHobbyIcon(hobbyName)}"></i> ${hobbyInfo.title}`;
+                        modalBody.innerHTML = hobbyInfo.content;
+                        modal.style.display = 'flex';
+                    }
+                });
+            });
+
+            // Fechar modal
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            // Fechar modal ao clicar fora dele
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Função para obter ícone correspondente ao hobby
+            function getHobbyIcon(hobby) {
+                const iconMap = {
+                    jogar: 'gamepad',
+                    assistir: 'tv',
+                    aprender: 'graduation-cap',
+                    futebol: 'futbol',
+                    handball: 'basketball-ball',
+                    queimada: 'fire',
+                    volei: 'volleyball-ball',
+                    carros: 'car',
+                    motos: 'motorcycle'
+                };
+                
+                return iconMap[hobby] || 'heart';
             }
+
+            // JOGO DA MEMÓRIA
+            const memoryGameBoard = document.getElementById('memory-game-board');
+            const startGameBtn = document.getElementById('start-game-btn');
+            const restartGameBtn = document.getElementById('restart-game-btn');
+            const movesCountElement = document.getElementById('moves-count');
+            const timerElement = document.getElementById('timer');
+            const pairsCountElement = document.getElementById('pairs-count');
+            const messageElement = document.getElementById('message');
+            const overlayElement = document.getElementById('overlay');
+            const finalTimeElement = document.getElementById('final-time');
+            const finalMovesElement = document.getElementById('final-moves');
+            const playAgainBtn = document.getElementById('play-again-btn');
+
+            // Estado do jogo
+            let gameState = {
+                cards: [],
+                flippedCards: [],
+                matchedPairs: 0,
+                moves: 0,
+                timer: 0,
+                timerInterval: null,
+                gameStarted: false,
+                canFlip: true
+            };
+
+            // Imagens para o jogo
+            const cardImages = [
+                'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=150&h=150&fit=crop',
+                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop',
+                'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop',
+                'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop',
+                'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=150&h=150&fit=crop',
+                'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop',
+                'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop',
+                'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop'
+            ];
+
+            // Duplicar e embaralhar as imagens
+            const gameImages = [...cardImages, ...cardImages];
+
+            // Função para embaralhar um array
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            // Função para inicializar o jogo
+            function initGame() {
+                // Resetar estado do jogo
+                gameState.cards = [];
+                gameState.flippedCards = [];
+                gameState.matchedPairs = 0;
+                gameState.moves = 0;
+                gameState.timer = 0;
+                gameState.gameStarted = false;
+                gameState.canFlip = true;
+                
+                // Limpar o tabuleiro
+                memoryGameBoard.innerHTML = '';
+                
+                // Atualizar a interface
+                updateUI();
+                
+                // Embaralhar as imagens
+                const shuffledImages = shuffleArray([...gameImages]);
+                
+                // Criar as cartas
+                shuffledImages.forEach((imageUrl, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'memory-card';
+                    card.dataset.index = index;
+                    card.dataset.image = imageUrl;
+                    
+                    const cardFront = document.createElement('div');
+                    cardFront.className = 'card-front';
+                    const img = document.createElement('img');
+                    img.src = imageUrl;
+                    img.alt = `Imagem ${index + 1}`;
+                    img.loading = 'lazy';
+                    cardFront.appendChild(img);
+                    
+                    const cardBack = document.createElement('div');
+                    cardBack.className = 'card-back';
+                    cardBack.innerHTML = '<i class="fas fa-question"></i>';
+                    
+                    card.appendChild(cardFront);
+                    card.appendChild(cardBack);
+                    
+                    card.addEventListener('click', () => flipCard(card));
+                    
+                    memoryGameBoard.appendChild(card);
+                    gameState.cards.push(card);
+                });
+            }
+
+            // Função para virar uma carta
+            function flipCard(card) {
+                if (!gameState.canFlip || card.classList.contains('flipped') || card.classList.contains('matched')) {
+                    return;
+                }
+                
+                if (!gameState.gameStarted) {
+                    startTimer();
+                    gameState.gameStarted = true;
+                }
+                
+                card.classList.add('flipped');
+                gameState.flippedCards.push(card);
+                
+                if (gameState.flippedCards.length === 2) {
+                    gameState.canFlip = false;
+                    gameState.moves++;
+                    updateUI();
+                    checkForMatch();
+                }
+            }
+
+            // Função para verificar se as cartas viradas formam um par
+            function checkForMatch() {
+                const [card1, card2] = gameState.flippedCards;
+                
+                if (card1.dataset.image === card2.dataset.image) {
+                    setTimeout(() => {
+                        card1.classList.add('matched');
+                        card2.classList.add('matched');
+                        gameState.matchedPairs++;
+                        gameState.flippedCards = [];
+                        gameState.canFlip = true;
+                        updateUI();
+                        
+                        if (gameState.matchedPairs === 8) {
+                            endGame();
+                        }
+                    }, 500);
+                } else {
+                    setTimeout(() => {
+                        card1.classList.remove('flipped');
+                        card2.classList.remove('flipped');
+                        gameState.flippedCards = [];
+                        gameState.canFlip = true;
+                    }, 1000);
+                }
+            }
+
+            // Função para iniciar o timer
+            function startTimer() {
+                clearInterval(gameState.timerInterval);
+                gameState.timer = 0;
+                gameState.timerInterval = setInterval(() => {
+                    gameState.timer++;
+                    updateUI();
+                }, 1000);
+            }
+
+            // Função para atualizar a interface
+            function updateUI() {
+                movesCountElement.textContent = gameState.moves;
+                timerElement.textContent = `${gameState.timer}s`;
+                pairsCountElement.textContent = `${gameState.matchedPairs}/8`;
+            }
+
+            // Função para finalizar o jogo
+            function endGame() {
+                clearInterval(gameState.timerInterval);
+                
+                finalTimeElement.textContent = gameState.timer;
+                finalMovesElement.textContent = gameState.moves;
+                
+                setTimeout(() => {
+                    messageElement.style.display = 'block';
+                    overlayElement.style.display = 'block';
+                }, 1000);
+            }
+
+            // Event listeners para os botões
+            startGameBtn.addEventListener('click', initGame);
+            restartGameBtn.addEventListener('click', initGame);
+            playAgainBtn.addEventListener('click', function() {
+                messageElement.style.display = 'none';
+                overlayElement.style.display = 'none';
+                initGame();
+            });
+
+            // Inicializar o jogo quando a aba de Jogos for carregada
+            document.querySelector('.tab[data-tab="games"]').addEventListener('click', function() {
+                // Inicializar o jogo apenas se ainda não foi inicializado
+                if (gameState.cards.length === 0) {
+                    initGame();
+                }
+            });
         });
-        
-        // Atualizar ícone quando sair da tela cheia usando a tecla F11
-        document.addEventListener('fullscreenchange', updateFullscreenIcon);
-        document.addEventListener('webkitfullscreenchange', updateFullscreenIcon);
-        document.addEventListener('mozfullscreenchange', updateFullscreenIcon);
-        document.addEventListener('MSFullscreenChange', updateFullscreenIcon);
-        
-        function updateFullscreenIcon() {
-            if (!document.fullscreenElement && 
-                !document.webkitFullscreenElement && 
-                !document.mozFullScreenElement && 
-                !document.msFullscreenElement) {
-                fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
-            }
-        }
-        
-        // Inicializar partículas quando a página carregar
-        window.addEventListener('load', createParticles);
     </script>
 </body>
 </html>
