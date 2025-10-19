@@ -1,697 +1,120 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biel - Página Pessoal</title>
+    <title>Site Pessoal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #8b5cf6;
+            --primary-dark: #7c3aed;
+            --accent: #3b82f6;
+            --text: #e5e7eb;
+            --text-light: #9ca3af;
+            --bg: #111827;
+            --bg-light: #1f2937;
+            --bg-lighter: #374151;
+            --border: #374151;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
         }
 
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #001f3f 50%, #000 100%);
-            color: #fff;
-            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--bg);
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Partículas de fundo */
-        #particles-js {
+        /* Header */
+        header {
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(to bottom, #0f172a, var(--bg));
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
             z-index: 0;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        .header-content {
             position: relative;
             z-index: 1;
         }
 
-        header {
-            text-align: center;
-            padding: 40px 0 60px;
-            position: relative;
-        }
-
-        /* Elementos decorativos */
-        .decoration {
-            position: absolute;
-            z-index: -1;
-        }
-
-        .circle {
-            width: 300px;
-            height: 300px;
+        .avatar {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 198, 255, 0.1) 0%, rgba(0, 198, 255, 0) 70%);
-            top: 10%;
-            left: 10%;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .circle2 {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 114, 255, 0.1) 0%, rgba(0, 114, 255, 0) 70%);
-            bottom: 10%;
-            right: 10%;
-            animation: float 6s ease-in-out infinite reverse;
-        }
-
-        .line {
-            height: 2px;
-            width: 100px;
-            background: linear-gradient(90deg, transparent, #00c6ff, transparent);
-            top: 50%;
-            left: 5%;
-            transform: rotate(45deg);
-        }
-
-        .line2 {
-            height: 2px;
-            width: 150px;
-            background: linear-gradient(90deg, transparent, #0072ff, transparent);
-            bottom: 30%;
-            right: 5%;
-            transform: rotate(-30deg);
-        }
-
-        .profile-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 40px;
-        }
-
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 80px;
-            box-shadow: 0 10px 30px rgba(0, 198, 255, 0.5);
-            border: 5px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            z-index: 2;
-        }
-
-        .profile-glow {
-            position: absolute;
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00c6ff, #0072ff);
-            top: -10px;
-            left: -10px;
-            z-index: 1;
-            filter: blur(15px);
-            opacity: 0.7;
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        .greeting-container {
-            margin-bottom: 25px;
-        }
-
-        .greeting {
-            font-size: 4.5rem;
-            background: linear-gradient(to right, #00c6ff, #0072ff, #00c6ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-            letter-spacing: 2px;
-            position: relative;
-            display: inline-block;
-            line-height: 1.2;
-        }
-
-        .greeting::after {
-            content: '';
-            position: absolute;
-            width: 10px;
-            height: 70px;
-            background: #00c6ff;
-            right: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            animation: blink 1s infinite;
-        }
-
-        .tagline {
-            font-size: 1.4rem;
-            color: #88c9ff;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tagline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 198, 255, 0.1), transparent);
-            animation: shine 5s infinite;
-        }
-
-        .info-tags {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .tag {
-            background: rgba(0, 198, 255, 0.1);
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 1rem;
-            border: 1px solid rgba(0, 198, 255, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.3s;
-        }
-
-        .tag:hover {
-            background: rgba(0, 198, 255, 0.2);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.2);
-        }
-
-        .tag i {
-            color: #00c6ff;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #88c9ff;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-indicator i {
-            font-size: 1.5rem;
-            margin-top: 5px;
-        }
-
-        /* Animações */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.7; }
-            50% { transform: scale(1.05); opacity: 0.4; }
-            100% { transform: scale(1); opacity: 0.7; }
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        @keyframes shine {
-            0% { left: -100%; }
-            20% { left: 100%; }
-            100% { left: 100%; }
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-10px) translateX(-50%); }
-            60% { transform: translateY(-5px) translateX(-50%); }
-        }
-
-        .profile-img {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* Restante do CSS */
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 198, 255, 0.2);
-        }
-
-        .card-title {
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            color: #00c6ff;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .card-title i {
-            font-size: 2rem;
-        }
-
-        .info-list {
-            list-style: none;
-        }
-
-        .info-list li {
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: color 0.3s;
-        }
-
-        .info-list li:hover {
-            color: #00c6ff;
-        }
-
-        .info-list li:last-child {
-            border-bottom: none;
-        }
-
-        .info-list li i {
-            color: #00c6ff;
-            font-size: 1.3rem;
-            width: 25px;
-        }
-
-        .hobbies-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .hobby-item {
-            background: rgba(0, 198, 255, 0.1);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.3s, background 0.3s;
-            cursor: pointer;
-        }
-
-        .hobby-item:hover {
-            transform: scale(1.05);
-            background: rgba(0, 198, 255, 0.2);
-        }
-
-        .hobby-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #00c6ff;
-        }
-
-        .hobby-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        .language-section {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-top: 20px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-        }
-
-        .flag {
-            font-size: 3rem;
-        }
-
-        .language-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-            color: #00c6ff;
-        }
-
-        .language-info p {
-            color: #b3e0ff;
-        }
-
-        .progress-bar {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-
-        .progress {
-            height: 100%;
-            background: linear-gradient(to right, #00c6ff, #0072ff);
-            border-radius: 4px;
-            width: 80%;
-        }
-
-        /* Seção de Abas */
-        .tabs-section {
-            grid-column: 1 / -1;
-            margin-top: 20px;
-        }
-
-        .tabs-container {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .tab {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 12px 24px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 1.1rem;
-        }
-
-        .tab:hover {
-            background: rgba(0, 198, 255, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .tab.active {
-            background: rgba(0, 198, 255, 0.2);
-            border-color: #00c6ff;
-            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
-        }
-
-        .tab-content {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 30px;
-            min-height: 400px;
-        }
-
-        .tab-panel {
-            display: none;
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        .tab-panel.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .tab-panel h3 {
-            color: #00c6ff;
-            margin-bottom: 15px;
-            font-size: 1.8rem;
-        }
-
-        .tab-panel p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .skill-item {
-            background: rgba(0, 198, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .skill-item i {
-            font-size: 2rem;
-            color: #00c6ff;
-            margin-bottom: 10px;
-        }
-
-        /* Jogo da Memória */
-        .memory-game-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .game-controls {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .game-btn {
-            background: rgba(0, 198, 255, 0.2);
-            border: 1px solid rgba(0, 198, 255, 0.5);
-            color: #00c6ff;
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .game-btn:hover {
-            background: rgba(0, 198, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.2);
-        }
-
-        .game-stats {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 600px;
-            margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 1;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #88c9ff;
-            margin-bottom: 5px;
-        }
-
-        .stat-value {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #00c6ff;
-        }
-
-        .memory-game-board {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .memory-card {
-            height: 100px;
-            width: 100px;
-            background: linear-gradient(135deg, #001f3f, #003366);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
             color: white;
+            font-size: 2.5rem;
+            box-shadow: var(--shadow);
+            border: 3px solid rgba(139, 92, 246, 0.2);
+            position: relative;
+        }
+
+        .settings-icon {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: var(--bg-light);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            transform-style: preserve-3d;
-            position: relative;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(0, 198, 255, 0.3);
+            border: 1px solid var(--border);
         }
 
-        .memory-card.flipped {
-            transform: rotateY(180deg);
-            background: linear-gradient(135deg, #003366, #004d99);
+        .settings-icon:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
         }
 
-        .memory-card.matched {
-            background: linear-gradient(135deg, #006600, #009900);
-            border-color: #6bff6b;
-            cursor: default;
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
         }
 
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            overflow: hidden;
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 400;
         }
 
-        .card-front {
-            background: linear-gradient(135deg, #001f3f, #003366);
-            transform: rotateY(180deg);
-            padding: 5px;
-        }
-
-        .card-front img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-
-        .card-back {
-            background: linear-gradient(135deg, #003366, #004d99);
-        }
-
-        .card-back i {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.8rem;
-        }
-
-        .message {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.9);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            z-index: 100;
-            border: 2px solid #00c6ff;
-            box-shadow: 0 0 30px rgba(0, 198, 255, 0.5);
-            display: none;
-            max-width: 90%;
-        }
-
-        .message h2 {
-            color: #00c6ff;
-            margin-bottom: 15px;
-        }
-
-        .message p {
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 99;
-            display: none;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #88c9ff;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #00c6ff;
-            font-size: 1.5rem;
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            background: #00c6ff;
-            color: #000;
-            transform: translateY(-5px);
-        }
-
-        /* Modal para detalhes dos hobbies */
+        /* Modal de Administração */
         .modal {
             display: none;
             position: fixed;
@@ -699,886 +122,839 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: 1000;
-            justify-content: center;
             align-items: center;
-            animation: fadeIn 0.3s ease-in;
+            justify-content: center;
         }
 
         .modal-content {
-            background: linear-gradient(135deg, #0a0a0a 0%, #001f3f 100%);
-            border-radius: 20px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            padding: 2rem;
             width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            overflow-y: auto;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 198, 255, 0.3);
-            border: 1px solid rgba(0, 198, 255, 0.3);
-            position: relative;
+            max-width: 400px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1.5rem;
         }
 
         .modal-title {
-            font-size: 2rem;
-            color: #00c6ff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
         }
 
         .close-modal {
             background: none;
             border: none;
-            color: #fff;
-            font-size: 1.5rem;
+            color: var(--text-light);
+            font-size: 1.25rem;
             cursor: pointer;
-            transition: color 0.3s;
+            transition: color 0.2s ease;
         }
 
         .close-modal:hover {
-            color: #00c6ff;
+            color: var(--primary);
         }
 
         .modal-body {
-            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
-        .modal-list {
-            list-style: none;
-            margin: 15px 0;
+        .input-group {
+            margin-bottom: 1rem;
         }
 
-        .modal-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .input-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            font-family: inherit;
+            transition: border-color 0.2s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-family: inherit;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: var(--bg-lighter);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border);
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .admin-section {
+            margin-bottom: 2rem;
+        }
+
+        .admin-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 0.5rem;
         }
 
-        .modal-list li:last-child {
-            border-bottom: none;
+        .admin-title i {
+            color: var(--primary);
         }
 
-        .modal-list li i {
-            color: #00c6ff;
+        .stats-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .modal-link {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: rgba(0, 198, 255, 0.2);
-            border-radius: 30px;
-            color: #00c6ff;
+        .stat-card {
+            flex: 1;
+            background: var(--bg);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .links-container {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .link-btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 1rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
             text-decoration: none;
-            transition: all 0.3s;
-            border: 1px solid rgba(0, 198, 255, 0.3);
         }
 
-        .modal-link:hover {
-            background: rgba(0, 198, 255, 0.3);
-            transform: translateY(-2px);
+        .link-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
         }
 
-        /* Responsividade */
-        @media (max-width: 900px) {
-            .main-content {
+        .link-btn i {
+            font-size: 1.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(17, 24, 39, 0.95);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+            background-color: rgba(139, 92, 246, 0.1);
+        }
+
+        /* Sections */
+        section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* Interests Grid */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .interest-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interest-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .interest-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .interest-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .interest-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: rgba(139, 92, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .interest-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        /* Contact */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            transition: all 0.2s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: rgba(139, 92, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .contact-details h3 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: white;
+        }
+
+        .contact-details p {
+            margin-bottom: 0;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-light);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-lighter);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 4rem 1.5rem 3rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .nav-container {
+                gap: 1rem;
+            }
+            
+            .interests-grid {
                 grid-template-columns: 1fr;
             }
             
-            .greeting {
-                font-size: 3.5rem;
+            .social-links {
+                gap: 1.5rem;
             }
             
-            .profile-img {
-                width: 150px;
-                height: 150px;
-                font-size: 60px;
-            }
-
-            .profile-glow {
-                width: 170px;
-                height: 170px;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .memory-game-board {
-                grid-template-columns: repeat(3, 1fr);
+            .stats-container {
+                flex-direction: column;
             }
             
-            .memory-card {
-                height: 80px;
-                width: 80px;
+            .links-container {
+                flex-direction: column;
             }
         }
 
-        @media (max-width: 600px) {
-            .greeting {
-                font-size: 2.8rem;
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-            
-            .card {
-                padding: 25px;
-            }
-            
-            .hobbies-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .profile-img {
-                width: 120px;
-                height: 120px;
-                font-size: 50px;
-            }
-
-            .profile-glow {
-                width: 140px;
-                height: 140px;
-            }
-
-            .tabs-container {
-                flex-direction: column;
-            }
-
-            .tab {
-                text-align: center;
-            }
-
-            .info-tags {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .memory-game-board {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .memory-card {
-                height: 70px;
-                width: 70px;
-            }
-
-            .game-stats {
-                flex-direction: column;
-                gap: 10px;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        @media (max-width: 400px) {
-            .memory-game-board {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .memory-card {
-                height: 60px;
-                width: 60px;
-            }
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Efeito de brilho sutil */
+        .glow {
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
         }
     </style>
 </head>
 <body>
-    <!-- Partículas de fundo -->
-    <div id="particles-js"></div>
-    
-    <!-- Elementos decorativos -->
-    <div class="decoration circle"></div>
-    <div class="decoration circle2"></div>
-    <div class="decoration line"></div>
-    <div class="decoration line2"></div>
-    
-    <!-- Modal para detalhes dos hobbies -->
-    <div id="hobbyModal" class="modal">
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="avatar">
+                <i class="fas fa-user"></i>
+                <div class="settings-icon" id="settingsBtn">
+                    <i class="fas fa-cog"></i>
+                </div>
+            </div>
+            <h1 class="glow">Olá, me chamo Gabriel</h1>
+            <p class="subtitle">Bem-vindo ao meu Site Pessoal</p>
+        </div>
+    </header>
+
+    <!-- Modal de Senha -->
+    <div class="modal" id="passwordModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title" id="modalTitle"></h2>
-                <button class="close-modal">&times;</button>
+                <h3 class="modal-title">Acesso Administrativo</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
             </div>
-            <div class="modal-body" id="modalBody">
-                <!-- Conteúdo será preenchido via JavaScript -->
+            <div class="modal-body">
+                <div class="input-group">
+                    <label class="input-label" for="password">Digite a senha:</label>
+                    <input type="password" id="password" class="input-field" placeholder="Senha">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelBtn">Cancelar</button>
+                <button class="btn btn-primary" id="submitPassword">Acessar</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal para o jogo -->
-    <div class="overlay" id="overlay"></div>
-    
-    <div class="message" id="message">
-        <h2>Parabéns!</h2>
-        <p>Você completou o jogo em <span id="final-time">0</span> segundos!</p>
-        <p>Total de movimentos: <span id="final-moves">0</span></p>
-        <button class="game-btn" id="play-again-btn">
-            <i class="fas fa-play"></i> Jogar Novamente
-        </button>
-    </div>
-
-    <div class="container">
-        <header>
-            <div class="profile-container">
-                <div class="profile-glow"></div>
-                <div class="profile-img">
-                    <i class="fas fa-user"></i>
+    <!-- Painel Administrativo -->
+    <section id="admin" class="fade-in">
+        <div class="admin-panel" id="adminPanel">
+            <div class="admin-section">
+                <h3 class="admin-title"><i class="fas fa-chart-bar"></i> Estatísticas do Site</h3>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-value" id="visitCount">0</div>
+                        <div class="stat-label">Total de Visitas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="uniqueVisitors">0</div>
+                        <div class="stat-label">Visitantes Únicos</div>
+                    </div>
                 </div>
             </div>
             
-            <div class="greeting-container">
-                <h1 id="typed-greeting" class="greeting">Hello, My Name is Gabriel</h1>
-            </div>
-            
-            <p class="tagline">Desenvolvedor, estudante e entusiasta de tecnologia</p>
-            
-            <div class="info-tags">
-                <div class="tag">
-                    <i class="fas fa-code"></i>
-                    <span>Desenvolvedor</span>
-                </div>
-                <div class="tag">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>Estudante</span>
-                </div>
-                <div class="tag">
-                    <i class="fas fa-rocket"></i>
-                    <span>Entusiasta de Tech</span>
-                </div>
-                <div class="tag">
-                    <i class="fas fa-heart"></i>
-                    <span>Azul Escuro</span>
-                </div>
-            </div>
-            
-            <div class="scroll-indicator">
-                <span></span>
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </header>
-
-        <!-- Conteúdo principal -->
-        <div class="main-content">
-            <div class="card">
-                <h2 class="card-title"><i class="fas fa-user-circle"></i> Sobre mim</h2>
-                <ul class="info-list">
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Sou <strong>brasileiro</strong></span>
-                    </li>
-                    <li>
-                        <i class="fas fa-language"></i>
-                        <span>Minha linguagem principal é <strong>PT-BR</strong></span>
-                    </li>
-                    <li>
-                        <i class="fas fa-signature"></i>
-                        <span>Meu nome verdadeiro é <strong>Gabriel</strong></span>
-                    </li>
-                    <li>
-                        <i class="fas fa-palette"></i>
-                        <span>Minha cor preferida é <strong>Azul Escuro</strong></span>
-                    </li>
-                </ul>
-                
-                <div class="language-section">
-                    <div class="flag">🇪🇸</div>
-                    <div class="language-info">
-                        <h3>Curso de Espanhol</h3>
-                        <p>Atualmente estudando</p>
-                        <div class="progress-bar">
-                            <div class="progress"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2 class="card-title"><i class="fas fa-heart"></i> Gosto de</h2>
-                <div class="hobbies-grid">
-                    <div class="hobby-item" data-hobby="jogar">
-                        <div class="hobby-icon"><i class="fas fa-gamepad"></i></div>
-                        <div class="hobby-name">Jogar</div>
-                    </div>
-                    <div class="hobby-item" data-hobby="assistir">
-                        <div class="hobby-icon"><i class="fas fa-tv"></i></div>
-                        <div class="hobby-name">Assistir</div>
-                    </div>
-                    <div class="hobby-item" data-hobby="aprender">
-                        <div class="hobby-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <div class="hobby-name">Aprender</div>
-                    </div>
-                    <div class="hobby-item" data-hobby="futebol">
-                        <div class="hobby-icon"><i class="fas fa-futbol"></i></div>
-                        <div class="hobby-name">Futebol</div>
-                    </div>
-                    <div class="hobby-item" data-hobby="handball">
-                        <div class="hobby-icon"><i class="fas fa-basketball-ball"></i></div>
-                        <div class="hobby-name">Handball</div>
-                    </div>
-                    <div class="hobby-item" data-hobby="queimada">
-                        <div class="hobby-icon"><i class="fas fa-fire"></i></div>
-                        <div class="hobby-name">Queimada</div>
-                    </div>
-                    <div class="hobby-item" data-hobby="volei">
-                        <div class="hobby-icon"><i class="fas fa-volleyball-ball"></i></div>
-                        <div class="hobby-name">Vôlei</div>
-                    </div>
-                    <div class="hobby-item" data-hobby="carros">
-                        <div class="hobby-icon"><i class="fas fa-car"></i></div>
-                        <div class="hobby-name">Carros</div>
-                    </div>
-                    <div class="hobby-item" data-hobby="motos">
-                        <div class="hobby-icon"><i class="fas fa-motorcycle"></i></div>
-                        <div class="hobby-name">Motos</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Seção de Abas -->
-            <div class="card tabs-section">
-                <h2 class="card-title"><i class="fas fa-th-large"></i> Explorar</h2>
-                
-                <div class="tabs-container">
-                    <div class="tab active" data-tab="ia">Inteligência Artificial</div>
-                    <div class="tab" data-tab="games">Jogos</div  
-                    <div class="tab" data-tab="projects">Opções Secundarias</div>
-                </div>
-
-                <div class="tab-content">
-                    <!-- Aba de IA -->
-                    <div class="tab-panel active" id="ia">
-                        <h3>Meu Interesse em Inteligência Artificial</h3>
-                        <p>A Inteligência Artificial é uma das áreas que mais me fascina na tecnologia. Estou constantemente explorando novas possibilidades e aprendendo sobre machine learning, redes neurais e processamento de linguagem natural.</p>
-                        <p>Acredito que a IA tem o potencial de revolucionar a maneira como interagimos com a tecnologia e resolver problemas complexos em diversas áreas.</p>
-                        
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <i class="fas fa-brain"></i>
-                                <div>Machine Learning</div>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-comment-alt"></i>
-                                <div>NLP</div>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-chart-line"></i>
-                                <div>Análise de Dados</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Aba de Jogos -->
-                    <div class="tab-panel" id="games">
-                        <h3><i class="fas fa-gamepad"></i> Jogos</h3>
-                        <p>Como entusiasta de jogos, desenvolvi este Jogo da Memória para demonstrar minhas habilidades em desenvolvimento web. Teste sua memória e divirta-se!</p>
-                        
-                        <div class="memory-game-container">
-                            <div class="game-controls">
-                                <button class="game-btn" id="start-game-btn">
-                                    <i class="fas fa-play"></i> Iniciar Jogo
-                                </button>
-                                <button class="game-btn" id="restart-game-btn">
-                                    <i class="fas fa-redo"></i> Reiniciar
-                                </button>
-                            </div>
-                            
-                            <div class="game-stats">
-                                <div class="stat-item">
-                                    <div class="stat-label">Movimentos</div>
-                                    <div class="stat-value" id="moves-count">0</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-label">Tempo</div>
-                                    <div class="stat-value" id="timer">0s</div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-label">Pares Encontrados</div>
-                                    <div class="stat-value" id="pairs-count">0/8</div>
-                                </div>
-                            </div>
-                            
-                            <div class="memory-game-board" id="memory-game-board">
-                                <!-- As cartas serão geradas dinamicamente pelo JavaScript -->
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Aba de Projetos -->
-                    <div class="tab-panel" id="projects">
-                        <h3>Meus Projetos</h3>
-                        <p>Estou desenvolvendo vários projetos interessantes envolvendo tecnologia:</p>
-                        
-                        <div class="skills-grid">
-                            <div class="skill-item">
-                                <i class="fas fa-code"></i>
-                                <div>Desenvolvimento Web</div>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-robot"></i>
-                                <div>Chatbots</div>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-mobile-alt"></i>
-                                <div>Aplicativos</div>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-gamepad"></i>
-                                <div>Jogos</div>
-                            </div>
-                        </div>
-                        
-                        <p style="margin-top: 20px;">Estou sempre buscando aprender novas tecnologias e aplicar meus conhecimentos em projetos práticos que possam fazer a diferença.</p>
-                    </div>
+            <div class="admin-section">
+                <h3 class="admin-title"><i class="fas fa-link"></i> Links Rápidos</h3>
+                <p>Links importantes para acesso rápido:</p>
+                <div class="links-container">
+                    <a href="https://www.roblox.com/pt/download/client?os=win" target="_blank" class="link-btn" id="linkBtn1">
+                        <i class="fab fa-roblox"></i>
+                        <span>Roblox Download</span>
+                    </a>
+                    <a href="https://darkmodde.xyz/CMSP-Hacks/" target="_blank" class="link-btn" id="linkBtn2">
+                        <i class="fas fa-code"></i>
+                        <span>CMSP Hacks</span>
+                    </a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="footer">
-            <p>Entre em contato comigo</p>
-            <div class="social-links">
-                <a href="https://discord.com/users/1173741705271443498" target="_blank"><i class="fab fa-discord"></i></a>
-                <a href="https://github.com/bielzindxfff" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
-            </div>
-            <p style="margin-top: 20px;">&copy; 2025 Biel. Todos os direitos reservados.</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#sobre-mim" class="nav-link active">Sobre Mim</a>
+            <a href="#sobre" class="nav-link">Sobre o Site</a>
+            <a href="#interesses" class="nav-link">Interesses</a>
+            <a href="#contato" class="nav-link">Contato</a>
         </div>
-    </div>
+    </nav>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Sobre o Site -->
+    <section id="sobre" class="fade-in">
+        <h2 class="section-title">Sobre este site</h2>
+        <p>Este é um espaço pessoal criado para compartilhar um pouco mais sobre mim — tanto para quem já me conhece quanto para quem está me conhecendo agora.</p>
+        <p>Aqui você vai descobrir minhas <span class="highlight">cores favoritas</span>, as <span class="highlight">comidas</span> que mais gosto, os <span class="highlight">carros</span> que admiro, meus <span class="highlight">hobbies</span> e muito mais!</p>
+        <p>Sinta-se à vontade para explorar e conhecer um pouco melhor quem eu sou e o que me inspira.</p>
+    </section>
+
+    <!-- Sobre Mim -->
+    <section id="sobre-mim" class="fade-in">
+        <h2 class="section-title">Sobre Mim</h2>
+        <p>Olá, sou programador e gosto de programar exploits/hacks/sites.</p>
+        <p>E atualmente estou focado em aprender biologia e espanhol, pois quero fazer faculdade de biologia no futuro.</p>
+        <p>E também raramente mexo com coisas "fora da lei", como clonar cartões, Puxar Dados e tals</p>
+        <p>E abaixo você verá Muitas mais coisas sobre min</p>
+    </section>
+
+    <!-- Interesses -->
+    <section id="interesses" class="fade-in">
+        <h2 class="section-title">Meus interesses</h2>
+        <div class="interests-grid">
+            <div class="interest-card">
+                <div class="interest-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3 class="interest-title">Cores favoritas</h3>
+                <p>Preto, Azul escuro e Roxo - cores que representam minha personalidade.</p>
+            </div>
+            
+            <div class="interest-card">
+                <div class="interest-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3 class="interest-title">Comidas preferidas</h3>
+                <p>Pizza, Strogonoff e Doces. Sempre aberto a novas experiências gastronômicas.</p>
+            </div>
+            
+            <div class="interest-card">
+                <div class="interest-icon">
+                    <i class="fas fa-car"></i>
+                </div>
+                <h3 class="interest-title">Carros favoritos</h3>
+                <p>BMW X6 e M4, Porsche GT3 RS, Mercedes Benz e Jetta GLI.</p>
+            </div>
+            
+            <div class="interest-card">
+                <div class="interest-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3 class="interest-title">Hobbies</h3>
+                <p>Programar, Jogar, Conversar, Editar Fotos, Assistir e treinar boxe.</p>
+            </div>
+            
+            <div class="interest-card">
+                <div class="interest-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <h3 class="interest-title">Música</h3>
+                <p>Rap, Pagode e Forró. Gosto de variar os estilos conforme o momento.</p>
+            </div>
+            
+            <div class="interest-card">
+                <div class="interest-icon">
+                    <i class="fas fa-futbol"></i>
+                </div>
+                <h3 class="interest-title">Esportes</h3>
+                <p>Futebol, Handball, Vôlei, Tênis e Boxe. Atividade física é essencial.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="fade-in">
+        <h2 class="section-title">Entre em contato</h2>
+        <p>Se quiser conversar ou saber mais sobre mim, fique à vontade para entrar em contato!</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fab fa-discord"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>Discord</h3>
+                    <p>1173741705271443498</p>
+                </div>
+            </div>
+            
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>GitHub</h3>
+                    <p>bielzindxfff</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#" class="social-link">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="https://github.com/bielzindxfff" class="social-link">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <p class="copyright">&copy; 2023 Gabriel. Todos os direitos reservados.</p>
+    </footer>
+
     <script>
-        // Partículas de fundo
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: "#00c6ff" },
-                shape: { type: "circle" },
-                opacity: { value: 0.5, random: true },
-                size: { value: 3, random: true },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: "#0072ff",
-                    opacity: 0.2,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "repulse" },
-                    onclick: { enable: true, mode: "push" },
-                    resize: true
-                }
+        // Elementos do DOM
+        const settingsBtn = document.getElementById('settingsBtn');
+        const passwordModal = document.getElementById('passwordModal');
+        const closeModal = document.getElementById('closeModal');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const submitPassword = document.getElementById('submitPassword');
+        const passwordInput = document.getElementById('password');
+        const adminPanel = document.getElementById('adminPanel');
+        const visitCountElement = document.getElementById('visitCount');
+        const uniqueVisitorsElement = document.getElementById('uniqueVisitors');
+        const linkBtn1 = document.getElementById('linkBtn1');
+        const linkBtn2 = document.getElementById('linkBtn2');
+
+        // Senha correta
+        const CORRECT_PASSWORD = "281305";
+
+        // Contador de visitas (usando localStorage para persistência)
+        let visitCount = localStorage.getItem('visitCount') ? parseInt(localStorage.getItem('visitCount')) : 0;
+        let uniqueVisitors = localStorage.getItem('uniqueVisitors') ? parseInt(localStorage.getItem('uniqueVisitors')) : 0;
+
+        // Verificar se é a primeira visita do usuário
+        if (!localStorage.getItem('hasVisited')) {
+            uniqueVisitors++;
+            localStorage.setItem('uniqueVisitors', uniqueVisitors);
+            localStorage.setItem('hasVisited', 'true');
+        }
+
+        // Incrementar contador de visitas
+        visitCount++;
+        localStorage.setItem('visitCount', visitCount);
+
+        // Atualizar elementos com os valores
+        visitCountElement.textContent = visitCount;
+        uniqueVisitorsElement.textContent = uniqueVisitors;
+
+        // Abrir modal ao clicar na engrenagem
+        settingsBtn.addEventListener('click', () => {
+            passwordModal.style.display = 'flex';
+            passwordInput.focus();
+        });
+
+        // Fechar modal
+        function closePasswordModal() {
+            passwordModal.style.display = 'none';
+            passwordInput.value = '';
+        }
+
+        closeModal.addEventListener('click', closePasswordModal);
+        cancelBtn.addEventListener('click', closePasswordModal);
+
+        // Verificar senha
+        submitPassword.addEventListener('click', () => {
+            if (passwordInput.value === CORRECT_PASSWORD) {
+                adminPanel.style.display = 'block';
+                closePasswordModal();
+                
+                // Scroll suave para a seção administrativa
+                document.querySelector('#admin').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            } else {
+                alert('Senha incorreta! Tente novamente.');
+                passwordInput.value = '';
+                passwordInput.focus();
             }
         });
 
-        // Efeito de digitação no título
-        document.addEventListener('DOMContentLoaded', function() {
-            const greeting = document.getElementById('typed-greeting');
-            const originalText = greeting.textContent;
-            greeting.textContent = '';
-            
-            let i = 0;
-            function typeWriter() {
-                if (i < originalText.length) {
-                    greeting.textContent += originalText.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 100);
-                } else {
-                    // Adiciona o cursor piscante após a digitação
-                    greeting.style.paddingRight = "20px";
-                }
+        // Permitir enviar com Enter
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                submitPassword.click();
             }
-            
-            setTimeout(typeWriter, 1000);
-            
-            // Efeito de aparição suave para os cards
-            const cards = document.querySelectorAll('.card');
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
+        });
+
+        // Navegação suave
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
                 
-                setTimeout(() => {
-                    card.style.transition = 'opacity 0.5s, transform 0.5s';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 1000 + (index * 200));
-            });
-
-            // Sistema de tabs
-            const tabs = document.querySelectorAll('.tab');
-            const panels = document.querySelectorAll('.tab-panel');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Remove classe active de todas as tabs
-                    tabs.forEach(t => t.classList.remove('active'));
-                    // Adiciona classe active à tab clicada
-                    tab.classList.add('active');
-
-                    // Remove classe active de todos os panels
-                    panels.forEach(panel => panel.classList.remove('active'));
-                    // Adiciona classe active ao panel correspondente
-                    const tabId = tab.getAttribute('data-tab');
-                    document.getElementById(tabId).classList.add('active');
+                // Remove active class de todos os links
+                document.querySelectorAll('.nav-link').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Adiciona active class ao link clicado
+                this.classList.add('active');
+                
+                // Scroll suave para a seção
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
                 });
             });
-
-            // Modal para detalhes dos hobbies
-            const modal = document.getElementById('hobbyModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const modalBody = document.getElementById('modalBody');
-            const closeModal = document.querySelector('.close-modal');
-            const hobbyItems = document.querySelectorAll('.hobby-item');
-
-            // Dados dos hobbies
-            const hobbyData = {
-                jogar: {
-                    title: "Jogos que eu jogo",
-                    content: `
-                        <p>Estes são os jogos que mais gosto de jogar:</p>
-                        <ul class="modal-list">
-                            <li><i class="fas fa-gamepad"></i> Roblox</li>
-                            <li><i class="fas fa-gamepad"></i> FiveM</li>
-                            <li><i class="fas fa-gamepad"></i> GTA 5</li>
-                            <li><i class="fas fa-gamepad"></i> Valorant</li>
-                            <li><i class="fas fa-gamepad"></i> Clash Royale</li>
-                        </ul>
-                    `
-                },
-                assistir: {
-                    title: "Gosto de Assistir",
-                    content: `
-                        <p>Estes são os conteúdos que mais gosto de assistir:</p>
-                        <ul class="modal-list">
-                            <li><i class="fab fa-youtube"></i> YouTube</li>
-                            <li><i class="fas fa-tv"></i> Séries</li>
-                        </ul>
-                    `
-                },
-                aprender: {
-                    title: "Gosto de Aprender",
-                    content: `
-                        <p>Gosto de aprender coisas novas e estou sempre buscando conhecimento.</p>
-                        <p>Atualmente, estou focado em:</p>
-                        <ul class="modal-list">
-                            <li><i class="fas fa-language"></i> Aprender a falar espanhol fluentemente</li>
-                        </ul>
-                    `
-                },
-                futebol: {
-                    title: "Futebol - Jogadores Favoritos",
-                    content: `
-                        <p>Meus jogadores de futebol favoritos são:</p>
-                        <ul class="modal-list">
-                            <li><i class="fas fa-trophy"></i> 1° Messi</li>
-                            <li><i class="fas fa-trophy"></i> 2° Neymar</li>
-                            <li><i class="fas fa-trophy"></i> 3° Yamal</li>
-                        </ul>
-                        <a href="https://www.google.com/search?q=O+que+é+o+Futebol" target="_blank" class="modal-link">Pesquisar sobre Futebol</a>
-                    `
-                },
-                handball: {
-                    title: "Handball",
-                    content: `
-                        <p>Handball é um esporte emocionante que gosto de praticar e assistir.</p>
-                        <a href="https://www.google.com/search?q=O+que+é+o+Handball" target="_blank" class="modal-link">Pesquisar sobre Handball</a>
-                    `
-                },
-                queimada: {
-                    title: "Queimada",
-                    content: `
-                        <p>A queimada é um jogo divertido que sempre joguei com amigos.</p>
-                        <a href="https://www.google.com/search?q=O+que+é+a+Queimada" target="_blank" class="modal-link">Pesquisar sobre Queimada</a>
-                    `
-                },
-                volei: {
-                    title: "Vôlei",
-                    content: `
-                        <p>O vôlei é um esporte que exige muita técnica e trabalho em equipe.</p>
-                        <a href="https://www.google.com/search?q=O+que+é+o+Vôlei" target="_blank" class="modal-link">Pesquisar sobre Vôlei</a>
-                    `
-                },
-                carros: {
-                    title: "Carros - Meus Sonhos",
-                    content: `
-                        <p>Estes são os carros dos meus sonhos:</p>
-                        <ul class="modal-list">
-                            <li><i class="fas fa-car"></i> 1° BMW M4 Competition</li>
-                            <li><i class="fas fa-car"></i> 2° BMW X6</li>
-                            <li><i class="fas fa-car"></i> 3° Mercedes Benz</li>
-                        </ul>
-                    `
-                },
-                motos: {
-                    title: "Motos - Meus Sonhos",
-                    content: `
-                        <p>Estas são as motos dos meus sonhos:</p>
-                        <ul class="modal-list">
-                            <li><i class="fas fa-motorcycle"></i> 1° BMW S 1000 RR</li>
-                            <li><i class="fas fa-motorcycle"></i> 2° BMW R1200</li>
-                        </ul>
-                    `
-                }
-            };
-
-            // Abrir modal ao clicar em um hobby
-            hobbyItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const hobbyName = this.getAttribute('data-hobby');
-                    const hobbyInfo = hobbyData[hobbyName];
-                    
-                    if (hobbyInfo) {
-                        modalTitle.innerHTML = `<i class="fas fa-${getHobbyIcon(hobbyName)}"></i> ${hobbyInfo.title}`;
-                        modalBody.innerHTML = hobbyInfo.content;
-                        modal.style.display = 'flex';
-                    }
-                });
-            });
-
-            // Fechar modal
-            closeModal.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
-
-            // Fechar modal ao clicar fora dele
-            window.addEventListener('click', function(event) {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
+        });
+        
+        // Atualizar link ativo ao scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
                 }
             });
-
-            // Função para obter ícone correspondente ao hobby
-            function getHobbyIcon(hobby) {
-                const iconMap = {
-                    jogar: 'gamepad',
-                    assistir: 'tv',
-                    aprender: 'graduation-cap',
-                    futebol: 'futbol',
-                    handball: 'basketball-ball',
-                    queimada: 'fire',
-                    volei: 'volleyball-ball',
-                    carros: 'car',
-                    motos: 'motorcycle'
-                };
-                
-                return iconMap[hobby] || 'heart';
-            }
-
-            // JOGO DA MEMÓRIA
-            const memoryGameBoard = document.getElementById('memory-game-board');
-            const startGameBtn = document.getElementById('start-game-btn');
-            const restartGameBtn = document.getElementById('restart-game-btn');
-            const movesCountElement = document.getElementById('moves-count');
-            const timerElement = document.getElementById('timer');
-            const pairsCountElement = document.getElementById('pairs-count');
-            const messageElement = document.getElementById('message');
-            const overlayElement = document.getElementById('overlay');
-            const finalTimeElement = document.getElementById('final-time');
-            const finalMovesElement = document.getElementById('final-moves');
-            const playAgainBtn = document.getElementById('play-again-btn');
-
-            // Estado do jogo
-            let gameState = {
-                cards: [],
-                flippedCards: [],
-                matchedPairs: 0,
-                moves: 0,
-                timer: 0,
-                timerInterval: null,
-                gameStarted: false,
-                canFlip: true
-            };
-
-            // Imagens para o jogo
-            const cardImages = [
-                'https://images.unsplash.com/photo-1541963463532-d68292c34b19?w=150&h=150&fit=crop',
-                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop',
-                'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop',
-                'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&h=150&fit=crop',
-                'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=150&h=150&fit=crop',
-                'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop',
-                'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop',
-                'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop'
-            ];
-
-            // Duplicar e embaralhar as imagens
-            const gameImages = [...cardImages, ...cardImages];
-
-            // Função para embaralhar um array
-            function shuffleArray(array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
-                return array;
-            }
-
-            // Função para inicializar o jogo
-            function initGame() {
-                // Resetar estado do jogo
-                gameState.cards = [];
-                gameState.flippedCards = [];
-                gameState.matchedPairs = 0;
-                gameState.moves = 0;
-                gameState.timer = 0;
-                gameState.gameStarted = false;
-                gameState.canFlip = true;
-                
-                // Limpar o tabuleiro
-                memoryGameBoard.innerHTML = '';
-                
-                // Atualizar a interface
-                updateUI();
-                
-                // Embaralhar as imagens
-                const shuffledImages = shuffleArray([...gameImages]);
-                
-                // Criar as cartas
-                shuffledImages.forEach((imageUrl, index) => {
-                    const card = document.createElement('div');
-                    card.className = 'memory-card';
-                    card.dataset.index = index;
-                    card.dataset.image = imageUrl;
-                    
-                    const cardFront = document.createElement('div');
-                    cardFront.className = 'card-front';
-                    const img = document.createElement('img');
-                    img.src = imageUrl;
-                    img.alt = `Imagem ${index + 1}`;
-                    img.loading = 'lazy';
-                    cardFront.appendChild(img);
-                    
-                    const cardBack = document.createElement('div');
-                    cardBack.className = 'card-back';
-                    cardBack.innerHTML = '<i class="fas fa-question"></i>';
-                    
-                    card.appendChild(cardFront);
-                    card.appendChild(cardBack);
-                    
-                    card.addEventListener('click', () => flipCard(card));
-                    
-                    memoryGameBoard.appendChild(card);
-                    gameState.cards.push(card);
-                });
-            }
-
-            // Função para virar uma carta
-            function flipCard(card) {
-                if (!gameState.canFlip || card.classList.contains('flipped') || card.classList.contains('matched')) {
-                    return;
-                }
-                
-                if (!gameState.gameStarted) {
-                    startTimer();
-                    gameState.gameStarted = true;
-                }
-                
-                card.classList.add('flipped');
-                gameState.flippedCards.push(card);
-                
-                if (gameState.flippedCards.length === 2) {
-                    gameState.canFlip = false;
-                    gameState.moves++;
-                    updateUI();
-                    checkForMatch();
-                }
-            }
-
-            // Função para verificar se as cartas viradas formam um par
-            function checkForMatch() {
-                const [card1, card2] = gameState.flippedCards;
-                
-                if (card1.dataset.image === card2.dataset.image) {
-                    setTimeout(() => {
-                        card1.classList.add('matched');
-                        card2.classList.add('matched');
-                        gameState.matchedPairs++;
-                        gameState.flippedCards = [];
-                        gameState.canFlip = true;
-                        updateUI();
-                        
-                        if (gameState.matchedPairs === 8) {
-                            endGame();
-                        }
-                    }, 500);
-                } else {
-                    setTimeout(() => {
-                        card1.classList.remove('flipped');
-                        card2.classList.remove('flipped');
-                        gameState.flippedCards = [];
-                        gameState.canFlip = true;
-                    }, 1000);
-                }
-            }
-
-            // Função para iniciar o timer
-            function startTimer() {
-                clearInterval(gameState.timerInterval);
-                gameState.timer = 0;
-                gameState.timerInterval = setInterval(() => {
-                    gameState.timer++;
-                    updateUI();
-                }, 1000);
-            }
-
-            // Função para atualizar a interface
-            function updateUI() {
-                movesCountElement.textContent = gameState.moves;
-                timerElement.textContent = `${gameState.timer}s`;
-                pairsCountElement.textContent = `${gameState.matchedPairs}/8`;
-            }
-
-            // Função para finalizar o jogo
-            function endGame() {
-                clearInterval(gameState.timerInterval);
-                
-                finalTimeElement.textContent = gameState.timer;
-                finalMovesElement.textContent = gameState.moves;
-                
-                setTimeout(() => {
-                    messageElement.style.display = 'block';
-                    overlayElement.style.display = 'block';
-                }, 1000);
-            }
-
-            // Event listeners para os botões
-            startGameBtn.addEventListener('click', initGame);
-            restartGameBtn.addEventListener('click', initGame);
-            playAgainBtn.addEventListener('click', function() {
-                messageElement.style.display = 'none';
-                overlayElement.style.display = 'none';
-                initGame();
-            });
-
-            // Inicializar o jogo quando a aba de Jogos for carregada
-            document.querySelector('.tab[data-tab="games"]').addEventListener('click', function() {
-                // Inicializar o jogo apenas se ainda não foi inicializado
-                if (gameState.cards.length === 0) {
-                    initGame();
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
                 }
             });
         });
+        
+        // Animação de entrada
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Efeito de brilho sutil no título
+        const title = document.querySelector('h1');
+        setInterval(() => {
+            title.classList.toggle('glow');
+        }, 3000);
     </script>
 </body>
 </html>
-  
-  
