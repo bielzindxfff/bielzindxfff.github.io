@@ -3,47 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Pessoal</title>
+    <title>Corrente Alternada e Corrente Contínua</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --success: #4cc9f0;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --zoom-level: 1;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #8b5cf6;
-            --primary-dark: #7c3aed;
-            --accent: #3b82f6;
-            --text: #e5e7eb;
-            --text-light: #9ca3af;
-            --bg: #111827;
-            --bg-light: #1f2937;
-            --bg-lighter: #374151;
-            --border: #374151;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-        }
-
-        body {
             font-family: 'Inter', sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            background-color: var(--bg);
-            overflow-x: hidden;
         }
-
-        /* Header */
+        
+        body {
+            background-color: #0f0f1b;
+            color: #e9ecef;
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: calc(20px * var(--zoom-level));
+            transform: scale(var(--zoom-level));
+            transform-origin: top center;
+            width: 100%;
+            min-height: 100vh;
+        }
+        
+        /* Header Moderno */
         header {
-            padding: 6rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--dark), #16213e);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: calc(2rem * var(--zoom-level));
+        }
+        
+        .logo i {
+            color: var(--success);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            font-size: calc(1.2rem * var(--zoom-level));
+        }
+        
+        .nav-links a:hover {
+            color: white;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--success);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Zoom Controls */
+        .zoom-controls {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .zoom-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .zoom-btn:hover {
+            background: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        .gear-btn {
+            background: var(--accent);
+        }
+        
+        .zoom-level-display {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
             text-align: center;
-            background: linear-gradient(to bottom, #0f172a, var(--bg));
+            margin-top: 5px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: 80px;
         }
-
-        header::before {
+        
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
@@ -51,910 +167,901 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
-            z-index: 0;
+                radial-gradient(circle at 20% 80%, rgba(67, 97, 238, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(247, 37, 133, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(76, 201, 240, 0.1) 0%, transparent 50%);
         }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+        
+        .hero-content {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2.5rem;
-            box-shadow: var(--shadow);
-            border: 3px solid rgba(139, 92, 246, 0.2);
+            gap: 4rem;
             position: relative;
+            z-index: 2;
         }
-
-        .settings-icon {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            background: var(--bg-light);
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-visual {
+            flex: 1;
             display: flex;
-            align-items: center;
             justify-content: center;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border);
         }
-
-        .settings-icon:hover {
-            color: var(--primary);
-            transform: rotate(90deg);
-        }
-
-        h1 {
-            font-size: 2.5rem;
+        
+        .hero-title {
+            font-size: calc(4.5rem * var(--zoom-level));
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: white;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #fff, var(--success));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .subtitle {
-            font-size: 1.25rem;
-            color: var(--text-light);
+        
+        .hero-subtitle {
+            font-size: calc(1.8rem * var(--zoom-level));
+            color: #adb5bd;
             margin-bottom: 2rem;
-            font-weight: 400;
+            max-width: 600px;
         }
-
-        /* Modal de Administração */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            padding: calc(16px * var(--zoom-level)) calc(35px * var(--zoom-level));
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            font-size: calc(1.3rem * var(--zoom-level));
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        .wave-container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+        
+        .wave {
+            position: absolute;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
+            border-radius: 50%;
+            display: flex;
             align-items: center;
             justify-content: center;
         }
-
-        .modal-content {
-            background: var(--bg-light);
-            border-radius: 10px;
-            padding: 2rem;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
+        
+        .dc-wave {
+            background: radial-gradient(circle, rgba(247, 37, 133, 0.2) 0%, transparent 70%);
+            border: 2px solid rgba(247, 37, 133, 0.5);
         }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
+        
+        .ac-wave {
+            background: radial-gradient(circle, rgba(67, 97, 238, 0.2) 0%, transparent 70%);
+            border: 2px solid rgba(67, 97, 238, 0.5);
+            animation: pulse 4s infinite alternate;
         }
-
-        .modal-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: white;
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.05); opacity: 1; }
         }
-
-        .close-modal {
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.25rem;
-            cursor: pointer;
-            transition: color 0.2s ease;
+        
+        .wave-line {
+            position: absolute;
+            width: 80%;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
         }
-
-        .close-modal:hover {
-            color: var(--primary);
-        }
-
-        .modal-body {
-            margin-bottom: 1.5rem;
-        }
-
-        .input-group {
-            margin-bottom: 1rem;
-        }
-
-        .input-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 0.75rem;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: var(--text);
-            font-family: inherit;
-            transition: border-color 0.2s ease;
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .modal-footer {
-            display: flex;
-            justify-content: flex-end;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 6px;
-            font-family: inherit;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-primary {
+        
+        .ac-line {
             background: var(--primary);
-            color: white;
+            height: 80px;
+            width: 4px;
+            border-radius: 2px;
+            animation: wave 2s infinite ease-in-out;
+            transform-origin: center;
         }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
+        
+        @keyframes wave {
+            0%, 100% { transform: scaleY(0.5); }
+            50% { transform: scaleY(1.5); }
         }
-
-        .btn-secondary {
-            background: var(--bg-lighter);
-            color: var(--text);
-        }
-
-        .btn-secondary:hover {
-            background: var(--border);
-        }
-
-        /* Admin Panel */
-        .admin-panel {
-            display: none;
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: var(--bg-light);
-            border-radius: 10px;
-            border: 1px solid var(--border);
-        }
-
-        .admin-section {
-            margin-bottom: 2rem;
-        }
-
-        .admin-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .admin-title i {
-            color: var(--primary);
-        }
-
-        .stats-container {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .stat-card {
-            flex: 1;
-            background: var(--bg);
-            padding: 1rem;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-label {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        .links-container {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .link-btn {
-            flex: 1;
-            min-width: 150px;
-            padding: 1rem;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text);
-            font-family: inherit;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
-
-        .link-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-
-        .link-btn i {
-            font-size: 1.5rem;
-        }
-
-        /* Navigation */
-        nav {
-            background: rgba(17, 24, 39, 0.95);
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-
-        .nav-container {
-            max-width: 800px;
+        
+        /* Main Content */
+        .container {
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
+            padding: 5rem 0;
         }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary);
-            background-color: rgba(139, 92, 246, 0.1);
-        }
-
-        /* Sections */
-        section {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
+        
         .section-title {
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: white;
+            font-size: calc(3.5rem * var(--zoom-level));
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
             position: relative;
-            display: inline-block;
         }
-
+        
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
             border-radius: 2px;
         }
-
-        p {
-            margin-bottom: 1.5rem;
-            color: var(--text);
-        }
-
-        .highlight {
-            color: var(--primary);
-            font-weight: 500;
-        }
-
-        /* Interests Grid */
-        .interests-grid {
+        
+        /* Comparison Section */
+        .comparison {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
         }
-
-        .interest-card {
-            background: var(--bg-light);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
+        
+        .comparison-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
             overflow: hidden;
         }
-
-        .interest-card::before {
+        
+        .comparison-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .comparison-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
+            height: 4px;
         }
-
-        .interest-card:hover::before {
-            transform: scaleX(1);
+        
+        .dc-card::before {
+            background: linear-gradient(90deg, var(--accent), #ff6b9d);
         }
-
-        .interest-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            border-color: var(--primary);
+        
+        .ac-card::before {
+            background: linear-gradient(90deg, var(--primary), #5e72e4);
         }
-
-        .interest-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            background: rgba(139, 92, 246, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            color: var(--primary);
-            font-size: 1.25rem;
-            border: 1px solid rgba(139, 92, 246, 0.2);
-        }
-
-        .interest-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-
-        /* Contact */
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
+        
+        .card-header {
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding: 1.5rem;
-            background: var(--bg-light);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            transition: all 0.2s ease;
-        }
-
-        .contact-item:hover {
-            border-color: var(--primary);
-            transform: translateX(5px);
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            background: rgba(139, 92, 246, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 1.25rem;
-            flex-shrink: 0;
-            border: 1px solid rgba(139, 92, 246, 0.2);
-        }
-
-        .contact-details h3 {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-            color: white;
-        }
-
-        .contact-details p {
-            margin-bottom: 0;
-            color: var(--text-light);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--bg-light);
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
             margin-bottom: 1.5rem;
         }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            background: var(--bg);
+        
+        .card-icon {
+            width: calc(70px * var(--zoom-level));
+            height: calc(70px * var(--zoom-level));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-light);
-            text-decoration: none;
-            border: 1px solid var(--border);
-            transition: all 0.2s ease;
+            font-size: calc(2rem * var(--zoom-level));
         }
-
-        .social-link:hover {
+        
+        .dc-icon {
+            background: rgba(247, 37, 133, 0.2);
+            color: var(--accent);
+        }
+        
+        .ac-icon {
+            background: rgba(67, 97, 238, 0.2);
             color: var(--primary);
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
-
+        
+        .card-title {
+            font-size: calc(2.2rem * var(--zoom-level));
+            font-weight: 600;
+        }
+        
+        .card-content {
+            font-size: calc(1.3rem * var(--zoom-level));
+        }
+        
+        .card-content ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .card-content li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: calc(1.2rem * var(--zoom-level));
+        }
+        
+        .card-content li i {
+            color: var(--success);
+            margin-top: 3px;
+            font-size: calc(1.2rem * var(--zoom-level));
+        }
+        
+        /* Content Sections */
+        .content-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .content-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            font-size: calc(1.3rem * var(--zoom-level));
+        }
+        
+        .content-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .content-img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .content-title {
+            font-size: calc(2.5rem * var(--zoom-level));
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--success);
+        }
+        
+        .highlight {
+            background: rgba(76, 201, 240, 0.1);
+            border-left: 4px solid var(--success);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+            font-size: calc(1.3rem * var(--zoom-level));
+        }
+        
+        /* Applications Section */
+        .applications {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .app-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .app-icon {
+            width: calc(90px * var(--zoom-level));
+            height: calc(90px * var(--zoom-level));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: calc(2.5rem * var(--zoom-level));
+        }
+        
+        .app-1 .app-icon {
+            background: rgba(247, 37, 133, 0.2);
+            color: var(--accent);
+        }
+        
+        .app-2 .app-icon {
+            background: rgba(67, 97, 238, 0.2);
+            color: var(--primary);
+        }
+        
+        .app-3 .app-icon {
+            background: rgba(76, 201, 240, 0.2);
+            color: var(--success);
+        }
+        
+        .app-4 .app-icon {
+            background: rgba(58, 12, 163, 0.2);
+            color: var(--secondary);
+        }
+        
+        .app-title {
+            font-size: calc(1.8rem * var(--zoom-level));
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .app-card p {
+            font-size: calc(1.2rem * var(--zoom-level));
+        }
+        
+        /* Experiment Section */
+        .experiment {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .experiment-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .circuit {
+            width: 100%;
+            max-width: 600px;
+            height: 200px;
+            background: rgba(26, 26, 46, 0.7);
+            border-radius: 12px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .bulb {
+            width: calc(100px * var(--zoom-level));
+            height: calc(100px * var(--zoom-level));
+            background: #2d3748;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: calc(3rem * var(--zoom-level));
+            color: #4a5568;
+            transition: all 0.5s;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .bulb.on {
+            background: #faf089;
+            color: #d69e2e;
+            box-shadow: 
+                0 0 30px #faf089,
+                inset 0 0 10px rgba(214, 158, 46, 0.3);
+        }
+        
+        .controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: calc(16px * var(--zoom-level)) calc(28px * var(--zoom-level));
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: calc(1.2rem * var(--zoom-level));
+        }
+        
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .dc-btn {
+            border-left: 3px solid var(--accent);
+        }
+        
+        .ac-btn {
+            border-left: 3px solid var(--primary);
+        }
+        
+        .off-btn {
+            border-left: 3px solid var(--gray);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a2e, #0f0f1b);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: calc(1.8rem * var(--zoom-level));
+            font-weight: 700;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: calc(1.2rem * var(--zoom-level));
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
         .copyright {
-            color: var(--text-light);
-            font-size: 0.9rem;
+            color: #6c757d;
+            font-size: calc(1.1rem * var(--zoom-level));
         }
-
-        /* Scrollbar personalizada */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-light);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--bg-lighter);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
-        }
-
+        
         /* Responsive */
-        @media (max-width: 768px) {
-            header {
-                padding: 4rem 1.5rem 3rem;
+        @media (max-width: 968px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
             }
             
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .subtitle {
-                font-size: 1.1rem;
-            }
-            
-            section {
-                padding: 3rem 1.5rem;
-            }
-            
-            .nav-container {
-                gap: 1rem;
-            }
-            
-            .interests-grid {
+            .comparison, .content-grid {
                 grid-template-columns: 1fr;
             }
             
-            .social-links {
-                gap: 1.5rem;
+            .hero-title {
+                font-size: calc(3.5rem * var(--zoom-level));
             }
             
-            .stats-container {
-                flex-direction: column;
+            .section-title {
+                font-size: calc(2.8rem * var(--zoom-level));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
             }
             
-            .links-container {
-                flex-direction: column;
+            .hero-title {
+                font-size: calc(2.8rem * var(--zoom-level));
             }
-        }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+            
+            .section-title {
+                font-size: calc(2.5rem * var(--zoom-level));
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .wave-container {
+                width: 300px;
+                height: 300px;
             }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        /* Efeito de brilho sutil */
-        .glow {
-            text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+            
+            body {
+                font-size: calc(18px * var(--zoom-level));
+            }
+            
+            .zoom-controls {
+                top: 80px;
+                right: 10px;
+            }
+            
+            .zoom-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <div class="avatar">
-                <i class="fas fa-user"></i>
-                <div class="settings-icon" id="settingsBtn">
-                    <i class="fas fa-cog"></i>
-                </div>
-            </div>
-            <h1 class="glow">Olá, me chamo Gabriel</h1>
-            <p class="subtitle">Bem-vindo ao meu Site Pessoal</p>
-        </div>
-    </header>
-
-    <!-- Modal de Senha -->
-    <div class="modal" id="passwordModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Acesso Administrativo</h3>
-                <button class="close-modal" id="closeModal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="input-group">
-                    <label class="input-label" for="password">Digite a senha:</label>
-                    <input type="password" id="password" class="input-field" placeholder="Senha">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" id="cancelBtn">Cancelar</button>
-                <button class="btn btn-primary" id="submitPassword">Acessar</button>
-            </div>
+    <!-- Zoom Controls -->
+    <div class="zoom-controls">
+        <button class="zoom-btn gear-btn" id="gear-btn">
+            <i class="fas fa-cog"></i>
+        </button>
+        <div class="zoom-buttons" id="zoom-buttons" style="display: none;">
+            <button class="zoom-btn" id="zoom-in">
+                <i class="fas fa-search-plus"></i>
+            </button>
+            <button class="zoom-btn" id="zoom-out">
+                <i class="fas fa-search-minus"></i>
+            </button>
+            <button class="zoom-btn" id="reset-zoom">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+            <div class="zoom-level-display" id="zoom-level">100%</div>
         </div>
     </div>
-
-    <!-- Painel Administrativo -->
-    <section id="admin" class="fade-in">
-        <div class="admin-panel" id="adminPanel">
-            <div class="admin-section">
-                <h3 class="admin-title"><i class="fas fa-chart-bar"></i> Estatísticas do Site</h3>
-                <div class="stats-container">
-                    <div class="stat-card">
-                        <div class="stat-value" id="visitCount">0</div>
-                        <div class="stat-label">Total de Visitas</div>
+  
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Corrente Alternada vs Corrente Contínua</h1>
+                <p class="hero-subtitle">Explore as diferenças fundamentais entre CA e CC, suas aplicações no mundo real e a história por trás da "Guerra das Correntes".</p>
+                <a href="#comparison" class="cta-button">
+                    <span>Explorar Agora</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="hero-visual">
+                <div class="wave-container">
+                    <div class="wave dc-wave">
+                        <div class="wave-line"></div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="uniqueVisitors">0</div>
-                        <div class="stat-label">Visitantes Únicos</div>
+                    <div class="wave ac-wave">
+                        <div class="ac-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Comparison Section -->
+        <section id="comparison" class="container">
+            <h2 class="section-title">Comparação Detalhada</h2>
+            <div class="comparison">
+                <div class="comparison-card dc-card">
+                    <div class="card-header">
+                        <div class="card-icon dc-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <h3 class="card-title">Corrente Contínua (CC)</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>A corrente contínua mantém sempre o mesmo sentido de fluxo de elétrons, com tensão constante ao longo do tempo.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Fluxo unidirecional de elétrons</li>
+                            <li><i class="fas fa-check"></i> Tensão constante</li>
+                            <li><i class="fas fa-check"></i> Produzida por baterias, pilhas e células solares</li>
+                            <li><i class="fas fa-check"></i> Ideal para eletrônicos e sistemas de baixa tensão</li>
+                            <li><i class="fas fa-check"></i> Menor perda em curtas distâncias</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="comparison-card ac-card">
+                    <div class="card-header">
+                        <div class="card-icon ac-icon">
+                            <i class="fas fa-wave-square"></i>
+                        </div>
+                        <h3 class="card-title">Corrente Alternada (CA)</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>A corrente alternada muda periodicamente de direção, seguindo um padrão senoidal, com tensão variável.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Fluxo bidirecional de elétrons</li>
+                            <li><i class="fas fa-check"></i> Tensão varia sinusoidalmente</li>
+                            <li><i class="fas fa-check"></i> Fácil transformação de tensão</li>
+                            <li><i class="fas fa-check"></i> Usada na distribuição de energia elétrica</li>
+                            <li><i class="fas fa-check"></i> Menor perda em longas distâncias</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Induction Section -->
+        <section id="induction" class="container">
+            <h2 class="section-title">Indução Eletromagnética</h2>
+            
+            <div class="content-section">
+                <div class="content-grid">
+                    <div class="content-text">
+                        <h3 class="content-title">O que é Corrente Alternada?</h3>
+                        <p>A corrente alternada (CA) é produzida por meio de geradores elétricos que são dispositivos que convertem energia mecânica em energia elétrica por meio de um processo chamado indução eletromagnética.</p>
+                        
+                        <div class="highlight">
+                            <p>A indução eletromagnética diz respeito à geração de energia elétrica utilizando o campo magnético de imãs para induzir uma corrente elétrica em um fio condutor.</p>
+                        </div>
+                        
+                        <p>Na indução eletromagnética, o campo magnético de um ímã faz com que os elétrons no fio condutor se movam gerando uma corrente elétrica.</p>
+                    </div>
+                    <div class="content-image">
+                        <img src="https://cdn.shopify.com/s/files/1/0513/5692/6151/files/gif-gerador-energia-eletrica-loja-da-ciencia_480x480.gif?v=1696202543" alt="Geração de energia por indução" class="content-img">
                     </div>
                 </div>
             </div>
             
-            <div class="admin-section">
-                <h3 class="admin-title"><i class="fas fa-link"></i> Links Rápidos</h3>
-                <p>Links importantes para acesso rápido:</p>
-                <div class="links-container">
-                    <a href="https://www.roblox.com/pt/download/client?os=win" target="_blank" class="link-btn" id="linkBtn1">
-                        <i class="fab fa-roblox"></i>
-                        <span>Roblox Download</span>
-                    </a>
-                    <a href="https://darkmodde.xyz/CMSP-Hacks/" target="_blank" class="link-btn" id="linkBtn2">
-                        <i class="fas fa-code"></i>
-                        <span>CMSP Hacks</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#sobre-mim" class="nav-link active">Sobre Mim</a>
-            <a href="#sobre" class="nav-link">Sobre o Site</a>
-            <a href="#interesses" class="nav-link">Interesses</a>
-            <a href="#contato" class="nav-link">Contato</a>
-        </div>
-    </nav>
-
-    <!-- Sobre o Site -->
-    <section id="sobre" class="fade-in">
-        <h2 class="section-title">Sobre este site</h2>
-        <p>Este é um espaço pessoal criado para compartilhar um pouco mais sobre mim — tanto para quem já me conhece quanto para quem está me conhecendo agora.</p>
-        <p>Aqui você vai descobrir minhas <span class="highlight">cores favoritas</span>, as <span class="highlight">comidas</span> que mais gosto, os <span class="highlight">carros</span> que admiro, meus <span class="highlight">hobbies</span> e muito mais!</p>
-        <p>Sinta-se à vontade para explorar e conhecer um pouco melhor quem eu sou e o que me inspira.</p>
-    </section>
-
-    <!-- Sobre Mim -->
-    <section id="sobre-mim" class="fade-in">
-        <h2 class="section-title">Sobre Mim</h2>
-        <p>Olá, sou programador e gosto de programar exploits/hacks/sites.</p>
-        <p>E atualmente estou focado em aprender biologia e espanhol, pois quero fazer faculdade de biologia no futuro.</p>
-        <p>E também raramente mexo com coisas "fora da lei", como clonar cartões, Puxar Dados e tals</p>
-        <p>E abaixo você verá Muitas mais coisas sobre min</p>
-    </section>
-
-    <!-- Interesses -->
-    <section id="interesses" class="fade-in">
-        <h2 class="section-title">Meus interesses</h2>
-        <div class="interests-grid">
-            <div class="interest-card">
-                <div class="interest-icon">
-                    <i class="fas fa-palette"></i>
-                </div>
-                <h3 class="interest-title">Cores favoritas</h3>
-                <p>Preto, Azul escuro e Roxo - cores que representam minha personalidade.</p>
-            </div>
-            
-            <div class="interest-card">
-                <div class="interest-icon">
-                    <i class="fas fa-utensils"></i>
-                </div>
-                <h3 class="interest-title">Comidas preferidas</h3>
-                <p>Pizza, Strogonoff e Doces. Sempre aberto a novas experiências gastronômicas.</p>
-            </div>
-            
-            <div class="interest-card">
-                <div class="interest-icon">
-                    <i class="fas fa-car"></i>
-                </div>
-                <h3 class="interest-title">Carros favoritos</h3>
-                <p>BMW X6 e M4, Porsche GT3 RS, Mercedes Benz e Jetta GLI.</p>
-            </div>
-            
-            <div class="interest-card">
-                <div class="interest-icon">
-                    <i class="fas fa-gamepad"></i>
-                </div>
-                <h3 class="interest-title">Hobbies</h3>
-                <p>Programar, Jogar, Conversar, Editar Fotos, Assistir e treinar boxe.</p>
-            </div>
-            
-            <div class="interest-card">
-                <div class="interest-icon">
-                    <i class="fas fa-music"></i>
-                </div>
-                <h3 class="interest-title">Música</h3>
-                <p>Rap, Pagode e Forró. Gosto de variar os estilos conforme o momento.</p>
-            </div>
-            
-            <div class="interest-card">
-                <div class="interest-icon">
-                    <i class="fas fa-futbol"></i>
-                </div>
-                <h3 class="interest-title">Esportes</h3>
-                <p>Futebol, Handball, Vôlei, Tênis e Boxe. Atividade física é essencial.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contato -->
-    <section id="contato" class="fade-in">
-        <h2 class="section-title">Entre em contato</h2>
-        <p>Se quiser conversar ou saber mais sobre mim, fique à vontade para entrar em contato!</p>
-        
-        <div class="contact-info">
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fab fa-discord"></i>
-                </div>
-                <div class="contact-details">
-                    <h3>Discord</h3>
-                    <p>1173741705271443498</p>
+            <div class="content-section">
+                <div class="content-grid">
+                    <div class="content-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Dynamo.pul.gleich.wiki.v.1.00.gif" alt="Funcionamento de um dínamo" class="content-img">
+                    </div>
+                    <div class="content-text">
+                        <h3 class="content-title">Como Funciona a Indução Eletromagnética?</h3>
+                        <p>Para que uma corrente elétrica seja gerada por indução eletromagnética, é necessário que o campo magnético próximo a um fio condutor varie.</p>
+                        
+                        <p>Uma forma de causar essa variação é girar uma bobina de material condutor, como o cobre, perto de ímãs. A mudança no campo magnético gera uma força sobre os elétrons livres no fio, fazendo com que eles se movam, criando uma corrente elétrica.</p>
+                        
+                        <div class="highlight">
+                            <p>A indução eletromagnética ocorre quando um campo magnético variável faz com que elétrons se movam dentro de um fio, gerando uma corrente elétrica. Quando o campo magnético muda, ora os elétrons são atraídos em uma direção, ora na direção oposta.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fab fa-github"></i>
-                </div>
-                <div class="contact-details">
-                    <h3>GitHub</h3>
-                    <p>bielzindxfff</p>
+            <div class="content-section">
+                <div class="content-text">
+                    <h3 class="content-title">Uso dos Geradores Elétricos</h3>
+                    <p>Como vimos, os geradores elétricos funcionam com base no princípio da indução eletromagnética para converter energia mecânica em energia elétrica, gerando uma corrente alternada.</p>
+                    
+                    <p>Esses geradores são utilizados em diferentes situações, como:</p>
+                    
+                    <div class="content-grid" style="margin-top: 2rem;">
+                        <div>
+                            <h4><i class="fas fa-industry" style="color: var(--success); margin-right: 10px;"></i>Usinas Elétricas</h4>
+                            <p>A energia mecânica (de água, vento ou vapor) faz a turbina girar, o que move uma bobina dentro de um campo magnético, gerando corrente alternada.</p>
+                        </div>
+                        <div>
+                            <h4><i class="fas fa-car" style="color: var(--success); margin-right: 10px;"></i>Alternador de Carro</h4>
+                            <p>Um tipo de gerador elétrico que converte a energia mecânica do motor em eletricidade, garantindo que a bateria seja carregada e os sistemas elétricos do veículo funcionem corretamente.</p>
+                        </div>
+                        <div>
+                            <h4><i class="fas fa-plug" style="color: var(--success); margin-right: 10px;"></i>Geradores Portáteis</h4>
+                            <p>Em geradores menores, usados em locais sem acesso à rede elétrica, a indução eletromagnética também é utilizada para gerar energia elétrica que pode ser usada em pequenos dispositivos.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="social-links">
-            <a href="#" class="social-link">
-                <i class="fab fa-discord"></i>
-            </a>
-            <a href="https://github.com/bielzindxfff" class="social-link">
-                <i class="fab fa-github"></i>
-            </a>
-        </div>
-        <p class="copyright">&copy; 2023 Gabriel. Todos os direitos reservados.</p>
-    </footer>
+        <!-- Applications Section -->
+        <section id="applications" class="container">
+            <h2 class="section-title">Aplicações Práticas</h2>
+            <div class="applications">
+                <div class="app-card app-1">
+                    <div class="app-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <h3 class="app-title">Dispositivos Eletrônicos</h3>
+                    <p>Celulares, laptops e equipamentos eletrônicos funcionam com CC fornecida por baterias ou conversores.</p>
+                </div>
+                
+                <div class="app-card app-2">
+                    <div class="app-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="app-title">Energia Residencial</h3>
+                    <p>A energia que chega nas tomadas é CA, geralmente a 127V ou 220V com frequência de 60Hz.</p>
+                </div>
+                
+                <div class="app-card app-3">
+                    <div class="app-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 class="app-title">Sistemas Industriais</h3>
+                    <p>Máquinas industriais pesadas geralmente utilizam CA de alta tensão para maior eficiência.</p>
+                </div>
+                
+                <div class="app-card app-4">
+                    <div class="app-icon">
+                        <i class="fas fa-car-battery"></i>
+                    </div>
+                    <h3 class="app-title">Veículos Elétricos</h3>
+                    <p>Carros elétricos usam baterias de CC, mas motores podem ser tanto CA quanto CC.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiment Section -->
+        <section id="experiment" class="container">
+            <h2 class="section-title">Experimento Virtual</h2>
+            <div class="experiment">
+                <p>Clique nos botões abaixo para ver como uma lâmpada responde a diferentes tipos de corrente:</p>
+                <div class="experiment-container">
+                    <div class="circuit">
+                        <div class="bulb" id="bulb">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                    </div>
+                    <div class="controls">
+                        <button class="control-btn dc-btn" id="cc-btn">
+                            <i class="fas fa-play"></i>
+                            <span>Ligar com CC</span>
+                        </button>
+                        <button class="control-btn ac-btn" id="ca-btn">
+                            <i class="fas fa-play"></i>
+                            <span>Ligar com CA</span>
+                        </button>
+                        <button class="control-btn off-btn" id="off-btn">
+                            <i class="fas fa-stop"></i>
+                            <span>Desligar</span>
+                        </button>
+                    </div>
+                    <p id="experiment-info">A lâmpada está desligada. Clique em um dos botões para iniciar o experimento.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="container">
+            <h2 class="section-title">A Guerra das Correntes</h2>
+            <div class="content-section">
+                <div class="content-text">
+                    <p>No final do século XIX, ocorreu a famosa "Guerra das Correntes" entre Thomas Edison (defensor da CC) e Nikola Tesla (defensor da CA).</p>
+                    
+                    <p>Edison promovia a corrente contínua como mais segura, enquanto Tesla defendia a corrente alternada como mais eficiente para transmissão a longas distâncias.</p>
+                    
+                    <div class="highlight">
+                        <p>A corrente alternada prevaleceu para distribuição de energia devido à sua capacidade de ser facilmente transformada para altas tensões, reduzindo drasticamente as perdas na transmissão.</p>
+                    </div>
+                    
+                    <p>Hoje, ambas as correntes são essenciais: a CA para transmissão e a CC para a maioria dos dispositivos eletrônicos modernos.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <script>
-        // Elementos do DOM
-        const settingsBtn = document.getElementById('settingsBtn');
-        const passwordModal = document.getElementById('passwordModal');
-        const closeModal = document.getElementById('closeModal');
-        const cancelBtn = document.getElementById('cancelBtn');
-        const submitPassword = document.getElementById('submitPassword');
-        const passwordInput = document.getElementById('password');
-        const adminPanel = document.getElementById('adminPanel');
-        const visitCountElement = document.getElementById('visitCount');
-        const uniqueVisitorsElement = document.getElementById('uniqueVisitors');
-        const linkBtn1 = document.getElementById('linkBtn1');
-        const linkBtn2 = document.getElementById('linkBtn2');
-
-        // Senha correta
-        const CORRECT_PASSWORD = "281305";
-
-        // Contador de visitas (usando localStorage para persistência)
-        let visitCount = localStorage.getItem('visitCount') ? parseInt(localStorage.getItem('visitCount')) : 0;
-        let uniqueVisitors = localStorage.getItem('uniqueVisitors') ? parseInt(localStorage.getItem('uniqueVisitors')) : 0;
-
-        // Verificar se é a primeira visita do usuário
-        if (!localStorage.getItem('hasVisited')) {
-            uniqueVisitors++;
-            localStorage.setItem('uniqueVisitors', uniqueVisitors);
-            localStorage.setItem('hasVisited', 'true');
+        // Controle de Zoom
+        let zoomLevel = 1;
+        const minZoom = 0.8;
+        const maxZoom = 2;
+        const zoomStep = 0.1;
+        
+        const gearBtn = document.getElementById('gear-btn');
+        const zoomButtons = document.getElementById('zoom-buttons');
+        const zoomInBtn = document.getElementById('zoom-in');
+        const zoomOutBtn = document.getElementById('zoom-out');
+        const resetZoomBtn = document.getElementById('reset-zoom');
+        const zoomLevelDisplay = document.getElementById('zoom-level');
+        
+        // Alternar visibilidade dos controles de zoom
+        gearBtn.addEventListener('click', function() {
+            zoomButtons.style.display = zoomButtons.style.display === 'none' ? 'flex' : 'none';
+        });
+        
+        // Aumentar zoom
+        zoomInBtn.addEventListener('click', function() {
+            if (zoomLevel < maxZoom) {
+                zoomLevel += zoomStep;
+                updateZoom();
+            }
+        });
+        
+        // Diminuir zoom
+        zoomOutBtn.addEventListener('click', function() {
+            if (zoomLevel > minZoom) {
+                zoomLevel -= zoomStep;
+                updateZoom();
+            }
+        });
+        
+        // Resetar zoom
+        resetZoomBtn.addEventListener('click', function() {
+            zoomLevel = 1;
+            updateZoom();
+        });
+        
+        // Atualizar zoom na página
+        function updateZoom() {
+            document.documentElement.style.setProperty('--zoom-level', zoomLevel);
+            zoomLevelDisplay.textContent = Math.round(zoomLevel * 100) + '%';
+            
+            // Salvar preferência no localStorage
+            localStorage.setItem('zoomLevel', zoomLevel);
         }
-
-        // Incrementar contador de visitas
-        visitCount++;
-        localStorage.setItem('visitCount', visitCount);
-
-        // Atualizar elementos com os valores
-        visitCountElement.textContent = visitCount;
-        uniqueVisitorsElement.textContent = uniqueVisitors;
-
-        // Abrir modal ao clicar na engrenagem
-        settingsBtn.addEventListener('click', () => {
-            passwordModal.style.display = 'flex';
-            passwordInput.focus();
+        
+        // Carregar zoom salvo
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedZoom = localStorage.getItem('zoomLevel');
+            if (savedZoom) {
+                zoomLevel = parseFloat(savedZoom);
+                updateZoom();
+            }
         });
 
-        // Fechar modal
-        function closePasswordModal() {
-            passwordModal.style.display = 'none';
-            passwordInput.value = '';
-        }
-
-        closeModal.addEventListener('click', closePasswordModal);
-        cancelBtn.addEventListener('click', closePasswordModal);
-
-        // Verificar senha
-        submitPassword.addEventListener('click', () => {
-            if (passwordInput.value === CORRECT_PASSWORD) {
-                adminPanel.style.display = 'block';
-                closePasswordModal();
+        // Simulação do experimento
+        document.getElementById('cc-btn').addEventListener('click', function() {
+            const bulb = document.getElementById('bulb');
+            bulb.classList.add('on');
+            document.getElementById('experiment-info').textContent = 
+                "Com corrente contínua, a lâmpada mantém um brilho constante, pois recebe energia de forma contínua e unidirecional.";
+        });
+        
+        document.getElementById('ca-btn').addEventListener('click', function() {
+            const bulb = document.getElementById('bulb');
+            bulb.classList.add('on');
+            
+            // Simular o efeito de piscar da CA (embora na prática não seja visível)
+            let blinkCount = 0;
+            const blinkInterval = setInterval(() => {
+                bulb.classList.toggle('on');
+                blinkCount++;
                 
-                // Scroll suave para a seção administrativa
-                document.querySelector('#admin').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            } else {
-                alert('Senha incorreta! Tente novamente.');
-                passwordInput.value = '';
-                passwordInput.focus();
-            }
+                if (blinkCount >= 6) {
+                    clearInterval(blinkInterval);
+                    bulb.classList.add('on');
+                }
+            }, 200);
+            
+            document.getElementById('experiment-info').textContent = 
+                "Com corrente alternada, a lâmpada também acende, mas a corrente muda de direção periodicamente. Na prática, não percebemos esse efeito devido à alta frequência (60Hz no Brasil).";
+        });
+        
+        document.getElementById('off-btn').addEventListener('click', function() {
+            document.getElementById('bulb').classList.remove('on');
+            document.getElementById('experiment-info').textContent = 
+                "A lâmpada está desligada. Clique em um dos botões para iniciar o experimento.";
         });
 
-        // Permitir enviar com Enter
-        passwordInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                submitPassword.click();
-            }
-        });
-
-        // Navegação suave
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
+        // Smooth scrolling para links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                // Remove active class de todos os links
-                document.querySelectorAll('.nav-link').forEach(item => {
-                    item.classList.remove('active');
-                });
-                
-                // Adiciona active class ao link clicado
-                this.classList.add('active');
-                
-                // Scroll suave para a seção
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                window.scrollTo({
-                    top: targetSection.offsetTop - 80,
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
         });
-        
-        // Atualizar link ativo ao scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (scrollY >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-        
-        // Animação de entrada
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Efeito de brilho sutil no título
-        const title = document.querySelector('h1');
-        setInterval(() => {
-            title.classList.toggle('glow');
-        }, 3000);
     </script>
 </body>
 </html>
