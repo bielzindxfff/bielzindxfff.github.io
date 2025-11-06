@@ -3,70 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corrente Alternada e Corrente Contínua</title>
+    <title>Guaianases - História e Legado</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+        
         :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --accent: #f72585;
-            --success: #4cc9f0;
-            --dark: #1a1a2e;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-            --zoom-level: 1;
+            --paper: #E8DFCA;
+            --paper-dark: #D6C9B0;
+            --paper-border: #B8A98F;
+            --ink: #2A2118;
+            --ink-secondary: #4A3C2A;
+            --accent: #7A5C3C;
+            --accent-light: #8B6B46;
+            --stain: rgba(122, 92, 60, 0.15);
+            --shadow: rgba(0, 0, 0, 0.2);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
-            background-color: #0f0f1b;
-            color: #e9ecef;
-            line-height: 1.6;
+            font-family: 'Crimson Text', serif;
+            background-color: var(--paper);
+            color: var(--ink);
             overflow-x: hidden;
-            font-size: calc(20px * var(--zoom-level));
-            transform: scale(var(--zoom-level));
-            transform-origin: top center;
-            width: 100%;
-            min-height: 100vh;
+            line-height: 1.7;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(122, 92, 60, 0.08) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(122, 92, 60, 0.08) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(122, 92, 60, 0.05) 0%, transparent 30%);
+            position: relative;
         }
         
-        /* Header Moderno */
-        header {
-            background: linear-gradient(135deg, var(--dark), #16213e);
-            padding: 1.5rem 0;
+        body::before {
+            content: "";
             position: fixed;
-            width: 100%;
             top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%237a5c3c' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: -1;
+        }
+        
+        /* Header com textura de papel */
+        header {
+            background-color: var(--paper);
+            background-image: 
+                linear-gradient(rgba(232, 223, 202, 0.9), rgba(232, 223, 202, 0.9)),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%237a5c3c' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+            color: var(--ink);
+            padding: 4rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--paper-border);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--accent), transparent);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 2rem auto 2.5rem;
+            color: var(--ink-secondary);
+            font-weight: 400;
+            font-style: italic;
+            position: relative;
+            padding: 1.5rem;
+        }
+        
+        .subtitle::before, .subtitle::after {
+            content: """;
+            font-size: 3rem;
+            color: var(--accent);
+            position: absolute;
+            opacity: 0.4;
+        }
+        
+        .subtitle::before {
+            top: 0;
+            left: 0;
+        }
+        
+        .subtitle::after {
+            bottom: -1rem;
+            right: 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--accent);
+            color: var(--paper);
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px var(--shadow);
+            border: none;
+            cursor: pointer;
+            font-family: 'Crimson Text', serif;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px var(--shadow);
+            background-color: var(--accent-light);
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Navegação com estilo antigo */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: var(--paper);
+            background-image: 
+                linear-gradient(rgba(232, 223, 202, 0.95), rgba(232, 223, 202, 0.95)),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%237a5c3c' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            padding: 1.2rem 0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--paper-border);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
         }
         
         .nav-container {
-            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 2rem;
         }
         
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
             font-weight: 700;
-            font-size: calc(2rem * var(--zoom-level));
+            color: var(--accent);
+            position: relative;
         }
         
-        .logo i {
-            color: var(--success);
+        .logo::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--accent);
+        }
+        
+        .logo span {
+            color: var(--ink);
         }
         
         .nav-links {
@@ -75,16 +224,17 @@
         }
         
         .nav-links a {
-            color: #adb5bd;
+            color: var(--ink);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
             position: relative;
-            font-size: calc(1.2rem * var(--zoom-level));
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1rem;
         }
         
         .nav-links a:hover {
-            color: white;
+            color: var(--accent);
         }
         
         .nav-links a::after {
@@ -93,974 +243,858 @@
             bottom: -5px;
             left: 0;
             width: 0;
-            height: 2px;
-            background: var(--success);
-            transition: width 0.3s;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
         }
         
         .nav-links a:hover::after {
             width: 100%;
         }
         
-        /* Zoom Controls */
-        .zoom-controls {
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            z-index: 1001;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .zoom-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s;
-        }
-        
-        .zoom-btn:hover {
-            background: var(--secondary);
-            transform: scale(1.1);
-        }
-        
-        .gear-btn {
-            background: var(--accent);
-        }
-        
-        .zoom-level-display {
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            text-align: center;
-            margin-top: 5px;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(67, 97, 238, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(247, 37, 133, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(76, 201, 240, 0.1) 0%, transparent 50%);
-        }
-        
-        .hero-content {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero-text {
-            flex: 1;
-        }
-        
-        .hero-visual {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-        
-        .hero-title {
-            font-size: calc(4.5rem * var(--zoom-level));
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, #fff, var(--success));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .hero-subtitle {
-            font-size: calc(1.8rem * var(--zoom-level));
-            color: #adb5bd;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-        
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: white;
-            padding: calc(16px * var(--zoom-level)) calc(35px * var(--zoom-level));
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
-            font-size: calc(1.3rem * var(--zoom-level));
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
-        }
-        
-        .wave-container {
-            width: 400px;
-            height: 400px;
-            position: relative;
-        }
-        
-        .wave {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .dc-wave {
-            background: radial-gradient(circle, rgba(247, 37, 133, 0.2) 0%, transparent 70%);
-            border: 2px solid rgba(247, 37, 133, 0.5);
-        }
-        
-        .ac-wave {
-            background: radial-gradient(circle, rgba(67, 97, 238, 0.2) 0%, transparent 70%);
-            border: 2px solid rgba(67, 97, 238, 0.5);
-            animation: pulse 4s infinite alternate;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.7; }
-            100% { transform: scale(1.05); opacity: 1; }
-        }
-        
-        .wave-line {
-            position: absolute;
-            width: 80%;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-        
-        .ac-line {
-            background: var(--primary);
-            height: 80px;
-            width: 4px;
-            border-radius: 2px;
-            animation: wave 2s infinite ease-in-out;
-            transform-origin: center;
-        }
-        
-        @keyframes wave {
-            0%, 100% { transform: scaleY(0.5); }
-            50% { transform: scaleY(1.5); }
-        }
-        
-        /* Main Content */
+        /* Container principal */
         .container {
-            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 5rem 0;
+            padding: 0 2rem;
+        }
+        
+        /* Seções com estilo de documento antigo */
+        .section {
+            margin: 6rem 0;
+            position: relative;
         }
         
         .section-title {
-            font-size: calc(3.5rem * var(--zoom-level));
-            font-weight: 700;
-            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
             margin-bottom: 3rem;
             position: relative;
+            display: inline-block;
+            font-weight: 700;
+            color: var(--accent);
         }
         
         .section-title::after {
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent), transparent);
             border-radius: 2px;
         }
         
-        /* Comparison Section */
-        .comparison {
+        /* Cards com aparência de páginas antigas */
+        .cards-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin: 3rem 0;
+            margin-top: 2rem;
         }
         
-        .comparison-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
+        .card {
+            background-color: var(--paper);
+            background-image: 
+                linear-gradient(rgba(232, 223, 202, 0.9), rgba(232, 223, 202, 0.9)),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%237a5c3c' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+            border-radius: 2px;
             padding: 2.5rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 8px var(--shadow),
+                inset 0 0 0 1px var(--paper-border);
+            border: 1px solid var(--paper-border);
             position: relative;
             overflow: hidden;
         }
         
-        .comparison-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .comparison-card::before {
+        .card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 4px;
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
         }
         
-        .dc-card::before {
-            background: linear-gradient(90deg, var(--accent), #ff6b9d);
-        }
-        
-        .ac-card::before {
-            background: linear-gradient(90deg, var(--primary), #5e72e4);
-        }
-        
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 8px 16px var(--shadow),
+                inset 0 0 0 1px var(--paper-border);
         }
         
         .card-icon {
-            width: calc(70px * var(--zoom-level));
-            height: calc(70px * var(--zoom-level));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: calc(2rem * var(--zoom-level));
-        }
-        
-        .dc-icon {
-            background: rgba(247, 37, 133, 0.2);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
             color: var(--accent);
         }
         
-        .ac-icon {
-            background: rgba(67, 97, 238, 0.2);
-            color: var(--primary);
-        }
-        
-        .card-title {
-            font-size: calc(2.2rem * var(--zoom-level));
-            font-weight: 600;
-        }
-        
-        .card-content {
-            font-size: calc(1.3rem * var(--zoom-level));
-        }
-        
-        .card-content ul {
-            list-style: none;
-            margin-top: 1rem;
-        }
-        
-        .card-content li {
+        .card h3 {
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: calc(1.2rem * var(--zoom-level));
+            color: var(--ink);
+            font-family: 'Playfair Display', serif;
         }
         
-        .card-content li i {
-            color: var(--success);
-            margin-top: 3px;
-            font-size: calc(1.2rem * var(--zoom-level));
+        .card p {
+            color: var(--ink-secondary);
+            font-size: 1.1rem;
         }
         
-        /* Content Sections */
-        .content-section {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 3rem;
-            margin: 3rem 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .content-text {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            font-size: calc(1.3rem * var(--zoom-level));
-        }
-        
-        .content-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .content-img {
-            max-width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .content-title {
-            font-size: calc(2.5rem * var(--zoom-level));
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--success);
-        }
-        
-        .highlight {
-            background: rgba(76, 201, 240, 0.1);
-            border-left: 4px solid var(--success);
-            padding: 1.5rem;
-            border-radius: 0 8px 8px 0;
-            margin: 1.5rem 0;
-            font-size: calc(1.3rem * var(--zoom-level));
-        }
-        
-        /* Applications Section */
-        .applications {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        
-        .app-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .app-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .app-icon {
-            width: calc(90px * var(--zoom-level));
-            height: calc(90px * var(--zoom-level));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: calc(2.5rem * var(--zoom-level));
-        }
-        
-        .app-1 .app-icon {
-            background: rgba(247, 37, 133, 0.2);
-            color: var(--accent);
-        }
-        
-        .app-2 .app-icon {
-            background: rgba(67, 97, 238, 0.2);
-            color: var(--primary);
-        }
-        
-        .app-3 .app-icon {
-            background: rgba(76, 201, 240, 0.2);
-            color: var(--success);
-        }
-        
-        .app-4 .app-icon {
-            background: rgba(58, 12, 163, 0.2);
-            color: var(--secondary);
-        }
-        
-        .app-title {
-            font-size: calc(1.8rem * var(--zoom-level));
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .app-card p {
-            font-size: calc(1.2rem * var(--zoom-level));
-        }
-        
-        /* Experiment Section */
-        .experiment {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 3rem;
-            margin: 4rem 0;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .experiment-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .circuit {
-            width: 100%;
-            max-width: 600px;
-            height: 200px;
-            background: rgba(26, 26, 46, 0.7);
-            border-radius: 12px;
+        /* Timeline com estilo de linha do tempo antiga */
+        .timeline {
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            max-width: 900px;
+            margin: 4rem auto;
         }
         
-        .bulb {
-            width: calc(100px * var(--zoom-level));
-            height: calc(100px * var(--zoom-level));
-            background: #2d3748;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: calc(3rem * var(--zoom-level));
-            color: #4a5568;
-            transition: all 0.5s;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--accent-light));
+            transform: translateX(-50%);
         }
         
-        .bulb.on {
-            background: #faf089;
-            color: #d69e2e;
+        .timeline-item {
+            position: relative;
+            margin: 3rem 0;
+            width: 50%;
+            padding: 2rem;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 4rem;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 4rem;
+        }
+        
+        .timeline-content {
+            background-color: var(--paper);
+            background-image: 
+                linear-gradient(rgba(232, 223, 202, 0.9), rgba(232, 223, 202, 0.9)),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%237a5c3c' fill-opacity='0.08' fill-rule='evenodd'/%3E%3C/svg%3E");
+            border-radius: 2px;
+            padding: 2rem;
             box-shadow: 
-                0 0 30px #faf089,
-                inset 0 0 10px rgba(214, 158, 46, 0.3);
+                0 4px 8px var(--shadow),
+                inset 0 0 0 1px var(--paper-border);
+            border: 1px solid var(--paper-border);
+            transition: all 0.3s ease;
+            position: relative;
         }
         
-        .controls {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
+        .timeline-content::before {
+            content: "";
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--paper);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            z-index: 1;
         }
         
-        .control-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: white;
-            padding: calc(16px * var(--zoom-level)) calc(28px * var(--zoom-level));
-            border-radius: 50px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: calc(1.2rem * var(--zoom-level));
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -40px;
         }
         
-        .control-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -40px;
         }
         
-        .dc-btn {
-            border-left: 3px solid var(--accent);
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 8px 16px var(--shadow),
+                inset 0 0 0 1px var(--paper-border);
         }
         
-        .ac-btn {
-            border-left: 3px solid var(--primary);
+        .timeline-year {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
         }
         
-        .off-btn {
-            border-left: 3px solid var(--gray);
+        /* Destaques */
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+            font-style: italic;
         }
         
-        /* Footer */
+        /* Footer com estilo antigo */
         footer {
-            background: linear-gradient(135deg, #1a1a2e, #0f0f1b);
-            padding: 3rem 0;
-            margin-top: 4rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--paper-dark);
+            color: var(--ink);
+            padding: 3rem 0 1.5rem;
+            margin-top: 6rem;
+            border-top: 1px solid var(--paper-border);
+            position: relative;
         }
         
         .footer-content {
-            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
+            padding: 0 2rem;
             text-align: center;
         }
         
-        .footer-logo {
+        .copyright {
+            color: var(--ink-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .source {
+            color: var(--ink-secondary);
+            font-size: 0.8rem;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+        
+        .source a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .source a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Animações suaves */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Efeito de digitação */
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid var(--accent);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent); }
+        }
+        
+        /* Animação de flutuação suave */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        /* Animação de pulsação */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        /* Animação de entrada lateral */
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 1s ease-out;
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 1s ease-out;
+        }
+        
+        /* Animação de zoom */
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .zoom-in {
+            animation: zoomIn 0.8s ease-out;
+        }
+        
+        /* Mapa interativo com estilo antigo */
+        .map-container {
+            height: 400px;
+            background: var(--paper);
+            border-radius: 2px;
+            margin-top: 2rem;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--paper-border);
+            box-shadow: 
+                inset 0 0 0 1px var(--paper-border),
+                0 4px 8px var(--shadow);
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(232, 223, 202, 0.8), rgba(232, 223, 202, 0.95));
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: calc(1.8rem * var(--zoom-level));
-            font-weight: 700;
-        }
-        
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
             justify-content: center;
+            color: var(--ink);
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 2rem;
+            font-family: 'Playfair Display', serif;
         }
         
-        .footer-links a {
-            color: #adb5bd;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: calc(1.2rem * var(--zoom-level));
+        .map-overlay h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
         }
         
-        .footer-links a:hover {
-            color: white;
+        /* Manchas de idade no papel */
+        .stain {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--stain);
+            filter: blur(20px);
+            z-index: -1;
         }
         
-        .copyright {
-            color: #6c757d;
-            font-size: calc(1.1rem * var(--zoom-level));
+        .stain-1 {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 5%;
         }
         
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-            }
-            
-            .comparison, .content-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-title {
-                font-size: calc(3.5rem * var(--zoom-level));
-            }
-            
-            .section-title {
-                font-size: calc(2.8rem * var(--zoom-level));
-            }
+        .stain-2 {
+            width: 150px;
+            height: 150px;
+            bottom: 15%;
+            right: 8%;
         }
         
+        /* Botão FIM */
+        .end-section {
+            text-align: center;
+            margin: 6rem 0;
+            padding: 4rem 0;
+            border-top: 1px solid var(--paper-border);
+            border-bottom: 1px solid var(--paper-border);
+        }
+        
+        .end-button {
+            background-color: var(--accent);
+            color: var(--paper);
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.5rem;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px var(--shadow);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .end-button:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px var(--shadow);
+        }
+        
+        .end-message {
+            display: none;
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: var(--paper);
+            border-radius: 2px;
+            box-shadow: 0 4px 8px var(--shadow);
+            border: 1px solid var(--paper-border);
+            font-size: 1.8rem;
+            color: var(--accent);
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Responsividade */
         @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
             .nav-links {
                 display: none;
             }
             
-            .hero-title {
-                font-size: calc(2.8rem * var(--zoom-level));
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 60px);
+                left: 60px !important;
+                padding: 0;
+                margin-bottom: 2.5rem;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-right: 0;
+                padding-left: 0;
+            }
+            
+            .timeline-item::after {
+                left: -40px !important;
             }
             
             .section-title {
-                font-size: calc(2.5rem * var(--zoom-level));
+                font-size: 2.2rem;
             }
             
-            .wave-container {
-                width: 300px;
-                height: 300px;
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
             }
             
-            body {
-                font-size: calc(18px * var(--zoom-level));
-            }
-            
-            .zoom-controls {
-                top: 80px;
-                right: 10px;
-            }
-            
-            .zoom-btn {
-                width: 40px;
-                height: 40px;
+            .end-button {
                 font-size: 1.2rem;
+                padding: 1rem 2rem;
+            }
+            
+            .end-message {
+                font-size: 1.4rem;
+            }
+        }
+        
+        /* Botão modo mobile */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--ink);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--paper);
+                padding: 1.5rem;
+                box-shadow: 0 10px 20px var(--shadow);
+                border-top: 1px solid var(--paper-border);
             }
         }
     </style>
 </head>
 <body>
-    <!-- Zoom Controls -->
-    <div class="zoom-controls">
-        <button class="zoom-btn gear-btn" id="gear-btn">
-            <i class="fas fa-cog"></i>
-        </button>
-        <div class="zoom-buttons" id="zoom-buttons" style="display: none;">
-            <button class="zoom-btn" id="zoom-in">
-                <i class="fas fa-search-plus"></i>
+    <!-- Manchas de idade no papel -->
+    <div class="stain stain-1"></div>
+    <div class="stain stain-2"></div>
+    
+    <!-- Navegação -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Guaian<span>ases</span></div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
             </button>
-            <button class="zoom-btn" id="zoom-out">
-                <i class="fas fa-search-minus"></i>
-            </button>
-            <button class="zoom-btn" id="reset-zoom">
-                <i class="fas fa-sync-alt"></i>
-            </button>
-            <div class="zoom-level-display" id="zoom-level">100%</div>
-        </div>
-    </div>
-  
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">Corrente Alternada vs Corrente Contínua</h1>
-                <p class="hero-subtitle">Explore as diferenças fundamentais entre CA e CC, suas aplicações no mundo real e a história por trás da "Guerra das Correntes".</p>
-                <a href="#comparison" class="cta-button">
-                    <span>Explorar Agora</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-            <div class="hero-visual">
-                <div class="wave-container">
-                    <div class="wave dc-wave">
-                        <div class="wave-line"></div>
-                    </div>
-                    <div class="wave ac-wave">
-                        <div class="ac-line"></div>
-                    </div>
-                </div>
+            <div class="nav-links">
+                <a href="#sobre">Sobre</a>
+                <a href="#perguntas">Perguntas</a>
+                <a href="#timeline">Linha do Tempo</a>
+                <a href="#legado">Legado</a>
             </div>
         </div>
-    </section>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Comparison Section -->
-        <section id="comparison" class="container">
-            <h2 class="section-title">Comparação Detalhada</h2>
-            <div class="comparison">
-                <div class="comparison-card dc-card">
-                    <div class="card-header">
-                        <div class="card-icon dc-icon">
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                        <h3 class="card-title">Corrente Contínua (CC)</h3>
+    </nav>
+    
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1 class="typewriter">Os Guaianases</h1>
+            <p class="subtitle floating">Descubra a história, cultura e legado do povo indígena que deu nome a um dos bairros mais tradicionais de São Paulo</p>
+            <a href="#sobre" class="cta-button pulse">Explorar História</a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Seção Sobre -->
+        <section id="sobre" class="section">
+            <h2 class="section-title slide-in-left">Sobre os Guaianases</h2>
+            <div class="cards-grid">
+                <div class="card zoom-in">
+                    <div class="card-icon">
+                        <i class="fas fa-map-marked-alt"></i>
                     </div>
-                    <div class="card-content">
-                        <p>A corrente contínua mantém sempre o mesmo sentido de fluxo de elétrons, com tensão constante ao longo do tempo.</p>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Fluxo unidirecional de elétrons</li>
-                            <li><i class="fas fa-check"></i> Tensão constante</li>
-                            <li><i class="fas fa-check"></i> Produzida por baterias, pilhas e células solares</li>
-                            <li><i class="fas fa-check"></i> Ideal para eletrônicos e sistemas de baixa tensão</li>
-                            <li><i class="fas fa-check"></i> Menor perda em curtas distâncias</li>
-                        </ul>
-                    </div>
+                    <h3>Território Original</h3>
+                    <p>O nome Guaianases vem da tribo indígena Guaianás que habitava os campos de Piratininga, atual Zona Leste de São Paulo.</p>
+                    <p>Nome oficializado pela <span class="highlight">Lei nº 252 de 27/12/48</span>.</p>
                 </div>
                 
-                <div class="comparison-card ac-card">
-                    <div class="card-header">
-                        <div class="card-icon ac-icon">
-                            <i class="fas fa-wave-square"></i>
-                        </div>
-                        <h3 class="card-title">Corrente Alternada (CA)</h3>
+                <div class="card zoom-in" style="animation-delay: 0.2s;">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
                     </div>
-                    <div class="card-content">
-                        <p>A corrente alternada muda periodicamente de direção, seguindo um padrão senoidal, com tensão variável.</p>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Fluxo bidirecional de elétrons</li>
-                            <li><i class="fas fa-check"></i> Tensão varia sinusoidalmente</li>
-                            <li><i class="fas fa-check"></i> Fácil transformação de tensão</li>
-                            <li><i class="fas fa-check"></i> Usada na distribuição de energia elétrica</li>
-                            <li><i class="fas fa-check"></i> Menor perda em longas distâncias</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Induction Section -->
-        <section id="induction" class="container">
-            <h2 class="section-title">Indução Eletromagnética</h2>
-            
-            <div class="content-section">
-                <div class="content-grid">
-                    <div class="content-text">
-                        <h3 class="content-title">O que é Corrente Alternada?</h3>
-                        <p>A corrente alternada (CA) é produzida por meio de geradores elétricos que são dispositivos que convertem energia mecânica em energia elétrica por meio de um processo chamado indução eletromagnética.</p>
-                        
-                        <div class="highlight">
-                            <p>A indução eletromagnética diz respeito à geração de energia elétrica utilizando o campo magnético de imãs para induzir uma corrente elétrica em um fio condutor.</p>
-                        </div>
-                        
-                        <p>Na indução eletromagnética, o campo magnético de um ímã faz com que os elétrons no fio condutor se movam gerando uma corrente elétrica.</p>
-                    </div>
-                    <div class="content-image">
-                        <img src="https://cdn.shopify.com/s/files/1/0513/5692/6151/files/gif-gerador-energia-eletrica-loja-da-ciencia_480x480.gif?v=1696202543" alt="Geração de energia por indução" class="content-img">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="content-section">
-                <div class="content-grid">
-                    <div class="content-image">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Dynamo.pul.gleich.wiki.v.1.00.gif" alt="Funcionamento de um dínamo" class="content-img">
-                    </div>
-                    <div class="content-text">
-                        <h3 class="content-title">Como Funciona a Indução Eletromagnética?</h3>
-                        <p>Para que uma corrente elétrica seja gerada por indução eletromagnética, é necessário que o campo magnético próximo a um fio condutor varie.</p>
-                        
-                        <p>Uma forma de causar essa variação é girar uma bobina de material condutor, como o cobre, perto de ímãs. A mudança no campo magnético gera uma força sobre os elétrons livres no fio, fazendo com que eles se movam, criando uma corrente elétrica.</p>
-                        
-                        <div class="highlight">
-                            <p>A indução eletromagnética ocorre quando um campo magnético variável faz com que elétrons se movam dentro de um fio, gerando uma corrente elétrica. Quando o campo magnético muda, ora os elétrons são atraídos em uma direção, ora na direção oposta.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="content-section">
-                <div class="content-text">
-                    <h3 class="content-title">Uso dos Geradores Elétricos</h3>
-                    <p>Como vimos, os geradores elétricos funcionam com base no princípio da indução eletromagnética para converter energia mecânica em energia elétrica, gerando uma corrente alternada.</p>
-                    
-                    <p>Esses geradores são utilizados em diferentes situações, como:</p>
-                    
-                    <div class="content-grid" style="margin-top: 2rem;">
-                        <div>
-                            <h4><i class="fas fa-industry" style="color: var(--success); margin-right: 10px;"></i>Usinas Elétricas</h4>
-                            <p>A energia mecânica (de água, vento ou vapor) faz a turbina girar, o que move uma bobina dentro de um campo magnético, gerando corrente alternada.</p>
-                        </div>
-                        <div>
-                            <h4><i class="fas fa-car" style="color: var(--success); margin-right: 10px;"></i>Alternador de Carro</h4>
-                            <p>Um tipo de gerador elétrico que converte a energia mecânica do motor em eletricidade, garantindo que a bateria seja carregada e os sistemas elétricos do veículo funcionem corretamente.</p>
-                        </div>
-                        <div>
-                            <h4><i class="fas fa-plug" style="color: var(--success); margin-right: 10px;"></i>Geradores Portáteis</h4>
-                            <p>Em geradores menores, usados em locais sem acesso à rede elétrica, a indução eletromagnética também é utilizada para gerar energia elétrica que pode ser usada em pequenos dispositivos.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Applications Section -->
-        <section id="applications" class="container">
-            <h2 class="section-title">Aplicações Práticas</h2>
-            <div class="applications">
-                <div class="app-card app-1">
-                    <div class="app-icon">
-                        <i class="fas fa-battery-full"></i>
-                    </div>
-                    <h3 class="app-title">Dispositivos Eletrônicos</h3>
-                    <p>Celulares, laptops e equipamentos eletrônicos funcionam com CC fornecida por baterias ou conversores.</p>
+                    <h3>Miscigenação Cultural</h3>
+                    <p>Representa a mistura brasileira: indígenas, portugueses, negros, imigrantes europeus e migrantes de outras regiões.</p>
+                    <p>Verdadeiro mosaico cultural que marca São Paulo.</p>
                 </div>
                 
-                <div class="app-card app-2">
-                    <div class="app-icon">
+                <div class="card zoom-in" style="animation-delay: 0.4s;">
+                    <div class="card-icon">
                         <i class="fas fa-home"></i>
                     </div>
-                    <h3 class="app-title">Energia Residencial</h3>
-                    <p>A energia que chega nas tomadas é CA, geralmente a 127V ou 220V com frequência de 60Hz.</p>
-                </div>
-                
-                <div class="app-card app-3">
-                    <div class="app-icon">
-                        <i class="fas fa-industry"></i>
-                    </div>
-                    <h3 class="app-title">Sistemas Industriais</h3>
-                    <p>Máquinas industriais pesadas geralmente utilizam CA de alta tensão para maior eficiência.</p>
-                </div>
-                
-                <div class="app-card app-4">
-                    <div class="app-icon">
-                        <i class="fas fa-car-battery"></i>
-                    </div>
-                    <h3 class="app-title">Veículos Elétricos</h3>
-                    <p>Carros elétricos usam baterias de CC, mas motores podem ser tanto CA quanto CC.</p>
+                    <h3>Habitações e Modo de Vida</h3>
+                    <p>Viviam em <span class="highlight">covas forradas com peles e ramas</span>, não em ocas.</p>
+                    <p>Eram <span class="highlight">nômades</span>, vivendo da caça, pesca e coleta.</p>
                 </div>
             </div>
-        </section>
-
-        <!-- Experiment Section -->
-        <section id="experiment" class="container">
-            <h2 class="section-title">Experimento Virtual</h2>
-            <div class="experiment">
-                <p>Clique nos botões abaixo para ver como uma lâmpada responde a diferentes tipos de corrente:</p>
-                <div class="experiment-container">
-                    <div class="circuit">
-                        <div class="bulb" id="bulb">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                    </div>
-                    <div class="controls">
-                        <button class="control-btn dc-btn" id="cc-btn">
-                            <i class="fas fa-play"></i>
-                            <span>Ligar com CC</span>
-                        </button>
-                        <button class="control-btn ac-btn" id="ca-btn">
-                            <i class="fas fa-play"></i>
-                            <span>Ligar com CA</span>
-                        </button>
-                        <button class="control-btn off-btn" id="off-btn">
-                            <i class="fas fa-stop"></i>
-                            <span>Desligar</span>
-                        </button>
-                    </div>
-                    <p id="experiment-info">A lâmpada está desligada. Clique em um dos botões para iniciar o experimento.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- History Section -->
-        <section id="history" class="container">
-            <h2 class="section-title">A Guerra das Correntes</h2>
-            <div class="content-section">
-                <div class="content-text">
-                    <p>No final do século XIX, ocorreu a famosa "Guerra das Correntes" entre Thomas Edison (defensor da CC) e Nikola Tesla (defensor da CA).</p>
-                    
-                    <p>Edison promovia a corrente contínua como mais segura, enquanto Tesla defendia a corrente alternada como mais eficiente para transmissão a longas distâncias.</p>
-                    
-                    <div class="highlight">
-                        <p>A corrente alternada prevaleceu para distribuição de energia devido à sua capacidade de ser facilmente transformada para altas tensões, reduzindo drasticamente as perdas na transmissão.</p>
-                    </div>
-                    
-                    <p>Hoje, ambas as correntes são essenciais: a CA para transmissão e a CC para a maioria dos dispositivos eletrônicos modernos.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script>
-        // Controle de Zoom
-        let zoomLevel = 1;
-        const minZoom = 0.8;
-        const maxZoom = 2;
-        const zoomStep = 0.1;
-        
-        const gearBtn = document.getElementById('gear-btn');
-        const zoomButtons = document.getElementById('zoom-buttons');
-        const zoomInBtn = document.getElementById('zoom-in');
-        const zoomOutBtn = document.getElementById('zoom-out');
-        const resetZoomBtn = document.getElementById('reset-zoom');
-        const zoomLevelDisplay = document.getElementById('zoom-level');
-        
-        // Alternar visibilidade dos controles de zoom
-        gearBtn.addEventListener('click', function() {
-            zoomButtons.style.display = zoomButtons.style.display === 'none' ? 'flex' : 'none';
-        });
-        
-        // Aumentar zoom
-        zoomInBtn.addEventListener('click', function() {
-            if (zoomLevel < maxZoom) {
-                zoomLevel += zoomStep;
-                updateZoom();
-            }
-        });
-        
-        // Diminuir zoom
-        zoomOutBtn.addEventListener('click', function() {
-            if (zoomLevel > minZoom) {
-                zoomLevel -= zoomStep;
-                updateZoom();
-            }
-        });
-        
-        // Resetar zoom
-        resetZoomBtn.addEventListener('click', function() {
-            zoomLevel = 1;
-            updateZoom();
-        });
-        
-        // Atualizar zoom na página
-        function updateZoom() {
-            document.documentElement.style.setProperty('--zoom-level', zoomLevel);
-            zoomLevelDisplay.textContent = Math.round(zoomLevel * 100) + '%';
             
-            // Salvar preferência no localStorage
-            localStorage.setItem('zoomLevel', zoomLevel);
+            <div class="map-container zoom-in" style="animation-delay: 0.6s;">
+                <div class="map-overlay">
+                    <div>
+                        <h3>Território Guaianás</h3>
+                        <p>Região dos Campos de Piratininga - Atual Zona Leste de São Paulo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Perguntas -->
+        <section id="perguntas" class="section">
+            <h2 class="section-title slide-in-right">Perguntas e Respostas</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Qual era o modo de vida?</h3>
+                    <p><span class="highlight">Nômades</span> que viviam da <span class="highlight">caça, pesca e coleta</span>.</p>
+                    <p>Não praticavam agricultura em larga escala.</p>
+                </div>
+                
+                <div class="card" style="animation-delay: 0.5s;">
+                    <h3>Como reagiram aos colonizadores?</h3>
+                    <p>Chegada trouxe <span class="highlight">desentendimento</span>.</p>
+                    <p>Por volta de 1820 estavam extintos e a terra em mãos particulares.</p>
+                </div>
+                
+                <div class="card" style="animation-delay: 1s;">
+                    <h3>Onde viviam?</h3>
+                    <p><span class="highlight">Covas forradas com peles e ramas</span>.</p>
+                    <p>Habitações temporárias refletiam o nomadismo.</p>
+                </div>
+                
+                <div class="card" style="animation-delay: 1.5s;">
+                    <h3>Qual foi o destino?</h3>
+                    <p>Por volta de <span class="highlight">1820 estavam extintos</span>.</p>
+                    <p>Doenças, conflitos e perda territorial levaram ao desaparecimento.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Linha do Tempo -->
+        <section id="timeline" class="section">
+            <h2 class="section-title slide-in-left">Linha do Tempo</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Antes de 1500</div>
+                        <p>Guaianases habitavam campos de Piratininga como nômades.</p>
+                        <p>População estimada: 1.000-2.000 indivíduos.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Século XVI</div>
+                        <p>Chegada dos portugueses e jesuítas.</p>
+                        <p>Primeiros registros escritos sobre os Guaianás.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Século XVII</div>
+                        <p>Conflitos com colonos aumentam.</p>
+                        <p>Doenças europeias começam a afetar a população.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Século XVIII</div>
+                        <p>Declínio populacional acentuado.</p>
+                        <p>Muitos incorporados à força como mão de obra.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Por volta de 1820</div>
+                        <p>Guaianases extintos como grupo cultural distinto.</p>
+                        <p>Terra em mãos de particulares.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1857</div>
+                        <p>Área chamada Lajeado Velho/Lajeado Novo.</p>
+                        <p>Ponto de passagem para viajantes.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1861</div>
+                        <p>Inauguração da capela Santa Cruz de Lajeado.</p>
+                        <p>Início do desenvolvimento do povoado.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1875</div>
+                        <p>Chegada da estrada de ferro.</p>
+                        <p>Facilitou vinda de imigrantes.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1929</div>
+                        <p>Lajeado elevado à condição de distrito.</p>
+                        <p>Primeiros loteamentos surgem.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1948</div>
+                        <p>Nome Guaianases oficializado.</p>
+                        <p>Homenagem ao povo indígena original.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Legado -->
+        <section id="legado" class="section">
+            <h2 class="section-title slide-in-left">Legado dos Guaianases</h2>
+            <div class="cards-grid">
+                <div class="card floating">
+                    <div class="card-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Resiliência Histórica</h3>
+                    <p>Povo que valoriza cada conquista.</p>
+                    <p>Memória da resistência mantida viva.</p>
+                </div>
+                
+                <div class="card floating" style="animation-delay: 0.5s;">
+                    <div class="card-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3>Desenvolvimento</h3>
+                    <p>Bairro desenvolvido com orgulho das origens.</p>
+                    <p>Importante centro da Zona Leste.</p>
+                </div>
+                
+                <div class="card floating" style="animation-delay: 1s;">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Identidade Cultural</h3>
+                    <p>Forte identificação dos moradores.</p>
+                    <p>Herança cultural mantida viva.</p>
+                </div>
+            </div>
+            
+            <div class="card zoom-in" style="margin-top: 2rem; animation-delay: 0.3s;">
+                <h3>Guaianases Hoje</h3>
+                <p>Distrito com mais de 300.000 habitantes.</p>
+                <p>Memória indígena preservada no nome e estudos históricos.</p>
+            </div>
+        </section>
+        
+        <!-- Seção FIM -->
+        <section class="end-section">
+            <button class="end-button">FIM</button>
+            <div class="end-message" id="endMessage">FIM, Qualquer pergunta Não pergunte👍😁</div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                <p>&copy; Pesquisa Feita em 2025 Guaianases - Todos os direitos reservados</p>
+            </div>
+            <div class="source">
+                <p>Fonte da pesquisa: <a href="https://prefeitura.sp.gov.br/web/guaianases/w/noticias/32303" target="_blank">Prefeitura de São Paulo - Guaianases</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Navegação fixa ao scrollar
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.padding = '0.8rem 0';
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.15)';
+            } else {
+                nav.style.padding = '1.2rem 0';
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.15)';
+            }
+        });
+        
+        // Menu mobile
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Animação de entrada dos elementos
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+        
+        // Efeito de digitação no título
+        const title = document.querySelector('h1');
+        const originalText = title.textContent;
+        title.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                title.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                // Remover cursor após digitação
+                setTimeout(() => {
+                    title.style.borderRight = 'none';
+                }, 500);
+            }
         }
         
-        // Carregar zoom salvo
-        window.addEventListener('DOMContentLoaded', function() {
-            const savedZoom = localStorage.getItem('zoomLevel');
-            if (savedZoom) {
-                zoomLevel = parseFloat(savedZoom);
-                updateZoom();
-            }
-        });
-
-        // Simulação do experimento
-        document.getElementById('cc-btn').addEventListener('click', function() {
-            const bulb = document.getElementById('bulb');
-            bulb.classList.add('on');
-            document.getElementById('experiment-info').textContent = 
-                "Com corrente contínua, a lâmpada mantém um brilho constante, pois recebe energia de forma contínua e unidirecional.";
-        });
+        // Iniciar efeito de digitação quando a página carregar
+        window.addEventListener('load', typeWriter);
         
-        document.getElementById('ca-btn').addEventListener('click', function() {
-            const bulb = document.getElementById('bulb');
-            bulb.classList.add('on');
-            
-            // Simular o efeito de piscar da CA (embora na prática não seja visível)
-            let blinkCount = 0;
-            const blinkInterval = setInterval(() => {
-                bulb.classList.toggle('on');
-                blinkCount++;
-                
-                if (blinkCount >= 6) {
-                    clearInterval(blinkInterval);
-                    bulb.classList.add('on');
+        // Animação de elementos ao scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
                 }
-            }, 200);
-            
-            document.getElementById('experiment-info').textContent = 
-                "Com corrente alternada, a lâmpada também acende, mas a corrente muda de direção periodicamente. Na prática, não percebemos esse efeito devido à alta frequência (60Hz no Brasil).";
+            });
+        }, observerOptions);
+        
+        // Observar elementos com animações
+        document.querySelectorAll('.slide-in-left, .slide-in-right, .zoom-in, .floating, .pulse').forEach(el => {
+            observer.observe(el);
         });
         
-        document.getElementById('off-btn').addEventListener('click', function() {
-            document.getElementById('bulb').classList.remove('on');
-            document.getElementById('experiment-info').textContent = 
-                "A lâmpada está desligada. Clique em um dos botões para iniciar o experimento.";
+        // Adicionar efeito de parallax ao header
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('header');
+            parallax.style.transform = 'translateY(' + (scrolled * 0.5) + 'px)';
         });
-
-        // Smooth scrolling para links de navegação
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        
+        // Botão FIM
+        const endButton = document.querySelector('.end-button');
+        const endMessage = document.getElementById('endMessage');
+        
+        endButton.addEventListener('click', function() {
+            endMessage.style.display = 'block';
+            endMessage.classList.add('zoom-in');
+            
+            // Rolar suavemente até a mensagem
+            endMessage.scrollIntoView({ behavior: 'smooth' });
         });
     </script>
 </body>
