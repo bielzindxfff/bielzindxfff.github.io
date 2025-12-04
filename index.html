@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biel - Site Pessoal</title>
+    <title>Gabriel - Site Pessoal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -1228,26 +1228,59 @@
         // Senha correta
         const CORRECT_PASSWORD = "281305";
 
+        // Funções de Cookie para melhor compatibilidade
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function eraseCookie(name) {
+            document.cookie = name + '=; Max-Age=-99999999; path=/; SameSite=Lax';
+        }
+
         // Sistema de contagem de visitas aprimorado
         function updateVisitStats() {
-            // Contador global de visitas (simulado via localStorage)
-            let globalVisitCount = localStorage.getItem('globalVisitCount') ? parseInt(localStorage.getItem('globalVisitCount')) : 0;
-            let globalUniqueVisitors = localStorage.getItem('globalUniqueVisitors') ? parseInt(localStorage.getItem('globalUniqueVisitors')) : 0;
+            // Usar localStorage como backup, mas cookies para compartilhamento
+            let globalVisitCount = parseInt(getCookie('globalVisitCount')) || 
+                                  parseInt(localStorage.getItem('globalVisitCount')) || 0;
             
-            // Gerar um ID único para o dispositivo/navegador
-            let deviceId = localStorage.getItem('deviceId');
-            if (!deviceId) {
-                // Criar um ID único baseado em timestamp + random
-                deviceId = 'device_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-                localStorage.setItem('deviceId', deviceId);
+            let globalUniqueVisitors = parseInt(getCookie('globalUniqueVisitors')) || 
+                                      parseInt(localStorage.getItem('globalUniqueVisitors')) || 0;
+            
+            // Gerar ID único usando combinação de técnicas
+            let visitorId = getCookie('visitorId');
+            if (!visitorId) {
+                // Criar ID único mais robusto
+                visitorId = 'visitor_' + Date.now() + '_' + 
+                           Math.random().toString(36).substr(2, 9) + '_' + 
+                           Math.random().toString(36).substr(2, 9);
                 
-                // Incrementar visitantes únicos globais
+                // Salvar em cookie (30 dias) e localStorage
+                setCookie('visitorId', visitorId, 30);
+                localStorage.setItem('visitorId', visitorId);
+                
+                // Incrementar visitantes únicos
                 globalUniqueVisitors++;
-                localStorage.setItem('globalUniqueVisitors', globalUniqueVisitors);
                 
-                // Mostrar toast de boas-vindas na primeira visita deste dispositivo
+                // Mostrar toast de boas-vindas na primeira visita
                 setTimeout(() => {
-                    showToast('Bem-vindo ao meu site! Esta é sua primeira visita neste dispositivo.');
+                    showToast('Bem-vindo ao meu site! Esta é sua primeira visita.');
                 }, 1500);
             }
             
@@ -1256,26 +1289,32 @@
             if (!sessionVisited) {
                 // Incrementar contador global de visitas
                 globalVisitCount++;
-                localStorage.setItem('globalVisitCount', globalVisitCount);
                 
                 // Marcar como visitado nesta sessão
                 sessionStorage.setItem('sessionVisited', 'true');
+                
+                // Log para debug
+                console.log('Nova visita registrada. Visitante ID:', visitorId);
             }
             
-            // Contador local (apenas para este dispositivo)
-            let localVisitCount = localStorage.getItem('localVisitCount') ? parseInt(localStorage.getItem('localVisitCount')) : 0;
-            localVisitCount++;
-            localStorage.setItem('localVisitCount', localVisitCount);
+            // Salvar estatísticas atualizadas em cookies E localStorage
+            setCookie('globalVisitCount', globalVisitCount, 365);
+            setCookie('globalUniqueVisitors', globalUniqueVisitors, 365);
             
-            // Atualizar elementos com os valores GLOBAIS
+            localStorage.setItem('globalVisitCount', globalVisitCount);
+            localStorage.setItem('globalUniqueVisitors', globalUniqueVisitors);
+            
+            // Atualizar elementos na tela
             visitCountElement.textContent = globalVisitCount;
             uniqueVisitorsElement.textContent = globalUniqueVisitors;
             
-            // Log para depuração (pode remover depois)
-            console.log('Device ID:', deviceId);
-            console.log('Global Visits:', globalVisitCount);
-            console.log('Global Unique Visitors:', globalUniqueVisitors);
-            console.log('Local Visits (this device):', localVisitCount);
+            // Log para depuração
+            console.log('=== ESTATÍSTICAS DO SITE ===');
+            console.log('Visitante ID:', visitorId);
+            console.log('Total de Visitas:', globalVisitCount);
+            console.log('Visitantes Únicos:', globalUniqueVisitors);
+            console.log('Cookies ativos:', document.cookie);
+            console.log('============================');
         }
 
         // Chamar a função para atualizar estatísticas
@@ -1303,11 +1342,19 @@
 
         // Função para resetar estatísticas
         function resetStats() {
-            if (confirm('Deseja realmente resetar todas as estatísticas?\n\nIsso irá: \n• Zerar o contador de visitas\n• Zerar o contador de visitantes únicos\n• Gerar um novo ID para este dispositivo')) {
+            if (confirm('Deseja realmente resetar todas as estatísticas?\n\nIsso irá: \n• Zerar o contador de visitas\n• Zerar o contador de visitantes únicos\n• Gerar um novo ID para este visitante')) {
+                // Limpar cookies
+                eraseCookie('globalVisitCount');
+                eraseCookie('globalUniqueVisitors');
+                eraseCookie('visitorId');
+                
+                // Limpar localStorage
                 localStorage.removeItem('globalVisitCount');
                 localStorage.removeItem('globalUniqueVisitors');
-                localStorage.removeItem('deviceId');
+                localStorage.removeItem('visitorId');
                 localStorage.removeItem('localVisitCount');
+                
+                // Limpar sessionStorage
                 sessionStorage.removeItem('sessionVisited');
                 
                 // Recarregar estatísticas
@@ -1503,6 +1550,53 @@
             element.addEventListener('mouseenter', function() {
                 // Tooltip já é estilizado via CSS
             });
+        });
+
+        // Função para simular múltiplos acessos (apenas para teste)
+        function simulateMultipleVisits() {
+            if (confirm('Deseja simular 5 visitas diferentes?')) {
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        // Criar novo ID de visitante
+                        const newVisitorId = 'test_visitor_' + Date.now() + '_' + i;
+                        setCookie('visitorId', newVisitorId, 1);
+                        sessionStorage.removeItem('sessionVisited');
+                        
+                        // Incrementar contadores
+                        let visits = parseInt(getCookie('globalVisitCount')) || 0;
+                        let unique = parseInt(getCookie('globalUniqueVisitors')) || 0;
+                        
+                        visits++;
+                        if (i === 0) unique++;
+                        
+                        setCookie('globalVisitCount', visits, 365);
+                        setCookie('globalUniqueVisitors', unique, 365);
+                        
+                        localStorage.setItem('globalVisitCount', visits);
+                        localStorage.setItem('globalUniqueVisitors', unique);
+                        
+                        // Atualizar display
+                        visitCountElement.textContent = visits;
+                        uniqueVisitorsElement.textContent = unique;
+                    }, i * 500);
+                }
+                showToast('5 visitas simuladas com sucesso!');
+            }
+        }
+
+        // Adicionar botão de teste (opcional - pode remover depois)
+        document.addEventListener('DOMContentLoaded', function() {
+            const testBtn = document.createElement('button');
+            testBtn.className = 'btn btn-secondary';
+            testBtn.innerHTML = '<i class="fas fa-vial"></i> Simular Visitas (Teste)';
+            testBtn.style.marginTop = '1rem';
+            testBtn.style.marginLeft = '1rem';
+            testBtn.onclick = simulateMultipleVisits;
+            
+            const adminSection = document.querySelector('.admin-section');
+            if (adminSection) {
+                adminSection.appendChild(testBtn);
+            }
         });
     </script>
 </body>
