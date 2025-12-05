@@ -369,42 +369,6 @@
             color: var(--primary);
         }
 
-        .stats-container {
-            display: flex;
-            gap: 1.25rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .stat-card {
-            flex: 1;
-            background: var(--bg);
-            padding: 1.5rem 1rem;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .stat-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-light);
-        }
-
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 0.25rem;
-            text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
-        }
-
-        .stat-label {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-        }
-
         .links-container {
             display: flex;
             gap: 1.25rem;
@@ -819,6 +783,86 @@
             font-size: 1.2rem;
         }
 
+        /* Área de Toolbox/Anotações */
+        .toolbox-container {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .toolbox-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .toolbox-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toolbox-title i {
+            color: var(--primary);
+        }
+
+        .toolbox-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            padding: 0.5rem 1rem;
+            background: var(--bg-lighter);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .action-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .editable-area {
+            width: 100%;
+            min-height: 200px;
+            padding: 1rem;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 1rem;
+            line-height: 1.6;
+            resize: vertical;
+            transition: var(--transition);
+        }
+
+        .editable-area:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+        }
+
+        .editable-area.readonly {
+            background: var(--bg);
+            cursor: default;
+        }
+
         /* Scrollbar personalizada */
         ::-webkit-scrollbar {
             width: 10px;
@@ -872,10 +916,6 @@
             
             .social-links {
                 gap: 1.25rem;
-            }
-            
-            .stats-container {
-                flex-direction: column;
             }
             
             .links-container {
@@ -1030,46 +1070,70 @@
         </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- Painel Administrativo -->
     <section id="admin" class="fade-in">
         <div class="admin-panel" id="adminPanel">
             <div class="admin-section">
-                <h3 class="admin-title"><i class="fas fa-chart-line"></i> Estatísticas do Site</h3>
-                <div class="stats-container">
-                    <div class="stat-card">
-                        <div class="stat-value" id="visitCount">0</div>
-                        <div class="stat-label">Total de Visitas</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="uniqueVisitors">0</div>
-                        <div class="stat-label">Visitantes Únicos</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="currentTime">00:00</div>
-                        <div class="stat-label">Hora Atual</div>
-                    </div>
-                </div>
-                <button class="btn btn-secondary" id="resetStatsBtn" style="margin-top: 1rem;">
-                    <i class="fas fa-redo"></i> Resetar Estatísticas
-                </button>
-            </div>
-            
-            <div class="admin-section">
                 <h3 class="admin-title"><i class="fas fa-bolt"></i> Links Rápidos</h3>
                 <p>Links importantes para acesso rápido:</p>
                 <div class="links-container">
-                    <a href="https://www.roblox.com/pt/download/client?os=win" target="_blank" class="link-btn" id="linkBtn1">
-                        <i class="fab fa-roblox"></i>
-                        <span>Roblox Download</span>
+                   <a href="https://www.roblox.com/pt/download/client?os=win" target="_blank" class="link-btn" id="linkBtn2">
+                      <span style="font-weight: bold; font-size: 20px;">⬜</span>
+                        <span>Install Roblox</span>
                     </a>
+
                     <a href="https://darkmodde.xyz/CMSP-Hacks/" target="_blank" class="link-btn" id="linkBtn2">
-                        <i class="fas fa-code"></i>
+                       <i class="fas fa-code"></i>
                         <span>CMSP Hacks</span>
+                    </a>
+                    </a>
+                    <a href="https://bielzindxfff.github.io/Calculadora.github.iop/" target="_blank" class="link-btn" id="linkBtn2">
+                        <i class="fas fa-calculator"></i>
+                        <span>Calculadora</span>
                     </a>
                     <a href="https://github.com/bielzindxfff" target="_blank" class="link-btn" id="linkBtn3">
                         <i class="fab fa-github"></i>
                         <span>Meu GitHub</span>
                     </a>
+                </div>
+            </div>
+            
+            <div class="admin-section">
+                <h3 class="admin-title"><i class="fas fa-toolbox"></i> Minha Toolbox</h3>
+                <p>Área para suas anotações, links úteis e informações importantes:</p>
+                
+                <div class="toolbox-container">
+                    <div class="toolbox-header">
+                        <h4 class="toolbox-title"><i class="fas fa-sticky-note"></i> Notas e Informações</h4>
+                        <div class="toolbox-actions">
+                            <button class="action-btn" id="editToolboxBtn">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                            <button class="action-btn" id="saveToolboxBtn">
+                                <i class="fas fa-save"></i> Salvar
+                            </button>
+                            <button class="action-btn" id="clearToolboxBtn">
+                                <i class="fas fa-trash"></i> Limpar
+                            </button>
+                        </div>
+                    </div>
+                    <textarea class="editable-area" id="toolboxContent" readonly>
+
+                    </textarea>
                 </div>
             </div>
         </div>
@@ -1215,120 +1279,69 @@
         const submitPassword = document.getElementById('submitPassword');
         const passwordInput = document.getElementById('password');
         const adminPanel = document.getElementById('adminPanel');
-        const visitCountElement = document.getElementById('visitCount');
-        const uniqueVisitorsElement = document.getElementById('uniqueVisitors');
-        const currentTimeElement = document.getElementById('currentTime');
         const themeToggle = document.getElementById('themeToggle');
         const backToTop = document.getElementById('backToTop');
         const progressBar = document.getElementById('progressBar');
         const toast = document.getElementById('toast');
         const toastMessage = document.getElementById('toastMessage');
-        const resetStatsBtn = document.getElementById('resetStatsBtn');
+        
+        // Elementos da Toolbox
+        const toolboxContent = document.getElementById('toolboxContent');
+        const editToolboxBtn = document.getElementById('editToolboxBtn');
+        const saveToolboxBtn = document.getElementById('saveToolboxBtn');
+        const clearToolboxBtn = document.getElementById('clearToolboxBtn');
         
         // Senha correta
         const CORRECT_PASSWORD = "281305";
 
-        // Funções de Cookie para melhor compatibilidade
-        function setCookie(name, value, days) {
-            let expires = "";
-            if (days) {
-                const date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toUTCString();
+        // Sistema de Toolbox (Anotações Editáveis)
+        function loadToolboxContent() {
+            const savedContent = localStorage.getItem('toolboxContent');
+            if (savedContent) {
+                toolboxContent.value = savedContent;
             }
-            document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax";
         }
 
-        function getCookie(name) {
-            const nameEQ = name + "=";
-            const ca = document.cookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        function saveToolboxContent() {
+            const content = toolboxContent.value;
+            localStorage.setItem('toolboxContent', content);
+            showToast('Toolbox salva com sucesso!');
+            
+            // Voltar para modo leitura
+            toolboxContent.readOnly = true;
+            toolboxContent.classList.add('readonly');
+            editToolboxBtn.innerHTML = '<i class="fas fa-edit"></i> Editar';
+            saveToolboxBtn.style.display = 'none';
+        }
+
+        function enableToolboxEditing() {
+            toolboxContent.readOnly = false;
+            toolboxContent.classList.remove('readonly');
+            toolboxContent.focus();
+            editToolboxBtn.innerHTML = '<i class="fas fa-times"></i> Cancelar';
+            saveToolboxBtn.style.display = 'inline-flex';
+        }
+
+        function disableToolboxEditing() {
+            toolboxContent.readOnly = true;
+            toolboxContent.classList.add('readonly');
+            editToolboxBtn.innerHTML = '<i class="fas fa-edit"></i> Editar';
+            saveToolboxBtn.style.display = 'none';
+            
+            // Recarregar conteúdo salvo
+            loadToolboxContent();
+        }
+
+        function clearToolboxContent() {
+            if (confirm('Tem certeza que deseja limpar toda a toolbox?\nIsso removerá todas as suas anotações.')) {
+                toolboxContent.value = `#`;
+                saveToolboxContent();
+                showToast('Toolbox limpa! Comece a escrever suas novas anotações.');
             }
-            return null;
         }
 
-        function eraseCookie(name) {
-            document.cookie = name + '=; Max-Age=-99999999; path=/; SameSite=Lax';
-        }
-
-        // Sistema de contagem de visitas aprimorado
-        function updateVisitStats() {
-            // Usar localStorage como backup, mas cookies para compartilhamento
-            let globalVisitCount = parseInt(getCookie('globalVisitCount')) || 
-                                  parseInt(localStorage.getItem('globalVisitCount')) || 0;
-            
-            let globalUniqueVisitors = parseInt(getCookie('globalUniqueVisitors')) || 
-                                      parseInt(localStorage.getItem('globalUniqueVisitors')) || 0;
-            
-            // Gerar ID único usando combinação de técnicas
-            let visitorId = getCookie('visitorId');
-            if (!visitorId) {
-                // Criar ID único mais robusto
-                visitorId = 'visitor_' + Date.now() + '_' + 
-                           Math.random().toString(36).substr(2, 9) + '_' + 
-                           Math.random().toString(36).substr(2, 9);
-                
-                // Salvar em cookie (30 dias) e localStorage
-                setCookie('visitorId', visitorId, 30);
-                localStorage.setItem('visitorId', visitorId);
-                
-                // Incrementar visitantes únicos
-                globalUniqueVisitors++;
-                
-                // Mostrar toast de boas-vindas na primeira visita
-                setTimeout(() => {
-                    showToast('Bem-vindo ao meu site! Esta é sua primeira visita.');
-                }, 1500);
-            }
-            
-            // Verificar se já visitou nesta sessão
-            const sessionVisited = sessionStorage.getItem('sessionVisited');
-            if (!sessionVisited) {
-                // Incrementar contador global de visitas
-                globalVisitCount++;
-                
-                // Marcar como visitado nesta sessão
-                sessionStorage.setItem('sessionVisited', 'true');
-                
-                // Log para debug
-                console.log('Nova visita registrada. Visitante ID:', visitorId);
-            }
-            
-            // Salvar estatísticas atualizadas em cookies E localStorage
-            setCookie('globalVisitCount', globalVisitCount, 365);
-            setCookie('globalUniqueVisitors', globalUniqueVisitors, 365);
-            
-            localStorage.setItem('globalVisitCount', globalVisitCount);
-            localStorage.setItem('globalUniqueVisitors', globalUniqueVisitors);
-            
-            // Atualizar elementos na tela
-            visitCountElement.textContent = globalVisitCount;
-            uniqueVisitorsElement.textContent = globalUniqueVisitors;
-            
-            // Log para depuração
-            console.log('=== ESTATÍSTICAS DO SITE ===');
-            console.log('Visitante ID:', visitorId);
-            console.log('Total de Visitas:', globalVisitCount);
-            console.log('Visitantes Únicos:', globalUniqueVisitors);
-            console.log('Cookies ativos:', document.cookie);
-            console.log('============================');
-        }
-
-        // Chamar a função para atualizar estatísticas
-        updateVisitStats();
-
-        // Atualizar hora atual
-        function updateCurrentTime() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-            currentTimeElement.textContent = timeString;
-        }
-        
-        setInterval(updateCurrentTime, 1000);
-        updateCurrentTime();
+        // Inicializar Toolbox
+        loadToolboxContent();
 
         // Mostrar notificação toast
         function showToast(message) {
@@ -1340,39 +1353,23 @@
             }, 4000);
         }
 
-        // Função para resetar estatísticas
-        function resetStats() {
-            if (confirm('Deseja realmente resetar todas as estatísticas?\n\nIsso irá: \n• Zerar o contador de visitas\n• Zerar o contador de visitantes únicos\n• Gerar um novo ID para este visitante')) {
-                // Limpar cookies
-                eraseCookie('globalVisitCount');
-                eraseCookie('globalUniqueVisitors');
-                eraseCookie('visitorId');
-                
-                // Limpar localStorage
-                localStorage.removeItem('globalVisitCount');
-                localStorage.removeItem('globalUniqueVisitors');
-                localStorage.removeItem('visitorId');
-                localStorage.removeItem('localVisitCount');
-                
-                // Limpar sessionStorage
-                sessionStorage.removeItem('sessionVisited');
-                
-                // Recarregar estatísticas
-                updateVisitStats();
-                
-                showToast('Estatísticas resetadas com sucesso!');
+        // Eventos da Toolbox
+        editToolboxBtn.addEventListener('click', function() {
+            if (toolboxContent.readOnly) {
+                enableToolboxEditing();
+            } else {
+                disableToolboxEditing();
             }
-        }
+        });
 
-        // Evento para o botão de reset
-        resetStatsBtn.addEventListener('click', resetStats);
+        saveToolboxBtn.addEventListener('click', saveToolboxContent);
+        clearToolboxBtn.addEventListener('click', clearToolboxContent);
 
         // Abrir modal ao clicar na engrenagem
         settingsBtn.addEventListener('click', () => {
             passwordModal.style.display = 'flex';
             passwordInput.focus();
             
-            // Adicionar classe para animação
             setTimeout(() => {
                 passwordModal.classList.add('show');
             }, 10);
@@ -1396,14 +1393,12 @@
             if (passwordInput.value === CORRECT_PASSWORD) {
                 adminPanel.style.display = 'block';
                 
-                // Adicionar classe para animação
                 setTimeout(() => {
                     adminPanel.classList.add('show');
                 }, 10);
                 
                 closePasswordModal();
                 
-                // Scroll suave para a seção administrativa
                 document.querySelector('#admin').scrollIntoView({
                     behavior: 'smooth'
                 });
@@ -1479,15 +1474,12 @@
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // Remove active class de todos os links
                 document.querySelectorAll('.nav-link').forEach(item => {
                     item.classList.remove('active');
                 });
                 
-                // Adiciona active class ao link clicado
                 this.classList.add('active');
                 
-                // Scroll suave para a seção
                 const targetId = this.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
                 window.scrollTo({
@@ -1545,57 +1537,23 @@
             title.classList.toggle('glow');
         }, 3000);
 
-        // Tooltips
-        document.querySelectorAll('[data-tooltip]').forEach(element => {
-            element.addEventListener('mouseenter', function() {
-                // Tooltip já é estilizado via CSS
-            });
-        });
-
-        // Função para simular múltiplos acessos (apenas para teste)
-        function simulateMultipleVisits() {
-            if (confirm('Deseja simular 5 visitas diferentes?')) {
-                for (let i = 0; i < 5; i++) {
-                    setTimeout(() => {
-                        // Criar novo ID de visitante
-                        const newVisitorId = 'test_visitor_' + Date.now() + '_' + i;
-                        setCookie('visitorId', newVisitorId, 1);
-                        sessionStorage.removeItem('sessionVisited');
-                        
-                        // Incrementar contadores
-                        let visits = parseInt(getCookie('globalVisitCount')) || 0;
-                        let unique = parseInt(getCookie('globalUniqueVisitors')) || 0;
-                        
-                        visits++;
-                        if (i === 0) unique++;
-                        
-                        setCookie('globalVisitCount', visits, 365);
-                        setCookie('globalUniqueVisitors', unique, 365);
-                        
-                        localStorage.setItem('globalVisitCount', visits);
-                        localStorage.setItem('globalUniqueVisitors', unique);
-                        
-                        // Atualizar display
-                        visitCountElement.textContent = visits;
-                        uniqueVisitorsElement.textContent = unique;
-                    }, i * 500);
-                }
-                showToast('5 visitas simuladas com sucesso!');
+        // Auto-save da toolbox a cada 30 segundos (quando em modo edição)
+        setInterval(() => {
+            if (!toolboxContent.readOnly) {
+                const content = toolboxContent.value;
+                localStorage.setItem('toolboxContentAutoSave', content);
+                console.log('Auto-save da toolbox realizado');
             }
-        }
+        }, 30000);
 
-        // Adicionar botão de teste (opcional - pode remover depois)
+        // Recuperar auto-save se existir
         document.addEventListener('DOMContentLoaded', function() {
-            const testBtn = document.createElement('button');
-            testBtn.className = 'btn btn-secondary';
-            testBtn.innerHTML = '<i class="fas fa-vial"></i> Simular Visitas (Teste)';
-            testBtn.style.marginTop = '1rem';
-            testBtn.style.marginLeft = '1rem';
-            testBtn.onclick = simulateMultipleVisits;
-            
-            const adminSection = document.querySelector('.admin-section');
-            if (adminSection) {
-                adminSection.appendChild(testBtn);
+            const autoSaveContent = localStorage.getItem('toolboxContentAutoSave');
+            if (autoSaveContent && !localStorage.getItem('toolboxContent')) {
+                if (confirm('Encontramos um auto-save não salvo. Deseja restaurar?')) {
+                    toolboxContent.value = autoSaveContent;
+                    saveToolboxContent();
+                }
             }
         });
     </script>
